@@ -67,7 +67,7 @@ const HeroSection = () => {
   return (
     <section
       id="main"
-      className="section main-section mt-40"
+      className="section main-section "
       style={{
         backgroundColor: "#000",
         boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
