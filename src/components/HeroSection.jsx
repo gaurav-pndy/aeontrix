@@ -4,118 +4,78 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
 const HeroSection = () => {
   return (
-    <section className="hero-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden text-white px-4 md:px-6 py-16 pt-28 bg-[#0e001c] ">
-      {/* Tag */}
-      <div className="relative z-10 mb-4">
-        <span className="text-sm px-4 py-1 rounded-full bg-purple-950/30 border border-purple-500 text-purple-300 backdrop-blur-md">
-          Your AI Scheduling Assistant
-        </span>
+    <section className="relative z-10 max-w-7xl mx-auto px-6 pt-6 pb-24">
+      <div className="flex justify-center mb-8">
+        <div className="green-glass-badge backdrop-blur-md rounded-full px-6 py-2 shadow-lg">
+          <span className="text-[#00FF93] font-medium">
+            Your AI Transformation Partner
+          </span>
+        </div>
       </div>
 
-      {/* Heading */}
-      <h1 className="relative z-10 text-center !text-4xl sm:!text-5xl lg:!text-6xl !font-bold max-w-4xl ">
-        Simplify Your{" "}
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
-          Scheduling
-        </span>
-        <br />
-        with AI-Powered Precision
-      </h1>
+      <div className="text-center mb-8">
+        <h1 className="text-5xl md:text-7xl font-bold text-[#F8F9FB] mb-6 ">
+          Transform Your
+          <span className="shiny-text"> Workforce</span>
+          <br />
+          with <span className="shiny-text">AI Systems</span>
+        </h1>
+        <p className="text-xl text-[#F8F9FB]/80 max-w-3xl mx-auto leading-relaxed">
+          Revolutionize your business operations with intelligent AI solutions.
+          We help companies upgrade their workforce capabilities and achieve
+          unprecedented efficiency.
+        </p>
+      </div>
 
-      {/* Subheading */}
-      <p className="relative z-10 mt-2 text-center text-lg text-purple-200 max-w-2xl">
-        Effortlessly manage appointments, meetings, and tasks
-        <br className="hidden sm:block" />
-        with our intelligent scheduling assistant
-      </p>
-
-      {/* CTA Button */}
-      <div className="relative z-10 mt-2">
-        <button className="flex items-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold px-8 py-3 !rounded-full shadow-lg transition-all duration-300">
-          Get Started Free <FiArrowRight />
+      <div className="flex justify-center mb-16">
+        <button className="sparkle-button group bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 relative overflow-hidden flex items-center space-x-2">
+          <span className="relative z-10">Start Your AI Journey</span>
+          <svg
+            className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M17 8l4 4m0 0l-4 4m4-4H3"
+            ></path>
+          </svg>
         </button>
       </div>
 
-      {/* Calendar with glow */}
-      <div className="relative z-10 mt-10 w-full max-w-6xl md:px-4">
-        <div className="relative rounded-4xl overflow-hidden border-8 md:border-[12px] border-purple-900 shadow-[0_0_60px_20px_rgba(95,97,237,0.4)]">
-          <div className="bg-white p-6 ">
-            <h2 className="text-center text-black mb-3">
-              Begin Your AI Transformation Journey
+      <div className="max-w-4xl mx-auto">
+        <div className="content-box highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-seasalt mb-4">
+              Begin Your AI Workforce Transformation
             </h2>
-            <p className="text-center  text-muted">
+            <p className="text-[#F8F9FB]/70 text-lg">
               Take the first step toward a more efficient, cost-effective
-              workforce. Tell us what you want to achieve with AI employees.
+              workforce. Tell us about your business goals and challenges.
             </p>
+          </div>
 
-            <div className=" ">
-              <Row>
-                <Col md={8}>
-                  <Form>
-                    <Form.Group controlId="aiDescription">
-                      <Form.Label className="text-black">
-                        Describe your ideal AI workforce
-                      </Form.Label>
-                      <Form.Control
-                        as="textarea"
-                        rows={5}
-                        className="border border-black"
-                      />
-                      <Form.Text className="text-muted">
-                        Be specific about your business needs, challenges, and
-                        goals
-                      </Form.Text>
-                    </Form.Group>
-                  </Form>
-                </Col>
+          <div className="w-full">
+            <label className="block text-seasalt font-semibold mb-3 text-lg">
+              Describe your business or Industry
+            </label>
+            <textarea
+              className="w-full h-52 md:h-40 bg-[#042222]/80 border border-[#03624C]/30 rounded-xl px-4 py-3 text-seasalt placeholder-[#F8F9FB]/40 focus:outline-none focus:border-[#00FF93] focus:ring-2 focus:ring-[#00FF93]/20 transition-all duration-300 resize-none"
+              placeholder="Prompt examples:
+I have a Dental Clinic in NYC
+I run a real estate agency in Austin, Tx.
+I have an E-Commerce brand based in the US.
+My business is a Digital Marketing Agency."
+            ></textarea>
+          </div>
 
-                <Col md={4}>
-                  <div className="mb-2 text-black" style={{}}>
-                    <strong>Prompt suggestions:</strong>
-                  </div>
-                  <ul
-                    className="list-unstyled text-sm text-muted"
-                    style={{
-                      textAlign: "left",
-                    }}
-                  >
-                    <li className="d-flex align-items-start mb-2">
-                      <span>💡 </span>
-                      <span>
-                        Replace our sales team with AI that can handle
-                        international clients
-                      </span>
-                    </li>
-                    <li className="d-flex align-items-start mb-2">
-                      <span>💡</span>
-                      <span>
-                        Create AI marketing specialists that can generate
-                        content in multiple languages
-                      </span>
-                    </li>
-                    <li className="d-flex align-items-start mb-2">
-                      <span>💡</span>
-                      <span>
-                        Build an AI HR department that handles recruitment and
-                        onboarding
-                      </span>
-                    </li>
-                  </ul>
-
-                  <Button
-                    variant="dark"
-                    style={{
-                      width: "250px",
-                      textAlign: "center",
-                      margin: "20px auto 20px 10px",
-                      display: "block",
-                    }}
-                  >
-                    Generate AI Employee Plan
-                  </Button>
-                </Col>
-              </Row>
-            </div>
+          <div className="flex justify-center mt-8">
+            <button className="sparkle-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden">
+              <span className="relative z-10">Generate AI Workforce Plan</span>
+            </button>
           </div>
         </div>
       </div>

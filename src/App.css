@@ -18,36 +18,8 @@ canvas#Matrix {
   background-color: transparent;
 }
 
-/* Main hero section */
-.main-section {
-  /* position: relative; */
-  z-index: 1;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-  color: white;
-  text-align: center;
-  overflow: hidden;
-}
 
-.main-section .container {
-  display: flex;
-  flex-direction: row;
-  align-items: flex-end;
-  justify-content: center;
-  flex-wrap: wrap;
-  background-color: #00ff00;
-  /* position: relative; */
-  z-index: 2;
-}
 
-.hero-content {
-  max-width: 600px;
-  margin-right: 2rem;
-  z-index: 2;
-}
 
 .hero-image {
   position: absolute;
