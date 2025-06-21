@@ -59,14 +59,14 @@ function App() {
       <Navbar />
       <HeroSection />
       {/* Business Impact Section */}
-      <BusinessImpactSection />
+      {/* <BusinessImpactSection /> */}
 
       {/* Services Section */}
-      <ServicesSection />
+      {/* <ServicesSection /> */}
 
-      <GenerateAI />
-      <AIImplementationTimeline />
-      <CaseStudies />
+      {/* <GenerateAI /> */}
+      {/* <AIImplementationTimeline /> */}
+      {/* <CaseStudies /> */}
     </div>
   );
 }

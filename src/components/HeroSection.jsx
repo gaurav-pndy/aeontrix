@@ -4,7 +4,7 @@ import { Container, Row, Col, Form, Button, Card } from "react-bootstrap";
 
 const HeroSection = () => {
   return (
-    <section className="hero-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden text-white px-6 py-16 pt-28 bg-[#0e001c] ">
+    <section className="hero-section relative min-h-screen flex flex-col justify-center items-center overflow-hidden text-white px-4 md:px-6 py-16 pt-28 bg-[#0e001c] ">
       {/* Tag */}
       <div className="relative z-10 mb-4">
         <span className="text-sm px-4 py-1 rounded-full bg-purple-950/30 border border-purple-500 text-purple-300 backdrop-blur-md">
@@ -13,7 +13,7 @@ const HeroSection = () => {
       </div>
 
       {/* Heading */}
-      <h1 className="relative z-10 text-center !text-4xl sm:!text-5xl lg:!text-6xl font-bold max-w-4xl ">
+      <h1 className="relative z-10 text-center !text-4xl sm:!text-5xl lg:!text-6xl !font-bold max-w-4xl ">
         Simplify Your{" "}
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">
           Scheduling
@@ -37,9 +37,9 @@ const HeroSection = () => {
       </div>
 
       {/* Calendar with glow */}
-      <div className="relative z-10 mt-10 w-full max-w-6xl px-4">
-        <div className="relative rounded-2xl overflow-hidden border border-purple-500/30 shadow-[0_0_60px_20px_rgba(168,85,247,0.25)]">
-          <div className="bg-white p-10 rounded-2xl">
+      <div className="relative z-10 mt-10 w-full max-w-6xl md:px-4">
+        <div className="relative rounded-4xl overflow-hidden border-8 md:border-[12px] border-purple-900 shadow-[0_0_60px_20px_rgba(95,97,237,0.4)]">
+          <div className="bg-white p-6 ">
             <h2 className="text-center text-black mb-3">
               Begin Your AI Transformation Journey
             </h2>
