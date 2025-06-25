@@ -29,9 +29,9 @@ html {
 
 .grid-background {
   background-image: 
-    linear-gradient(rgba(3, 98, 76, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(3, 98, 76, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
+    linear-gradient(rgba(24, 24, 24, 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 24, 24, 0.35) 1px, transparent 1px);
+  background-size: 70px 70px;
   background-position: 0 0, 0 0;
 }
 
@@ -59,7 +59,10 @@ html {
   left: -10px;
   right: -10px;
   bottom: -10px;
-  background: rgba(17, 17, 17, 0.95);
+  background: linear-gradient(0deg, 
+    #080808 0%, 
+    
+    #042222 100%);
   border-radius: inherit;
   z-index: -1;
   pointer-events: none;
@@ -68,11 +71,18 @@ html {
 /* Enhanced Highlighted Box with Stronger Green Glow */
 .highlighted-box {
   position: relative;
+  /* background-color:linear-gradient(90deg, 
+    #042222 0%, 
+    
+    rgb(180, 242, 9) 100%); */
   box-shadow: 
-    0 0 25px rgba(0, 255, 147, 0.4),
-    0 0 50px rgba(0, 255, 147, 0.3),
-    0 0 75px rgba(0, 255, 147, 0.2),
-    0 0 100px rgba(0, 255, 147, 0.1);
+    0 -140px 180px  rgba(0, 255, 147, 0.1),   /* main top center glow */
+   -100px -100px 120px rgba(0, 255, 147, 0.1), /* soft top-left glow */
+    100px -100px 120px rgba(0, 255, 147, 0.1), /* soft top-right glow */
+    0px 20px 20px #080808;             /* no bottom shadow */
+
+
+
 }
 
 .highlighted-box::after {
@@ -82,7 +92,7 @@ html {
   left: -3px;
   right: -3px;
   bottom: -3px;
-  background: rgba(0, 255, 147, 0.2);
+  /* background: rgba(0, 255, 147, 0.2); */
   border-radius: inherit;
   z-index: -2;
   pointer-events: none;

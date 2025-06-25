@@ -61,7 +61,7 @@ function App() {
     function updateCursorLight(e) {
       const x = e.clientX;
       const y = e.clientY;
-      gridOverlay.style.background = `radial-gradient(400px circle at ${x}px ${y}px, rgba(0, 255, 147, 0.12) 0%, transparent 40%)`;
+      gridOverlay.style.background = `radial-gradient(350px circle at ${x}px ${y}px, rgba(0, 255, 147, 0.2) 0%, transparent 40%)`;
       lastMouseEvent = e;
     }
 
@@ -111,7 +111,7 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[rgb(17,17,17)] relative overflow-hidden">
+    <div className="min-h-screen bg-[#080808] relative overflow-hidden">
       <div className="absolute inset-0 grid-background">
         <div className="grid-overlay"></div>
       </div>
