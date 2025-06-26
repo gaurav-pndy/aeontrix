@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./App.css";
 import HeroSection from "./components/HeroSection";
 import BusinessImpactSection from "./components/BusinessImpactSection";
@@ -18,6 +18,41 @@ function App() {
       setActiveSection(sectionId);
     }
   };
+
+  useEffect(() => {
+    const overlay = document.getElementById("gridOverlay");
+    if (!overlay) return;
+
+    let activeStars = 0;
+    const maxStars = 3;
+
+    const interval = setInterval(() => {
+      if (activeStars >= maxStars) return;
+
+      const star = document.createElement("div");
+      star.className = "star";
+
+      const vw = window.innerWidth;
+      const vh = window.innerHeight;
+      const gridSize = 70;
+
+      const x = Math.floor(Math.random() * (vw / gridSize)) * gridSize;
+      const y = Math.floor(Math.random() * (vh / gridSize)) * gridSize;
+
+      star.style.left = `${x}px`;
+      star.style.top = `${y}px`;
+
+      overlay.appendChild(star);
+      activeStars++;
+
+      setTimeout(() => {
+        star.remove();
+        activeStars--;
+      }, 4000); // Match animation duration
+    }, 2000); // Slower appearance
+
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -71,49 +106,80 @@ function App() {
       }
     }
 
-    function createSparkle(button) {
-      const sparkle = document.createElement("div");
-      sparkle.className = "sparkle";
-      const rect = button.getBoundingClientRect();
-      const x = Math.random() * rect.width;
-      const y = Math.random() * rect.height;
-      sparkle.style.left = x + "px";
-      sparkle.style.top = y + "px";
-      button.appendChild(sparkle);
-      // setTimeout(() => sparkle.remove(), 1000);
-    }
+    const buttonListeners = [];
 
-    function attachSparkles() {
-      const sparkleButtons = document.querySelectorAll(".sparkle-button");
-      sparkleButtons.forEach((button) => {
-        button.addEventListener("mouseenter", () => {
-          for (let i = 0; i < 3; i++) {
-            setTimeout(() => createSparkle(button), i * 100);
-          }
-        });
-        button.addEventListener("click", () => {
-          for (let i = 0; i < 6; i++) {
-            setTimeout(() => createSparkle(button), i * 50);
-          }
-        });
+    function attachCursorGlow() {
+      const buttons = document.querySelectorAll(".glow-button");
+
+      buttons.forEach((button) => {
+        const glow = button.querySelector(".cursor-glow");
+
+        const handleMove = (e) => {
+          const rect = button.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          glow.style.left = `${x}px`;
+          glow.style.top = `${y}px`;
+          glow.style.opacity = "1";
+        };
+
+        const handleLeave = () => {
+          glow.style.opacity = "0";
+        };
+
+        button.addEventListener("mousemove", handleMove);
+        button.addEventListener("mouseleave", handleLeave);
+
+        buttonListeners.push({ button, handleMove, handleLeave });
       });
     }
 
+    attachCursorGlow();
+
     document.addEventListener("mousemove", updateCursorLight);
     document.addEventListener("scroll", onScroll);
-    attachSparkles();
 
     // Cleanup
     return () => {
       document.removeEventListener("mousemove", updateCursorLight);
       document.removeEventListener("scroll", onScroll);
+
+      // In cleanup
+      buttonListeners.forEach(({ button, handleMove, handleLeave }) => {
+        button.removeEventListener("mousemove", handleMove);
+        button.removeEventListener("mouseleave", handleLeave);
+      });
     };
   }, []);
 
+  const boxRef = useRef(null);
+  const borderRef = useRef(null);
+
+  useEffect(() => {
+    document.querySelectorAll(".content-box").forEach((box) => {
+      const border = box.querySelector(".border-glow");
+
+      const handleMouseMove = (e) => {
+        const rect = box.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        border.style.setProperty("--x", `${x}px`);
+        border.style.setProperty("--y", `${y}px`);
+      };
+
+      const handleMouseLeave = () => {
+        border.style.setProperty("--x", `-200px`);
+        border.style.setProperty("--y", `-200px`);
+      };
+
+      box.addEventListener("mousemove", handleMouseMove);
+      box.addEventListener("mouseleave", handleMouseLeave);
+    });
+  }, []);
   return (
     <div className="min-h-screen bg-[#080808] relative overflow-hidden">
       <div className="absolute inset-0 grid-background">
-        <div className="grid-overlay"></div>
+        <div id="gridOverlay" className="grid-overlay"></div>
       </div>
       <Navbar />
       <HeroSection />

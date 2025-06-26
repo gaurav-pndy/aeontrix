@@ -46,13 +46,85 @@ html {
   z-index: 1;
 }
 
+
+.star {
+  position: absolute;
+  width: 0.5px;
+  height: 0.5px;
+  background: transparent;
+  pointer-events: none;
+  animation: starFade 5s ease-in-out forwards;
+}
+
+.star::before,
+.star::after {
+  content: "";
+  position: absolute;
+  background: rgba(0, 255, 147, 1); /* Glow color */
+  /* border-radius: 1px; */
+  filter: blur(1px);
+}
+
+/* Vertical line */
+.star::before {
+  width: 1px;
+  height: 70px;
+  top: -34.5px;
+  left: 0;
+}
+
+/* Horizontal line */
+.star::after {
+  width: 70px;
+  height: 1px;
+  left: -34.5px;
+  top: 0;
+}
+
+@keyframes starFade {
+  0% {
+    opacity: 0;
+    transform: scale(0.5);
+  }
+  20% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+
+
+
 /* Content boxes that block the cursor light */
 .content-box {
   position: relative;
-  z-index: 5;
+border: none;
+  overflow: hidden;
 }
 
-.content-box::before {
+.border-glow {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(
+    400px circle at var(--x, -200px) var(--y, -200px),
+    rgba(0, 255, 147, 0.8),
+    transparent 60%
+  );
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: destination-out;
+  padding: 2px;
+  z-index: 2;
+}
+
+
+ .content-box::before {
   content: '';
   position: absolute;
   top: -10px;
@@ -63,23 +135,22 @@ html {
     #080808 0%, 
     
     #042222 100%);
+    /* border: none; */
   border-radius: inherit;
   z-index: -1;
   pointer-events: none;
-}
+} 
 
-/* Enhanced Highlighted Box with Stronger Green Glow */
+
+
 .highlighted-box {
   position: relative;
-  /* background-color:linear-gradient(90deg, 
-    #042222 0%, 
-    
-    rgb(180, 242, 9) 100%); */
+  
   box-shadow: 
-    0 -140px 180px  rgba(0, 255, 147, 0.1),   /* main top center glow */
-   -100px -100px 120px rgba(0, 255, 147, 0.1), /* soft top-left glow */
-    100px -100px 120px rgba(0, 255, 147, 0.1), /* soft top-right glow */
-    0px 20px 20px #080808;             /* no bottom shadow */
+    0 -140px 180px  rgba(0, 255, 147, 0.1),   
+   -100px -100px 120px rgba(0, 255, 147, 0.1),
+    100px -100px 120px rgba(0, 255, 147, 0.1), 
+    0px 20px 20px #080808;             
 
 
 
@@ -166,7 +237,7 @@ html {
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: shinyMove 12s ease-in-out infinite;
+  /* animation: shinyMove 12s ease-in-out infinite; */
   text-shadow: 
     0 0 10px rgba(0, 255, 147, 0.5),
     0 0 20px rgba(0, 255, 147, 0.3),
@@ -185,82 +256,7 @@ html {
   }
 }
 
-/* Sparkle Button Effects */
-.sparkle-button {
-  position: relative;
-  overflow: hidden;
-  background: #00FF93;
-  color: black;
-  font-weight: 600;
-  transition: all 0.3s ease;
-  cursor: pointer;
-}
 
-.sparkle-button:hover {
-  background: rgba(0, 255, 147, 0.9);
-}
-
-.sparkle-button::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.3),
-    transparent
-  );
-  transition: left 0.5s ease;
-  z-index: 1;
-}
-
-.sparkle-button:hover::before {
-  left: 100%;
-}
-
-.sparkle {
-  position: absolute;
-  width: 4px;
-  height: 4px;
-  background: white;
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 20;
-  animation: sparkleAnimation 1s ease-out forwards infinite;
-}
-
-@keyframes sparkleAnimation {
-  0% {
-    opacity: 0;
-    transform: scale(0) rotate(0deg);
-    box-shadow: 0 0 0px white;
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1) rotate(180deg);
-    box-shadow: 0 0 8px white;
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0) rotate(360deg);
-    box-shadow: 0 0 0px white;
-  }
-}
-
-/* Additional sparkle variations */
-.sparkle:nth-child(odd) {
-  animation-duration: 0.8s;
-  background: rgba(255, 255, 255, 0.9);
-}
-
-.sparkle:nth-child(even) {
-  animation-duration: 1.2s;
-  background: rgba(255, 255, 255, 0.7);
-  animation-delay: 0.1s;
-}
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -294,4 +290,29 @@ textarea:focus {
 /* Remove gradient animation since we're not using gradients anymore */
 .text-spring {
   color: #00FF93;
+}
+
+
+.glow-button {
+  position: relative;
+  overflow: hidden;
+  background: #00FF93;
+  color: black;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.cursor-glow {
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgb(248, 249, 251), transparent 60%);
+  pointer-events: none;
+  border-radius: 50%;
+  /* border: 1px solid black; */
+  transform: translate(-50%, 0%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1;
 }

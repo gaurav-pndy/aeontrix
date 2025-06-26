@@ -28,7 +28,7 @@ const HeroSection = () => {
       </div>
 
       <div className="flex justify-center mb-16">
-        <button className="sparkle-button group bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 relative overflow-hidden flex items-center space-x-2">
+        <button className="glow-button group bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 relative overflow-hidden flex items-center space-x-2">
           <span className="relative z-10">Start Your AI Journey</span>
           <svg
             className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10"
@@ -43,11 +43,14 @@ const HeroSection = () => {
               d="M17 8l4 4m0 0l-4 4m4-4H3"
             ></path>
           </svg>
+          <span class="cursor-glow "></span>
         </button>
       </div>
 
       <div className="max-w-4xl mx-auto">
         <div className="content-box highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl">
+          <div class="border-glow"></div>
+
           <div className="text-center mb-8">
             <h2 className="text-3xl font-bold text-seasalt mb-4">
               Begin Your AI Workforce Transformation
@@ -73,8 +76,9 @@ My business is a Digital Marketing Agency."
           </div>
 
           <div className="flex justify-center mt-8">
-            <button className="sparkle-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden">
+            <button className="glow-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden">
               <span className="relative z-10">Generate AI Workforce Plan</span>
+              <span class="cursor-glow "></span>
             </button>
           </div>
         </div>

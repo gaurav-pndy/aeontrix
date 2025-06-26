@@ -24,8 +24,9 @@ const Navbar = () => {
           </span>
         </div>
 
-        <button className="sparkle-button bg-spring hover:bg-spring/90 text-black border border-spring/30 hover:border-spring px-5 md:px-6 py-2 md:py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden">
+        <button className="glow-button bg-spring hover:bg-spring/90 text-black border border-spring/30 hover:border-spring px-5 md:px-6 py-2 md:py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden">
           <span className="relative z-10">Book an AI Audit</span>
+          <span class="cursor-glow "></span>
         </button>
       </div>
     </nav>
