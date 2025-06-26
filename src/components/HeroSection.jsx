@@ -68,11 +68,11 @@ const HeroSection = () => {
             </label>
             <textarea
               className="w-full h-52 md:h-40 bg-[#042222]/80 border border-[#03624C]/30 rounded-xl px-4 py-3 text-seasalt placeholder-[#F8F9FB]/40 focus:outline-none focus:border-[#00FF93] focus:ring-2 focus:ring-[#00FF93]/20 transition-all duration-300 resize-none"
-              placeholder="Prompt examples:
-I have a Dental Clinic in NYC
-I run a real estate agency in Austin, Tx.
-I have an E-Commerce brand based in the US.
-My business is a Digital Marketing Agency."
+              placeholder='Prompt examples:
+"I have a Dental Clinic in NYC"
+"I run a real estate agency in Austin, Tx"
+"I have an E-Commerce brand based in the US"
+"My business is a Digital Marketing Agency"'
             ></textarea>
           </div>
 
