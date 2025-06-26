@@ -142,7 +142,7 @@ function App() {
     });
   }, []);
   return (
-    <div className="min-h-screen bg-[#080808] relative overflow-hidden">
+    <div className="min-h-screen bg-[#060606] relative overflow-hidden">
       <div className="absolute inset-0 grid-background">
         <div id="gridOverlay" className="grid-overlay"></div>
       </div>

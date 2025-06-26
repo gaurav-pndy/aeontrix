@@ -29,8 +29,8 @@ html {
 
 .grid-background {
   background-image: 
-    linear-gradient(rgba(24, 24, 24, 0.35) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(24, 24, 24, 0.35) 1px, transparent 1px);
+    linear-gradient(rgba(24, 24, 24, 0.35) 1.3px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 24, 24, 0.35) 1.3px, transparent 1px);
   background-size: 70px 70px;
   background-position: 0 0, 0 0;
 }
@@ -100,7 +100,7 @@ border: none;
   position: relative;
   
   box-shadow: 
-    0 -20rem 20rem  rgba(0, 255, 147, 0.1),   
+    0 -30rem 30rem  rgba(0, 255, 147, 0.1),   
    -100px -100px 120px rgba(0, 255, 147, 0.1),
     100px -100px 120px rgba(0, 255, 147, 0.1), 
     0px 20px 20px #080808;             
