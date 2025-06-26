@@ -47,54 +47,7 @@ html {
 }
 
 
-.star {
-  position: absolute;
-  width: 0.5px;
-  height: 0.5px;
-  background: transparent;
-  pointer-events: none;
-  animation: starFade 5s ease-in-out forwards;
-}
 
-.star::before,
-.star::after {
-  content: "";
-  position: absolute;
-  background: rgba(0, 255, 147, 1); /* Glow color */
-  /* border-radius: 1px; */
-  filter: blur(1px);
-}
-
-/* Vertical line */
-.star::before {
-  width: 1px;
-  height: 70px;
-  top: -34.5px;
-  left: 0;
-}
-
-/* Horizontal line */
-.star::after {
-  width: 70px;
-  height: 1px;
-  left: -34.5px;
-  top: 0;
-}
-
-@keyframes starFade {
-  0% {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  20% {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.95);
-  }
-}
 
 
 
@@ -103,7 +56,7 @@ html {
 .content-box {
   position: relative;
 border: none;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .border-glow {
@@ -127,10 +80,10 @@ border: none;
  .content-box::before {
   content: '';
   position: absolute;
-  top: -10px;
-  left: -10px;
-  right: -10px;
-  bottom: -10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: linear-gradient(0deg, 
     #080808 0%, 
     
@@ -147,12 +100,28 @@ border: none;
   position: relative;
   
   box-shadow: 
-    0 -140px 180px  rgba(0, 255, 147, 0.1),   
+    0 -20rem 20rem  rgba(0, 255, 147, 0.1),   
    -100px -100px 120px rgba(0, 255, 147, 0.1),
     100px -100px 120px rgba(0, 255, 147, 0.1), 
     0px 20px 20px #080808;             
 
 
+
+}
+
+.highlighted-box .inside-shadow{
+  position: absolute;
+  top: 0%;
+  left: 50%;
+  width: 80%;
+  height: 20%;
+  transform: translateX(-50%);
+    box-shadow: 
+    0 20px 80px  rgba(0, 255, 147, 0.9),   
+   -100px -100px 120px rgba(0, 255, 147, 0.1),
+    100px -100px 120px rgba(0, 255, 147, 0.1), 
+    0px 20px 20px #080808; 
+    z-index: -2;  
 
 }
 
@@ -301,6 +270,8 @@ textarea:focus {
   font-weight: 600;
   transition: all 0.3s ease;
   transition: all 0.3s ease;
+  border: 1px solid rgb(248, 249, 251);
+  box-shadow: 0 4px 3px rgba(0, 255, 147, 0.5);
 }
 
 .cursor-glow {

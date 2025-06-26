@@ -49,6 +49,7 @@ const HeroSection = () => {
 
       <div className="max-w-4xl mx-auto">
         <div className="content-box highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl">
+          <div class="inside-shadow"></div>
           <div class="border-glow"></div>
 
           <div className="text-center mb-8">

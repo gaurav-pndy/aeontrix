@@ -20,41 +20,6 @@ function App() {
   };
 
   useEffect(() => {
-    const overlay = document.getElementById("gridOverlay");
-    if (!overlay) return;
-
-    let activeStars = 0;
-    const maxStars = 3;
-
-    const interval = setInterval(() => {
-      if (activeStars >= maxStars) return;
-
-      const star = document.createElement("div");
-      star.className = "star";
-
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      const gridSize = 70;
-
-      const x = Math.floor(Math.random() * (vw / gridSize)) * gridSize;
-      const y = Math.floor(Math.random() * (vh / gridSize)) * gridSize;
-
-      star.style.left = `${x}px`;
-      star.style.top = `${y}px`;
-
-      overlay.appendChild(star);
-      activeStars++;
-
-      setTimeout(() => {
-        star.remove();
-        activeStars--;
-      }, 4000); // Match animation duration
-    }, 2000); // Slower appearance
-
-    return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
     const handleScroll = () => {
       const sections = [
         "main",
