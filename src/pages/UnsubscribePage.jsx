@@ -48,7 +48,7 @@ const UnsubscribePage = () => {
             <p className="text-seasalt my-6 ">
               Need help or want fewer emails instead?{" "}
               <a
-                href="http://cal.com/aeontrix-ai/ai-audit"
+                href="mailto:contact@aeontrix.com"
                 target="_blank"
                 className="underline text-[#00FF93]"
               >
