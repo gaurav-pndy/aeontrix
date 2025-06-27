@@ -39,7 +39,7 @@ const UnsubscribePage = () => {
               I changed my mind!
             </h1>
             <button
-              onClick={() => setConfirmed(false)}
+              //   onClick={() => setConfirmed(false)}
               className="glow-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-6 py-2.5 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden"
             >
               Keep me subscribed
