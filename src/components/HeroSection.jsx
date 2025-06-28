@@ -1,9 +1,33 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const HeroSection = () => {
   const [showContactForm, setShowContactForm] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+
+  useEffect(() => {
+    document.querySelectorAll(".content-box").forEach((box) => {
+      const border = box.querySelector(".border-glow");
+
+      const handleMouseMove = (e) => {
+        const rect = box.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        console.log("Mouse position:", x, y);
+
+        border.style.setProperty("--x", `${x}px`);
+        border.style.setProperty("--y", `${y}px`);
+      };
+
+      const handleMouseLeave = () => {
+        border.style.setProperty("--x", `-200px`);
+        border.style.setProperty("--y", `-200px`);
+      };
+
+      box.addEventListener("mousemove", handleMouseMove);
+      box.addEventListener("mouseleave", handleMouseLeave);
+    });
+  }, [isSubmitted]);
 
   return (
     <section className="relative z-10 max-w-7xl mx-auto px-6 pt-6 pb-24">
@@ -149,7 +173,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: "90%", filter: "blur(12px)" }}
             animate={{ opacity: 1, scale: "100%", filter: "blur(0px)" }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="content-box text-center highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500"
+            className="content-box highlighted-box text-center rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500"
           >
             <div className="inside-shadow"></div>
             <div className="border-glow"></div>
