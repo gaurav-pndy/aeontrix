@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import BookAuditButton from "./BookAuditButton";
 
 const HeroSection = () => {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -56,25 +57,11 @@ const HeroSection = () => {
 
       {/* CTA Button */}
       <div className="flex justify-center mb-16">
-        <a href="http://cal.com/aeontrix-ai/ai-audit" target="_blank">
-          <button className="glow-button group bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-4 rounded-full font-bold text-lg transition-all duration-300 hover:scale-105 relative overflow-hidden flex items-center space-x-2">
-            <span className="relative z-10">Start Your AI Journey</span>
-            <svg
-              className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300 relative z-10"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="M17 8l4 4m0 0l-4 4m4-4H3"
-              ></path>
-            </svg>
-            <span className="cursor-glow"></span>
-          </button>
-        </a>
+        <BookAuditButton
+          label="Start Your AI Journey"
+          showIcon={true}
+          className="text-lg space-x-2"
+        />
       </div>
 
       {/* Form Section */}
@@ -151,6 +138,17 @@ const HeroSection = () => {
                       className="w-full bg-[#042222]/80 border border-[#03624C]/30 rounded-xl px-4 py-3 text-seasalt placeholder-[#F8F9FB]/40 focus:outline-none focus:border-[#00FF93] focus:ring-2 focus:ring-[#00FF93]/20 transition-all duration-300"
                       placeholder="Enter your email"
                     />
+                    <p className="text-red-500  mt-4">
+                      You have already filled this form. If you believe this is
+                      an error, please contact:{" "}
+                      <a
+                        href="mailto:contact@aeontrix.com"
+                        className="underline"
+                      >
+                        contact@aeontrix.com
+                      </a>
+                      .
+                    </p>
                   </div>
 
                   {/* Submit Button */}
@@ -196,16 +194,7 @@ const HeroSection = () => {
               quick-win automation opportunities tailored to your business.
             </p>
             <div className="flex justify-center mt-8">
-              <a
-                href="http://cal.com/aeontrix-ai/ai-audit"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <button className="glow-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden">
-                  <span className="relative z-10">Book a Call Now</span>
-                  <span className="cursor-glow"></span>
-                </button>
-              </a>
+              <BookAuditButton label="Book a Call Now" className="px-8 !py-3" />
             </div>
           </motion.div>
         )}

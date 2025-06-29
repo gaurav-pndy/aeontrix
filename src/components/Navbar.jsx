@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import BookAuditButton from "./BookAuditButton";
 
 const Navbar = () => {
   const scrollToSection = (id) => {
@@ -28,12 +29,7 @@ const Navbar = () => {
           </div>
         </Link>
 
-        <a href="http://cal.com/aeontrix-ai/ai-audit" target="_blank">
-          <button className="glow-button bg-spring hover:bg-spring/90 text-black border border-spring/30 hover:border-spring px-5 md:px-6 py-2 md:py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden">
-            <span className="relative z-10">Book an AI Audit</span>
-            <span className="cursor-glow "></span>
-          </button>
-        </a>
+        <BookAuditButton className="px-5 md:px-6 py-2 md:py-3 text-base" />
       </div>
     </nav>
   );

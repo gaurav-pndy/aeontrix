@@ -2,13 +2,15 @@ import React, { useState } from "react";
 
 const UnsubscribePage = () => {
   const [confirmed, setConfirmed] = useState(false);
+  const [resubscribed, setResubscribed] = useState(false);
 
   return (
-    <div className="min-h-[80vh] flex items-center justify-center  px-4">
+    <div className="min-h-[80vh] flex items-center justify-center px-4">
       <div className="content-box highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500 text-center max-w-xl">
         <div className="inside-shadow"></div>
         <div className="border-glow"></div>
-        {!confirmed ? (
+
+        {!confirmed && !resubscribed && (
           <>
             <h1 className="text-3xl font-bold text-seasalt mb-4">
               Wait! Are You Sure You Want to Unsubscribe?
@@ -33,19 +35,25 @@ const UnsubscribePage = () => {
               <span className="cursor-glow"></span>
             </button>
           </>
-        ) : (
+        )}
+
+        {confirmed && !resubscribed && (
           <>
-            <h1 className="text-3xl font-bold text-seasalt mb-6">
-              I changed my mind!
+            <h1 className="text-3xl font-bold text-seasalt mb-4">
+              We're sorry to see you go
             </h1>
+            <p className="text-[#F8F9FB]/70 text-lg  mb-6">
+              If you did it by accident, or if you have changed your mind, you
+              can still re-subscribe below!
+            </p>
             <button
-              //   onClick={() => setConfirmed(false)}
+              onClick={() => setResubscribed(true)}
               className="glow-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-6 py-2.5 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden"
             >
               Keep me subscribed
               <span className="cursor-glow"></span>
             </button>
-            <p className="text-seasalt my-6 ">
+            <p className="text-seasalt my-6">
               Need help or want fewer emails instead?{" "}
               <a
                 href="mailto:contact@aeontrix.com"
@@ -60,6 +68,14 @@ const UnsubscribePage = () => {
               <br />— The Aeontrix Team
             </p>
           </>
+        )}
+
+        {resubscribed && (
+          <div className="min-h-60 flex items-center ">
+            <h1 className="text-3xl font-bold text-seasalt">
+              We're glad to have you back!
+            </h1>
+          </div>
         )}
       </div>
     </div>
