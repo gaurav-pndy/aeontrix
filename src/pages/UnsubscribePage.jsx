@@ -63,10 +63,10 @@ const UnsubscribePage = () => {
                 Contact us.
               </a>
             </p>
-            <p className="text-[#888888] italic">
+            {/* <p className="text-[#888888] italic">
               Thanks for being with us,
               <br />— The Aeontrix Team
-            </p>
+            </p> */}
           </>
         )}
 
