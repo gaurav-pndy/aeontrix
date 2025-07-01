@@ -4,11 +4,11 @@ const PrivacyPolicy = () => {
   return (
     <div className="max-w-6xl relative text-lg mx-auto px-4 py-8 pb-20 text-seasalt space-y-10">
       <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-        Privacy Policy – Aeontrix
+        Privacy Policy
       </h1>
 
       <div className="space-y-2">
-        <p className="text-[#F8F9FB]/70">Effective Date:</p>
+        <p className="text-[#F8F9FB]/70">Effective Date: 01 July 2025</p>
         <p className="text-[#F8F9FB]/70 italic">
           <strong>Operated By:</strong> Aeontrix, the AI Division of Pasovit
           Technologies Private Limited

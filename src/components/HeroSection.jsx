@@ -8,6 +8,7 @@ const HeroSection = () => {
   const [company, setCompany] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [isChecked, setisChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
@@ -111,7 +112,8 @@ const HeroSection = () => {
             {!showContactForm ? (
               <div>
                 <label className="block text-seasalt font-semibold mb-3 text-lg">
-                  Describe your business or Industry
+                  Describe your business or Industry{" "}
+                  <span className="text-[#00FF93]">*</span>
                 </label>
                 <textarea
                   className="w-full h-52 md:h-40 bg-[#042222]/80 border border-[#03624C]/30 rounded-xl px-4 py-3 text-seasalt placeholder-[#F8F9FB]/40 focus:outline-none focus:border-[#00FF93] focus:ring-2 focus:ring-[#00FF93]/20 transition-all duration-300 resize-none"
@@ -125,8 +127,11 @@ const HeroSection = () => {
                 ></textarea>
                 <div className="flex justify-center mt-8">
                   <button
+                    disabled={company === ""}
                     onClick={() => setShowContactForm(true)}
-                    className="glow-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden"
+                    className={`glow-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden ${
+                      company === "" ? "opacity-60 cursor-not-allowed" : ""
+                    }`}
                   >
                     <span className="relative z-10">
                       Generate AI Workforce Plan
@@ -146,7 +151,7 @@ const HeroSection = () => {
                 >
                   <div>
                     <label className="block text-seasalt font-semibold mb-3 text-lg">
-                      Your Name
+                      Your Name <span className="text-[#00FF93]">*</span>
                     </label>
                     <input
                       type="text"
@@ -158,7 +163,7 @@ const HeroSection = () => {
                   </div>
                   <div>
                     <label className="block text-seasalt font-semibold mb-3 text-lg">
-                      Your E-mail
+                      Your E-mail <span className="text-[#00FF93]">*</span>
                     </label>
                     <input
                       type="email"
@@ -198,6 +203,8 @@ const HeroSection = () => {
                   </div>
                   <div className="flex items-center gap-3 mt-2">
                     <input
+                      value={isChecked}
+                      onChange={() => setisChecked((prev) => !prev)}
                       type="checkbox"
                       id="terms"
                       className="accent-[#00FF93] w-4 h-4 "
@@ -230,16 +237,20 @@ const HeroSection = () => {
                       >
                         Terms of Service
                       </a>
-                      .
+                      . <span className="text-[#00FF93]">*</span>
                     </label>
                   </div>
 
                   <div className="flex justify-center pt-4">
                     <button
+                      disabled={
+                        name === "" || email === "" || !isChecked || isLoading
+                      }
                       onClick={handleSubmit}
-                      disabled={isLoading}
                       className={`glow-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden ${
-                        isLoading ? "opacity-50 cursor-not-allowed" : ""
+                        name === "" || email === "" || !isChecked || isLoading
+                          ? "opacity-60 cursor-not-allowed"
+                          : ""
                       }`}
                     >
                       <span className="relative z-10">
