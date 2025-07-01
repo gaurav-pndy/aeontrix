@@ -86,7 +86,7 @@ function AppLayout() {
         const rect = box.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        console.log("Mouse position:", x, y);
+        // console.log("Mouse position:", x, y);
 
         border.style.setProperty("--x", `${x}px`);
         border.style.setProperty("--y", `${y}px`);

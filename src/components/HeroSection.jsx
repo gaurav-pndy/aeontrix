@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import BookAuditButton from "./BookAuditButton";
+import ResubscribePopup from "./ResubscribePopup";
 
 const HeroSection = () => {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -12,6 +13,19 @@ const HeroSection = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
+  const [attemptedSubmitCompany, setAttemptedSubmitCompany] = useState(false);
+  const [attemptedSubmitDetails, setAttemptedSubmitDetails] = useState(false);
+
+  const handleSubmitCompany = () => {
+    setAttemptedSubmitCompany(true);
+    console.log(attemptedSubmitCompany);
+    console.log("Chala");
+
+    if (company.length >= 5 && company.length <= 300) {
+      setShowContactForm(true); // your existing logic
+    }
+  };
+
   useEffect(() => {
     document.querySelectorAll(".content-box").forEach((box) => {
       const border = box.querySelector(".border-glow");
@@ -20,7 +34,7 @@ const HeroSection = () => {
         const rect = box.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        console.log("Mouse position:", x, y);
+        // console.log("Mouse position:", x, y);
 
         border.style.setProperty("--x", `${x}px`);
         border.style.setProperty("--y", `${y}px`);
@@ -37,6 +51,11 @@ const HeroSection = () => {
   }, [isSubmitted]);
 
   const handleSubmit = async () => {
+    setAttemptedSubmitDetails(true);
+
+    if (name.trim() === "" || !email.includes("@") || !isChecked) {
+      return; // Don't proceed if validations fail
+    }
     if (isLoading) return; // Prevent multiple submissions
     setIsLoading(true);
     setErrorMessage("");
@@ -65,6 +84,14 @@ const HeroSection = () => {
     } finally {
       setIsLoading(false);
     }
+  };
+
+  const [showPopup, setShowPopup] = useState(true);
+
+  const handleClose = () => setShowPopup(false);
+  const handleResubscribe = () => {
+    console.log("User wants to resubscribe");
+    setShowPopup(false);
   };
 
   return (
@@ -124,11 +151,20 @@ const HeroSection = () => {
 "My business is a Digital Marketing Agency"'
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
-                ></textarea>
+                  minLength={5}
+                  maxLength={300}
+                />
+
+                {/* Green message below textarea */}
+                {attemptedSubmitCompany && company.length < 5 && (
+                  <p className="text-[#00ff93] text-sm mt-2">
+                    Minimum 5 characters, maximum 300 characters
+                  </p>
+                )}
                 <div className="flex justify-center mt-8">
                   <button
+                    onClick={handleSubmitCompany}
                     disabled={company === ""}
-                    onClick={() => setShowContactForm(true)}
                     className={`glow-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden ${
                       company === "" ? "opacity-60 cursor-not-allowed" : ""
                     }`}
@@ -160,6 +196,11 @@ const HeroSection = () => {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                     />
+                    {name.trim() === "" && attemptedSubmitDetails && (
+                      <p className="text-[#00ff93] text-sm mt-2">
+                        Name is required.
+                      </p>
+                    )}
                   </div>
                   <div>
                     <label className="block text-seasalt font-semibold mb-3 text-lg">
@@ -172,6 +213,14 @@ const HeroSection = () => {
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                     />
+                    {email &&
+                      !email.includes("@") &&
+                      attemptedSubmitDetails && (
+                        <p className="text-[#00ff93] text-sm mt-2">
+                          Please enter a valid email address.
+                        </p>
+                      )}
+
                     {errorMessage && (
                       <p className="text-[#00FF93] mt-4">
                         {errorMessage.includes("contact@aeontrix.com") ? (
@@ -297,6 +346,13 @@ const HeroSection = () => {
           </motion.div>
         )}
       </div>
+
+      {showPopup && (
+        <ResubscribePopup
+          onClose={handleClose}
+          onResubscribe={handleResubscribe}
+        />
+      )}
     </section>
   );
 };
