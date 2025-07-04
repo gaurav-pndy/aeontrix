@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import BookAuditButton from "./BookAuditButton";
-import ResubscribePopup from "./ResubscribePopup";
+import BookAuditButton from "../BookAuditButton";
+import ResubscribePopup from "../ResubscribePopup";
 
 const HeroSection = () => {
   const [showContactForm, setShowContactForm] = useState(false);
@@ -9,20 +9,49 @@ const HeroSection = () => {
   const [company, setCompany] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [isChecked, setisChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [isUnsubscribed, setIsUnsubscribed] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
 
   const [attemptedSubmitCompany, setAttemptedSubmitCompany] = useState(false);
   const [attemptedSubmitDetails, setAttemptedSubmitDetails] = useState(false);
 
   const handleSubmitCompany = () => {
     setAttemptedSubmitCompany(true);
-    console.log(attemptedSubmitCompany);
-    console.log("Chala");
-
     if (company.length >= 5 && company.length <= 300) {
-      setShowContactForm(true); // your existing logic
+      setShowContactForm(true);
+    }
+  };
+
+  const checkSubscriptionStatus = async () => {
+    if (!email.includes("@")) {
+      return false;
+    }
+    try {
+      const response = await fetch(
+        "https://api.aeontrix.com/api/check-subscription",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        }
+      );
+      const data = await response.json();
+      if (!response.ok) {
+        setErrorMessage(data.error || "Failed to check subscription status.");
+        return false;
+      }
+      if (data.isUnsubscribed) {
+        setIsUnsubscribed(true);
+        setShowPopup(true);
+        return true;
+      }
+      return false;
+    } catch (error) {
+      setErrorMessage("An unexpected error occurred. Please try again.");
+      return false;
     }
   };
 
@@ -34,8 +63,6 @@ const HeroSection = () => {
         const rect = box.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
-        // console.log("Mouse position:", x, y);
-
         border.style.setProperty("--x", `${x}px`);
         border.style.setProperty("--y", `${y}px`);
       };
@@ -47,19 +74,31 @@ const HeroSection = () => {
 
       box.addEventListener("mousemove", handleMouseMove);
       box.addEventListener("mouseleave", handleMouseLeave);
+
+      // Cleanup event listeners on component unmount
+      return () => {
+        box.removeEventListener("mousemove", handleMouseMove);
+        box.removeEventListener("mouseleave", handleMouseLeave);
+      };
     });
   }, [isSubmitted]);
 
   const handleSubmit = async () => {
     setAttemptedSubmitDetails(true);
 
-    if (name.trim() === "" || !email.includes("@") || !isChecked) {
-      return; // Don't proceed if validations fail
+    if (name.trim() === "" || !email.includes("@") || !isChecked || isLoading) {
+      return;
     }
-    if (isLoading) return; // Prevent multiple submissions
+
     setIsLoading(true);
-    setErrorMessage("");
     try {
+      // Check subscription status first
+      const isUnsubscribedUser = await checkSubscriptionStatus();
+      if (isUnsubscribedUser) {
+        return; // Block submission if unsubscribed and show popup
+      }
+
+      // Proceed with subscription for new or subscribed users
       const response = await fetch("https://api.aeontrix.com/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -86,12 +125,23 @@ const HeroSection = () => {
     }
   };
 
-  const [showPopup, setShowPopup] = useState(true);
-
-  const handleClose = () => setShowPopup(false);
-  const handleResubscribe = () => {
-    console.log("User wants to resubscribe");
+  const handleClose = () => {
     setShowPopup(false);
+    setIsUnsubscribed(false);
+    setCompany("");
+    setName("");
+    setEmail("");
+    setIsChecked(false);
+    setAttemptedSubmitCompany(false);
+    setAttemptedSubmitDetails(false);
+    setShowContactForm(false);
+    setErrorMessage("");
+    window.location.assign("/"); // Refresh and redirect to main page
+  };
+
+  const handleResubscribe = () => {
+    setIsUnsubscribed(false);
+    // Popup remains open to show success message and Book a Call button
   };
 
   return (
@@ -154,8 +204,6 @@ const HeroSection = () => {
                   minLength={5}
                   maxLength={300}
                 />
-
-                {/* Green message below textarea */}
                 {attemptedSubmitCompany && company.length < 5 && (
                   <p className="text-[#00ff93] text-sm mt-2">
                     Minimum 5 characters, maximum 300 characters
@@ -220,7 +268,6 @@ const HeroSection = () => {
                           Please enter a valid email address.
                         </p>
                       )}
-
                     {errorMessage && (
                       <p className="text-[#00FF93] mt-4">
                         {errorMessage.includes("contact@aeontrix.com") ? (
@@ -253,10 +300,10 @@ const HeroSection = () => {
                   <div className="flex items-center gap-3 mt-2">
                     <input
                       value={isChecked}
-                      onChange={() => setisChecked((prev) => !prev)}
+                      onChange={() => setIsChecked((prev) => !prev)}
                       type="checkbox"
                       id="terms"
-                      className="accent-[#00FF93] w-4 h-4 "
+                      className="accent-[#00FF93] w-4 h-4"
                     />
                     <label
                       htmlFor="terms"
@@ -266,7 +313,7 @@ const HeroSection = () => {
                       <a
                         href="/privacy-policy"
                         target="_blank"
-                        className="underline text-[#00FF93] "
+                        className="underline text-[#00FF93]"
                       >
                         Privacy Policy
                       </a>
@@ -274,7 +321,7 @@ const HeroSection = () => {
                       <a
                         href="/refund-policy"
                         target="_blank"
-                        className="underline text-[#00FF93] "
+                        className="underline text-[#00FF93]"
                       >
                         Refund & Cancellation Policy
                       </a>
@@ -282,7 +329,7 @@ const HeroSection = () => {
                       <a
                         href="/terms-of-service"
                         target="_blank"
-                        className="underline text-[#00FF93] "
+                        className="underline text-[#00FF93]"
                       >
                         Terms of Service
                       </a>
@@ -351,6 +398,7 @@ const HeroSection = () => {
         <ResubscribePopup
           onClose={handleClose}
           onResubscribe={handleResubscribe}
+          email={email}
         />
       )}
     </section>

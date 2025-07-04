@@ -94,6 +94,24 @@ border: none;
   pointer-events: none;
 } 
 
+ .highlighted-service-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+   background: linear-gradient(30deg, 
+    #080808 0%, 
+    #080808 60%, 
+    
+    #00ff9541 100%);
+    /* border: none; */
+  border-radius: inherit;
+  z-index: -1;
+  pointer-events: none;
+} 
+
 
 
 .highlighted-box {
