@@ -212,5 +212,9 @@ p, span, div, a, button, input, textarea, select {
 
 }
 
+#cal-embed {
+  height: auto !important;
+  overflow: visible !important;
+}
 
 

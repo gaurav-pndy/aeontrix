@@ -5,6 +5,8 @@ import ServicesSection from "../components/Home/ServicesSection";
 import Benefits from "../components/Home/Benefits";
 import HumanAIComparison from "../components/Home/HumanAIComparison";
 import Timeline from "../components/Home/Timeline";
+import CalEmbed from "../components/Home/CalEmbed";
+import ContactForm from "../components/Home/ContactForm";
 
 function HomePage() {
   return (
@@ -41,6 +43,8 @@ function HomePage() {
         <Benefits />
         <HumanAIComparison />
         <Timeline />
+        <CalEmbed />
+        <ContactForm />
       </div>
     </div>
   );
