@@ -93,7 +93,7 @@ const HumanAIComparison = () => {
           </div>
 
           {/* Right Column */}
-          <div className="content-box border-glow-wrapper highlighted-box-small md:col-span-2 bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl relative ">
+          <div className="content-box border-glow-wrapper highlighted-box-small md:col-span-2 bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-3 md:p-8 shadow-2xl relative ">
             <div className="inside-shadow"></div>
             <div className="border-glow"></div>
             <h3 className="text-xl font-semibold mb-4 text-white">
@@ -101,14 +101,14 @@ const HumanAIComparison = () => {
             </h3>
             <div className="overflow-x-auto">
               {selectedData ? (
-                <table className="w-full text-center  text-white">
+                <table className="w-full text-center text-sm md:text-base text-white">
                   <thead className="text-[#00FF93]  border-b border-[#00FF93]/30">
                     <tr>
-                      <th className="py-4 text-left px-4">Feature</th>
-                      <th className="py-4  px-4">
+                      <th className="py-4 text-left px-2 md:px-4">Feature</th>
+                      <th className="py-4  px-2 md:px-4">
                         Human {selectedOption.split(" ")[0]} Team
                       </th>
-                      <th className="py-4 px-4">
+                      <th className="py-4 px-2 md:px-4">
                         AI {selectedOption.split(" ")[0]} Team
                       </th>
                     </tr>
@@ -116,11 +116,11 @@ const HumanAIComparison = () => {
                   <tbody className="divide-y divide-[#2a2a2a]">
                     {selectedData.map(([metric, human, ai], i) => (
                       <tr key={i} className="hover:bg-[#00FF93]/5">
-                        <td className="py-4 px-4 text-left font-semibold text-white">
+                        <td className="py-4 px-2 md:px-4 text-left font-semibold text-white">
                           {metric}
                         </td>
-                        <td className="py-4 px-4">{human}</td>
-                        <td className="py-4 px-4">{ai}</td>
+                        <td className="py-4 px-2 md:px-4">{human}</td>
+                        <td className="py-4 px-2 md:px-4">{ai}</td>
                       </tr>
                     ))}
                   </tbody>

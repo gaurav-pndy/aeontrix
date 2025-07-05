@@ -176,7 +176,7 @@ const HeroSection = () => {
       </div>
       <div className="max-w-4xl mx-auto">
         {!isSubmitted ? (
-          <div className="content-box border-glow-wrapper highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500">
+          <div className="content-box border-glow-wrapper highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg  rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500">
             <div className="inside-shadow"></div>
             <div className="border-glow"></div>
             <div className="text-center mb-8">

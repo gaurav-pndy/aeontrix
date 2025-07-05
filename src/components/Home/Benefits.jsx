@@ -63,85 +63,87 @@ const Benefits = () => {
   return (
     <section className="relative z-10 max-w-7xl mx-auto px-6 pt-6 pb-24">
       {/* Content Box with Cards */}
-      <div className="max-w-5xl mx-auto pt-20">
+      <div className="max-w-5xl mx-auto pt-20 ">
         <div>
-          <div className="w-full">
-            <h2 className="text-4xl text-center font-bold mb-16 text-white">
-              Benefits{" "}
-            </h2>
-
-            {/* Row 1 */}
-            <div className="flex flex-row flex-nowrap gap-8 justify-between text-center overflow-visible w-full ">
-              {benefits.slice(0, 3).map((benefit, idx) => (
-                <div
-                  key={idx}
-                  className="content-box border-glow-wrapper highlighted-box-small sm:w-[300px] md:min-h-60 bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl relative "
-                >
-                  <div className="inside-shadow"></div>
-                  <div className="border-glow"></div>
-                  {benefit.icon}
-                  <h3 className="text-xl text-seasalt font-semibold mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-[#F8F9FB]/70">{benefit.desc} </p>
-                </div>
-              ))}
-            </div>
-
-            {/* Row 2 (with empty slot for robot) */}
-            <div className="flex flex-row flex-nowrap gap-8 justify-between text-center overflow-visible w-full mt-16">
-              {/* Card 1 */}
-              <div className="content-box border-glow-wrapper highlighted-box-small sm:w-[300px] md:min-h-60 bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl relative ">
+          <h2 className="text-4xl text-center font-bold mb-16 text-white">
+            Benefits{" "}
+          </h2>
+          <div
+            className="grid gap-10 justify-items-center
+ md:grid-cols-2 lg:grid-cols-3 text-center"
+          >
+            {benefits.slice(0, 3).map((benefit, idx) => (
+              <div
+                key={idx}
+                className="content-box border-glow-wrapper highlighted-box-small bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 sm:w-[300px] min-h-60 rounded-3xl p-4 md:p-8 shadow-2xl relative"
+              >
                 <div className="inside-shadow"></div>
                 <div className="border-glow"></div>
-                {benefits[3].icon}
-
+                {benefit.icon}
                 <h3 className="text-xl text-seasalt font-semibold mb-2">
-                  {benefits[3].title}
+                  {benefit.title}
                 </h3>
-                <p className="text-[#F8F9FB]/70">{benefits[3].desc} </p>
+                <p className="text-[#F8F9FB]/70">{benefit.desc}</p>
               </div>
+            ))}
+          </div>
 
-              {/* Empty spacer for Spline card */}
-              <div className=" sm:w-[300px] md:min-h-60">
-                <img
-                  loading="lazy"
-                  src="/ai-robot-doing-office-work.gif"
-                  className="w-fit"
-                ></img>
-              </div>
+          {/* Row with robot centered on small screens */}
+          <div
+            className="grid gap-10 justify-items-center
+ md:grid-cols-2 lg:grid-cols-3 text-center mt-14 items-center"
+          >
+            {/* Card 1 */}
+            <div className="content-box border-glow-wrapper highlighted-box-small bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 sm:w-[300px] min-h-60 rounded-3xl p-4 md:p-8 shadow-2xl relative">
+              <div className="inside-shadow"></div>
+              <div className="border-glow"></div>
+              {benefits[3].icon}
+              <h3 className="text-xl text-seasalt font-semibold mb-2">
+                {benefits[3].title}
+              </h3>
+              <p className="text-[#F8F9FB]/70">{benefits[3].desc}</p>
+            </div>
 
-              {/* Card 3 */}
-              <div className="content-box border-glow-wrapper highlighted-box-small sm:w-[300px] md:min-h-60 bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl relative">
+            {/* Robot image */}
+            <div className=" sm:w-[300px] md:min-h-60">
+              <img
+                loading="lazy"
+                src="/ai-robot-doing-office-work.gif"
+                className="w-fit"
+              ></img>
+            </div>
+
+            {/* Card 3 */}
+            <div className="content-box border-glow-wrapper highlighted-box-small bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 sm:w-[300px] min-h-60 rounded-3xl p-4 md:p-8 shadow-2xl relative">
+              <div className="inside-shadow"></div>
+              <div className="border-glow"></div>
+              {benefits[4].icon}
+              <h3 className="text-xl text-seasalt font-semibold mb-2">
+                {benefits[4].title}
+              </h3>
+              <p className="text-[#F8F9FB]/70">{benefits[4].desc}</p>
+            </div>
+          </div>
+
+          {/* Final row */}
+          <div
+            className="grid gap-10 justify-items-center
+ md:grid-cols-2 lg:grid-cols-3 text-center mt-14"
+          >
+            {benefits.slice(5).map((benefit, idx) => (
+              <div
+                key={idx}
+                className="content-box border-glow-wrapper highlighted-box-small bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl sm:w-[300px] min-h-60 p-4 md:p-8 shadow-2xl relative"
+              >
                 <div className="inside-shadow"></div>
                 <div className="border-glow"></div>
-                {benefits[4].icon}
-
+                {benefit.icon}
                 <h3 className="text-xl text-seasalt font-semibold mb-2">
-                  {benefits[4].title}
+                  {benefit.title}
                 </h3>
-                <p className="text-[#F8F9FB]/70"> {benefits[4].desc}</p>
+                <p className="text-[#F8F9FB]/70">{benefit.desc}</p>
               </div>
-            </div>
-
-            {/* Row 3 */}
-            <div className="flex flex-row flex-nowrap gap-8 justify-between text-center overflow-visible w-full mt-16">
-              {benefits.slice(5).map((benefit, idx) => (
-                <div
-                  key={idx}
-                  className="content-box border-glow-wrapper highlighted-box-small sm:w-[300px] md:min-h-60 bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl relative "
-                >
-                  <div className="inside-shadow"></div>
-                  <div className="border-glow"></div>
-                  {benefit.icon}
-
-                  <h3 className="text-xl text-seasalt font-semibold mb-2">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-[#F8F9FB]/70">{benefit.desc} </p>
-                </div>
-              ))}
-            </div>
+            ))}
           </div>
         </div>
       </div>
