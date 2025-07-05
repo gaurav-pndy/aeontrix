@@ -52,7 +52,7 @@ const ServicesSection = () => {
   return (
     <section className="relative text-white pb-20 px-4">
       <div className="max-w-5xl mx-auto ">
-        <h2 className="text-4xl text-center font-bold mb-12 text-white">
+        <h2 className="text-4xl text-center font-bold mb-16 text-white">
           Services
         </h2>
 

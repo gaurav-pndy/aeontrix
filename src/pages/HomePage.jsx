@@ -3,6 +3,8 @@ import SEO from "../components/SEO";
 import HeroSection from "../components/Home/HeroSection";
 import ServicesSection from "../components/Home/ServicesSection";
 import Benefits from "../components/Home/Benefits";
+import HumanAIComparison from "../components/Home/HumanAIComparison";
+import Timeline from "../components/Home/Timeline";
 
 function HomePage() {
   return (
@@ -37,6 +39,8 @@ function HomePage() {
         <HeroSection />
         <ServicesSection />
         <Benefits />
+        <HumanAIComparison />
+        <Timeline />
       </div>
     </div>
   );

@@ -66,7 +66,7 @@ const Benefits = () => {
       <div className="max-w-5xl mx-auto pt-20">
         <div>
           <div className="w-full">
-            <h2 className="text-4xl text-center font-bold mb-12 text-white">
+            <h2 className="text-4xl text-center font-bold mb-16 text-white">
               Benefits{" "}
             </h2>
 
