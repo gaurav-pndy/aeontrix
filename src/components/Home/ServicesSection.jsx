@@ -50,19 +50,19 @@ const pricingData = [
 
 const ServicesSection = () => {
   return (
-    <section className="relative text-white py-20 px-4">
+    <section className="relative text-white pb-20 px-4">
       <div className="max-w-5xl mx-auto ">
-        <h2 className="text-4xl text-center font-bold mb-10 text-white">
+        <h2 className="text-4xl text-center font-bold mb-12 text-white">
           Services
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
           {pricingData.map((plan, index) => (
             <div
-              className={`  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#00FF93]/50 rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500 ${
+              className={`border-glow-wrapper  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#00FF93]/50 rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500 ${
                 plan.highlighted
                   ? "highlighted-service-box relative"
-                  : "content-box"
+                  : "content-box "
               }`}
             >
               <div className="inside-shadow"></div>

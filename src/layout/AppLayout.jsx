@@ -79,7 +79,7 @@ function AppLayout() {
   const borderRef = useRef(null);
 
   useEffect(() => {
-    document.querySelectorAll(".content-box").forEach((box) => {
+    document.querySelectorAll(".border-glow-wrapper").forEach((box) => {
       const border = box.querySelector(".border-glow");
 
       const handleMouseMove = (e) => {

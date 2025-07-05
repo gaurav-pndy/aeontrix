@@ -56,31 +56,33 @@ const HeroSection = () => {
   };
 
   useEffect(() => {
-    document.querySelectorAll(".content-box").forEach((box) => {
-      const border = box.querySelector(".border-glow");
+    document
+      .querySelectorAll(".content-box border-glow-wrapper")
+      .forEach((box) => {
+        const border = box.querySelector(".border-glow");
 
-      const handleMouseMove = (e) => {
-        const rect = box.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        border.style.setProperty("--x", `${x}px`);
-        border.style.setProperty("--y", `${y}px`);
-      };
+        const handleMouseMove = (e) => {
+          const rect = box.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          border.style.setProperty("--x", `${x}px`);
+          border.style.setProperty("--y", `${y}px`);
+        };
 
-      const handleMouseLeave = () => {
-        border.style.setProperty("--x", `-200px`);
-        border.style.setProperty("--y", `-200px`);
-      };
+        const handleMouseLeave = () => {
+          border.style.setProperty("--x", `-200px`);
+          border.style.setProperty("--y", `-200px`);
+        };
 
-      box.addEventListener("mousemove", handleMouseMove);
-      box.addEventListener("mouseleave", handleMouseLeave);
+        box.addEventListener("mousemove", handleMouseMove);
+        box.addEventListener("mouseleave", handleMouseLeave);
 
-      // Cleanup event listeners on component unmount
-      return () => {
-        box.removeEventListener("mousemove", handleMouseMove);
-        box.removeEventListener("mouseleave", handleMouseLeave);
-      };
-    });
+        // Cleanup event listeners on component unmount
+        return () => {
+          box.removeEventListener("mousemove", handleMouseMove);
+          box.removeEventListener("mouseleave", handleMouseLeave);
+        };
+      });
   }, [isSubmitted]);
 
   const handleSubmit = async () => {
@@ -174,7 +176,7 @@ const HeroSection = () => {
       </div>
       <div className="max-w-4xl mx-auto">
         {!isSubmitted ? (
-          <div className="content-box highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500">
+          <div className="content-box border-glow-wrapper highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500">
             <div className="inside-shadow"></div>
             <div className="border-glow"></div>
             <div className="text-center mb-8">
@@ -365,7 +367,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, scale: "90%", filter: "blur(12px)" }}
             animate={{ opacity: 1, scale: "100%", filter: "blur(0px)" }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="content-box highlighted-box text-center rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500"
+            className="content-box border-glow-wrapper highlighted-box text-center rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500"
           >
             <div className="inside-shadow"></div>
             <div className="border-glow"></div>

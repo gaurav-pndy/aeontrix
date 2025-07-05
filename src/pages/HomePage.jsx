@@ -2,6 +2,7 @@ import React from "react";
 import SEO from "../components/SEO";
 import HeroSection from "../components/Home/HeroSection";
 import ServicesSection from "../components/Home/ServicesSection";
+import Benefits from "../components/Home/Benefits";
 
 function HomePage() {
   return (
@@ -35,6 +36,7 @@ function HomePage() {
         />
         <HeroSection />
         <ServicesSection />
+        <Benefits />
       </div>
     </div>
   );

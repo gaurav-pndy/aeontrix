@@ -19,7 +19,9 @@ const ResubscribePopup = ({ onClose, onResubscribe, email }) => {
       });
       const data = await response.json();
       if (!response.ok) {
-        setErrorMessage(data.error || "Failed to resubscribe. Please try again.");
+        setErrorMessage(
+          data.error || "Failed to resubscribe. Please try again."
+        );
         return;
       }
       setIsResubscribed(true);
@@ -42,7 +44,7 @@ const ResubscribePopup = ({ onClose, onResubscribe, email }) => {
       className="fixed inset-0 z-70 bg-black/60 backdrop-blur-sm flex items-center justify-center"
       onClick={handleOverlayClick}
     >
-      <div className="content-box highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500 text-center max-w-xl">
+      <div className="content-box border-glow-wrapper highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500 text-center max-w-xl">
         <div className="inside-shadow"></div>
         <div className="border-glow"></div>
 
