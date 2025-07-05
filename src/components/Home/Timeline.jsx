@@ -144,7 +144,7 @@ const Timeline = () => {
 
   return (
     <section className="relative z-10 max-w-6xl mx-auto px-4 pb-24  min-h-screen text-seasalt mt-10">
-      <div className="flex flex-col items-center justify-center max-w-5xl mx-auto w-full  content-box border-glow-wrapper highlighted-box-timeline  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-3 md:py-8 shadow-2xl relative ">
+      <div className="flex flex-col items-center justify-center max-w-5xl mx-auto w-full  content-box border-glow-wrapper highlighted-box-timeline  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:py-8 shadow-2xl relative ">
         <div className="inside-shadow"></div>
         <div className="border-glow"></div>
         <h2 className="text-4xl font-bold text-center my-4">Timeline </h2>
@@ -155,7 +155,7 @@ const Timeline = () => {
         >
           <div className="relative w-full flex">
             {/* Timeline Line Section */}
-            <div className="relative  md:w-12 flex-shrink-0">
+            <div className="relative hidden md:block md:w-12 flex-shrink-0">
               {/* Reduced top spacer */}
               <div className="h-5" />
 
@@ -259,7 +259,7 @@ const Timeline = () => {
             </div>
 
             {/* Content Section */}
-            <div className="flex-1 pl-10 md:pl-16 max-w-4xl">
+            <div className="flex-1  md:pl-16 max-w-4xl">
               {/* Reduced top spacer */}
               <div className="h-5" />
 
@@ -271,7 +271,7 @@ const Timeline = () => {
                   } relative`}
                 >
                   <div
-                    className={`content-box  rounded-2xl p-8 mb-10 max-w-3xl transition-all duration-700 ease-out ${
+                    className={`content-box  rounded-2xl p-4 md:p-8 mb-10 max-w-3xl transition-all duration-700 ease-out ${
                       visibleSections.has(sectionIndex)
                         ? "visible opacity-100 translate-y-0"
                         : "opacity-30 translate-y-3"
