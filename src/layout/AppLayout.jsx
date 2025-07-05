@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import Navbar from "../components/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function AppLayout() {
   const { pathname } = useLocation();
@@ -108,6 +109,7 @@ function AppLayout() {
       </div>
       <Navbar />
       <Outlet />
+      {/* <Footer /> */}
     </div>
   );
 }

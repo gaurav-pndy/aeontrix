@@ -19,7 +19,7 @@ const ContactForm = () => {
   };
 
   return (
-    <section className="w-full max-w-6xl mx-auto px-6 py-12 mt-10">
+    <section id="Contact" className="w-full max-w-6xl mx-auto px-6 py-12 mt-10">
       <div className="  overflow-visible flex flex-col md:flex-row content-box border-glow-wrapper highlighted-box-timeline  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:py-8 shadow-2xl relative text-seasalt">
         <div className="inside-shadow"></div>
         <div className="border-glow"></div>

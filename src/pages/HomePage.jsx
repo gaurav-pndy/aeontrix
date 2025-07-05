@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import SEO from "../components/SEO";
 import HeroSection from "../components/Home/HeroSection";
 import ServicesSection from "../components/Home/ServicesSection";
@@ -7,8 +7,22 @@ import HumanAIComparison from "../components/Home/HumanAIComparison";
 import Timeline from "../components/Home/Timeline";
 import CalEmbed from "../components/Home/CalEmbed";
 import ContactForm from "../components/Home/ContactForm";
+import Footer from "../components/Footer";
+import { useLocation } from "react-router";
 
 function HomePage() {
+  const location = useLocation();
+
+  useEffect(() => {
+    const targetId = location.state?.scrollTo;
+    if (targetId) {
+      setTimeout(() => {
+        const el = document.getElementById(targetId);
+        if (el) scrollWithOffset(el, 100); // Add same offset here
+      }, 100);
+    }
+  }, [location]);
+
   return (
     <div>
       <div id="main">
@@ -45,6 +59,7 @@ function HomePage() {
         <Timeline />
         <CalEmbed />
         <ContactForm />
+        <Footer />
       </div>
     </div>
   );
