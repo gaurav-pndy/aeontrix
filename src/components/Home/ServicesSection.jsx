@@ -3,6 +3,7 @@ import BookAuditButton from "../BookAuditButton";
 
 const pricingData = [
   {
+    id: "consultation",
     title: "Consultation – <span class='text-[#00FF93]'>AI Advisor</span>",
     desc: "A strategy session to help you figure out where and how to use AI to automate in your business.",
     price: "$9",
@@ -18,6 +19,7 @@ const pricingData = [
     highlighted: false,
   },
   {
+    id: "built-for-you",
     title:
       "Done & Built For You - <span class='text-[#00FF93]'>AI Employee System Setup</span>",
     desc: "We build and launch AI Employees for you — no technical work needed on your end.",
@@ -33,6 +35,7 @@ const pricingData = [
     highlighted: true,
   },
   {
+    id: "ai-partner",
     title:
       "AI Partner - <span class='text-[#00FF93]'>Your Dedicated AI Team</span>",
     desc: "A monthly subscription where you get an on-demand dedicated AI team, ready to help anytime.",
@@ -62,6 +65,8 @@ const ServicesSection = () => {
         <div className="grid md:grid-cols-3 gap-6">
           {pricingData.map((plan, index) => (
             <div
+              key={index}
+              id={plan.id}
               className={`border-glow-wrapper  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#00FF93]/50 rounded-3xl p-4 md:p-6 shadow-2xl transition-transform duration-500 ${
                 plan.highlighted
                   ? "highlighted-service-box relative"

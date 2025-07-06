@@ -25,16 +25,11 @@ html {
 .gradient-title{
     position: relative;
   background: linear-gradient(
-    110deg,
-    #00FF93 0%,
-    #ffffff 20%,
-    #c0c0c0 30%,
-    #00FF93 40%,
-    #ffffff 50%,
-    #c0c0c0 60%,
+    0deg,
+    #F8F9FB 0%,
     #00FF93 70%,
-    #ffffff 80%,
     #00FF93 100%
+   
   );
   background-size: 300% 100%;
   background-clip: text;

@@ -32,17 +32,16 @@ const Footer = () => {
           <h3 className="font-semibold text-base text-white mb-5">Products</h3>
           <ul className="space-y-3">
             {[
-              "Consultation – AI Advisor",
-              "Done & Built For You",
-              "AI Partner (All your AI needs)",
+              { label: "Consultation – AI Advisor", id: "consultation" },
+              { label: "Done & Built For You", id: "built-for-you" },
+              { label: "AI Partner (All your AI needs)", id: "ai-partner" },
             ].map((item) => (
-              <li key={item}>
-                <a
-                  href="#"
-                  className="hover:text-[#00FF93] transition-colors duration-200"
-                >
-                  {item}
-                </a>
+              <li
+                className="hover:text-[#00FF93] transition-colors duration-200 cursor-pointer"
+                onClick={() => handleClick(item.id)}
+                key={item.id}
+              >
+                {item.label}
               </li>
             ))}
           </ul>
