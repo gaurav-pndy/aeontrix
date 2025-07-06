@@ -27,7 +27,7 @@ const ContactForm = () => {
       <div className="  overflow-visible flex flex-col md:flex-row content-box border-glow-wrapper highlighted-box-timeline  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:py-8 shadow-2xl relative text-seasalt">
         <div className="border-glow"></div>
         {/* Left Section */}
-        <div className="md:w-1/2 p-8  space-y-10">
+        <div className="md:w-1/2 md:p-8  space-y-10">
           <h2 className="gradient-title leading-16 font-bold">
             Ready to Upgrade Your Workforce?
           </h2>
@@ -47,7 +47,7 @@ const ContactForm = () => {
         {/* Right Section - Form */}
         <form
           onSubmit={handleSubmit}
-          className="md:w-1/2  p-5 space-y-5 text-white"
+          className="md:w-1/2 pt-6 md:pt-0  md:p-5 space-y-5 text-white"
         >
           <div>
             <label className="text-sm font-medium">

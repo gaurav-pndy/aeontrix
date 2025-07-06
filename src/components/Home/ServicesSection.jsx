@@ -59,7 +59,7 @@ const ServicesSection = () => {
     <section className="relative z-10 text-white pb-20 px-4">
       <div className="max-w-6xl mx-auto ">
         <h2 className="gradient-title  text-center font-bold  text-white">
-          AI Transformation Services
+          AI Transformation Services
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
