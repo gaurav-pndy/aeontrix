@@ -37,7 +37,6 @@ export default function ConfirmToken() {
   return (
     <div className="min-h-[80vh] flex items-center justify-center px-4">
       <div className="content-box border-glow-wrapper highlighted-box bg-[#1A2A44] backdrop-blur-lg border border-[#2E4057] rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500 text-center max-w-xl">
-        <div className="inside-shadow"></div>
         <div className="border-glow"></div>
         <h2 className="text-3xl font-bold text-white mb-2">
           {status.split("\n")[0]}

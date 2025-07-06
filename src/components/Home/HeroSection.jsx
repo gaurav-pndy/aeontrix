@@ -177,7 +177,6 @@ const HeroSection = () => {
       <div id="generate-plan" className="max-w-4xl mx-auto">
         {!isSubmitted ? (
           <div className="content-box border-glow-wrapper highlighted-box bg-[#F8F9FB]/10 backdrop-blur-lg  rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500">
-            <div className="inside-shadow"></div>
             <div className="border-glow"></div>
             <div className="text-center mb-8">
               <h2 className="text-3xl font-bold text-seasalt mb-4">
@@ -369,7 +368,6 @@ const HeroSection = () => {
             transition={{ duration: 0.4, ease: "easeInOut" }}
             className="content-box border-glow-wrapper highlighted-box text-center rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500"
           >
-            <div className="inside-shadow"></div>
             <div className="border-glow"></div>
             <h2 className="text-3xl mb-2 md:text-4xl font-bold text-[#00FF93]">
               Thank You!

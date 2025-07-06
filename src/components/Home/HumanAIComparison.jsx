@@ -52,15 +52,14 @@ const HumanAIComparison = () => {
   const selectedData = aiComparisonData[selectedOption];
 
   return (
-    <section id="services" className="py-20 relative text-seasalt">
+    <section id="services" className="py-20 z-10 relative text-seasalt">
       <div className="max-w-7xl mx-auto px-4">
-        <h2 className="text-4xl font-bold text-center mb-16">
+        <h2 className="gradient-title font-bold text-center ">
           Human - AI Comparison
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {/* Left Column */}
           <div className="content-box border-glow-wrapper highlighted-box-small  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl relative ">
-            <div className="inside-shadow"></div>
             <div className="border-glow"></div>
             <h3 className="text-xl font-semibold text-white mb-6">
               Select Department
@@ -83,7 +82,7 @@ const HumanAIComparison = () => {
                       value={option}
                       checked={selectedOption === option}
                       onChange={() => setSelectedOption(option)}
-                      className="form-radio text-[#00FF93] focus:ring-[#00FF93]"
+                      className="appearance-none form-radio text-[#00FF93] focus:ring-[#00FF93]"
                     />
                     <span>{option}</span>
                   </label>
@@ -94,7 +93,6 @@ const HumanAIComparison = () => {
 
           {/* Right Column */}
           <div className="content-box border-glow-wrapper highlighted-box-small md:col-span-2 bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-3 md:p-8 shadow-2xl relative ">
-            <div className="inside-shadow"></div>
             <div className="border-glow"></div>
             <h3 className="text-xl font-semibold mb-4 text-white">
               {selectedOption} Comparison

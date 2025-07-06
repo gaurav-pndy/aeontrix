@@ -3,54 +3,48 @@ import "./Timeline.css";
 
 const eventsData = [
   {
-    month: "Phase 1: Exploration & Planning",
-    events: [
-      {
-        date: "13 NOVEMBER 2021",
-        title: "Duration: 1 week",
-        content:
-          "• Kick-off call: We chat about your goals and pick a small, high-impact AI use case.\n• Data check: We look at your existing systems and data to see what's ready.",
-      },
-      {
-        date: "14 NOVEMBER 2021",
-        title: "Event 2",
-        content:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deleniti officiis, architecto aperiam et incidunt eveniet quibusdam culpa.",
-      },
+    phase: "Phase 1: Exploration & Planning (AI Consultation)",
+    duration: "1 week",
+    process: [
+      "<b>Kick-off call:</b> We chat about your goals and pick a small, high-impact AI use case.",
+      "<b>Data check:</b> We look at your existing systems and data to see what’s ready.",
+      "<b>Quick prototype:</b> We build a basic demo so you can see AI in action.",
     ],
+    whatYouGet: {
+      heading: "What you get:",
+      content: [
+        "A short list of top AI ideas for your business",
+        "A simple diagram showing how it all fits together",
+        "A clear quote and plan for the next steps",
+      ],
+    },
   },
   {
-    month: "Phase 2: Building, Testing & Launching",
-    events: [
-      {
-        date: "16 DECEMBER 2021",
-        title: "Event 1",
-        content:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deleniti officiis, architecto aperiam et incidunt eveniet quibusdam culpa.",
-      },
-      {
-        date: "17 DECEMBER 2021",
-        title: "Event 2",
-        content:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deleniti officiis, architecto aperiam et incidunt eveniet quibusdam culpa.",
-      },
+    phase: "Phase 2: Building, Testing & Launching",
+    duration: "1 - 2 weeks+ (depending on scope)",
+    process: [
+      "<b>Development:</b> We build the full AI automation—integrating AI with your processes.",
+      "<b>Testing & Security:</b> We make sure everything works reliably and is locked down.",
+      "<b>Training:</b> We show your team how to use and maintain the new system (If required).",
     ],
+    whatYouGet: {
+      heading: "What you get:",
+      content: [
+        "A live, working AI solution in your environment",
+        "Test reports and security checklist",
+        "User guide/Documentation",
+        "Loom video explaining the workflow, & requesting feedback such as Edge Cases",
+      ],
+    },
   },
   {
-    month: "Phase 3: Optimizing & Scaling",
-    events: [
-      {
-        date: "16 DECEMBER 2021",
-        title: "Event 1",
-        content:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deleniti officiis, architecto aperiam et incidunt eveniet quibusdam culpa.",
-      },
-      {
-        date: "17 DECEMBER 2021",
-        title: "Event 2",
-        content:
-          "Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis deleniti officiis, architecto aperiam et incidunt eveniet quibusdam culpa.",
-      },
+    phase: "Phase 3: Optimizing & Scaling (for AI Partner clients)",
+    duration: "Ongoing",
+    process: [
+      "<b>Performance checks:</b> We track results and tweak for better accuracy.",
+      "<b>New features:</b> We add more automations or AI models as you need them.",
+      "<b>Regular reviews:</b> We meet quarterly to review ROI and plan ahead.",
+      "<b>Priority support:</b> Fast responses and unlimited tweaks all year long.",
     ],
   },
 ];
@@ -145,9 +139,10 @@ const Timeline = () => {
   return (
     <section className="relative z-10 max-w-6xl mx-auto px-4 pb-24  min-h-screen text-seasalt mt-10">
       <div className="flex flex-col items-center justify-center max-w-5xl mx-auto w-full  content-box border-glow-wrapper highlighted-box-timeline  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:py-8 shadow-2xl relative ">
-        <div className="inside-shadow"></div>
         <div className="border-glow"></div>
-        <h2 className="text-4xl font-bold text-center my-4">Timeline </h2>
+        <h2 className="gradient-title font-bold text-center !my-4">
+          AI Implementation Roadmap
+        </h2>
         <div
           ref={timelineRef}
           onScroll={handleScroll}
@@ -191,7 +186,7 @@ const Timeline = () => {
                     <div
                       className="absolute w-1 bg-gradient-to-b from-gray-600 left-2.5 md:left-[30px] via-gray-400 to-gray-600"
                       style={{
-                        top: `calc(${lineStartPosition}px - 25px)`,
+                        top: `calc(${lineStartPosition}px - 20px)`,
                         height: `${lineHeight}px`,
                       }}
                     />
@@ -228,7 +223,7 @@ const Timeline = () => {
                 <div
                   key={sectionIndex}
                   className={`${
-                    sectionIndex === 0 ? "mt-5" : "mt-25"
+                    sectionIndex === 0 ? "mt-0" : "mt-25"
                   } relative`}
                 >
                   <div
@@ -250,7 +245,9 @@ const Timeline = () => {
                   </div>
 
                   {/* Spacer for events */}
-                  <div style={{ height: `${section.events.length * 150}px` }} />
+                  <div
+                    style={{ height: `${section.process.length * 100}px` }}
+                  />
                 </div>
               ))}
 
@@ -263,73 +260,76 @@ const Timeline = () => {
               {/* Reduced top spacer */}
               <div className="h-5" />
 
-              {eventsData.map((section, sectionIndex) => (
-                <div
-                  key={sectionIndex}
-                  className={`${
-                    sectionIndex === 0 ? "mt-0" : "mt-20"
-                  } relative`}
-                >
+              {eventsData.map((section, sectionIndex) => {
+                const isVisible = visibleSections.has(sectionIndex);
+                return (
                   <div
-                    className={`content-box  rounded-2xl p-4 md:p-8 mb-10 max-w-3xl transition-all duration-700 ease-out ${
-                      visibleSections.has(sectionIndex)
-                        ? "visible opacity-100 translate-y-0"
-                        : "opacity-30 translate-y-3"
-                    }`}
+                    key={sectionIndex}
+                    className={`${
+                      sectionIndex === 0 ? "mt-0" : "mt-20"
+                    } relative`}
                   >
-                    {/* Section Title */}
-                    <h2
-                      className={`text-xl font-bold tracking-wide mb-5 pb-3 transition-all duration-500 ${
+                    <div
+                      className={`content-box  rounded-2xl p-4 md:p-8 mb-10 max-w-3xl transition-all duration-700 ease-out ${
                         visibleSections.has(sectionIndex)
-                          ? "text-seasalt border-b-2 border-white"
-                          : "text-gray-400 border-b border-gray-700"
+                          ? "visible opacity-100 translate-y-0"
+                          : "opacity-30 translate-y-3"
                       }`}
                     >
-                      {section.month}
-                    </h2>
+                      {/* Section Title */}
+                      <h2
+                        className={`text-xl font-bold tracking-wide mb-3 pb-3 transition-all duration-500 ${
+                          visibleSections.has(sectionIndex)
+                            ? "text-seasalt border-b-2 border-white"
+                            : "text-gray-400 border-b border-gray-700"
+                        }`}
+                      >
+                        {section.phase}
+                      </h2>
 
-                    {/* Events */}
-                    {section.events.map((event, eventIndex) => {
-                      const globalEventIndex = sectionIndex * 100 + eventIndex;
-                      const isVisible = visibleSections.has(sectionIndex);
-                      const isLastEvent =
-                        eventIndex === section.events.length - 1;
+                      {/* Events */}
 
-                      return (
-                        <div
-                          key={eventIndex}
-                          ref={(el) =>
-                            (eventRefs.current[globalEventIndex] = el)
-                          }
-                          className={`${
-                            !isLastEvent
-                              ? "mb-6 pb-6 border-b border-gray-800"
-                              : ""
-                          }`}
-                        >
-                          <h3 className="text-xs font-semibold opacity-70 tracking-widest uppercase mb-2 text-[#00FF93]">
-                            {event.date}
-                          </h3>
-                          <h4
-                            className={`text-lg font-semibold tracking-wide mb-3 leading-tight transition-colors duration-500 ${
-                              isVisible ? "text-white" : "text-gray-400"
-                            }`}
-                          >
-                            {event.title}
-                          </h4>
-                          <p
+                      <h4 className="text-lg  tracking-wide mb-3 leading-tight  text-[#00FF93]">
+                        <span className="font-semibold">Duration: </span>{" "}
+                        {section.duration}
+                      </h4>
+
+                      <ul className="list-inside list-disc space-y-2">
+                        {section.process.map((step, idx) => (
+                          <li
                             className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 ${
-                              isVisible ? "text-[#F8F9FB]/60" : "text-gray-500"
+                              isVisible ? "text-[#F8F9FB]/70" : "text-gray-500"
                             }`}
-                          >
-                            {event.content}
-                          </p>
+                            key={idx}
+                            dangerouslySetInnerHTML={{ __html: step }}
+                          ></li>
+                        ))}
+                      </ul>
+
+                      {section.whatYouGet && (
+                        <div className="mt-4">
+                          <h6 className=" font-semibold mb-2">
+                            {section.whatYouGet.heading}
+                          </h6>
+                          <ul className="list-inside list-disc space-y-2">
+                            {section.whatYouGet.content.map((step, idx) => (
+                              <li
+                                className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 ${
+                                  isVisible
+                                    ? "text-[#F8F9FB]/70"
+                                    : "text-gray-500"
+                                }`}
+                                key={idx}
+                                dangerouslySetInnerHTML={{ __html: step }}
+                              ></li>
+                            ))}
+                          </ul>
                         </div>
-                      );
-                    })}
+                      )}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
 
               {/* Reduced bottom spacer */}
               {/* <div className="h-20" /> */}

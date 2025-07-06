@@ -3,43 +3,46 @@ import BookAuditButton from "../BookAuditButton";
 
 const pricingData = [
   {
-    title: "Consultation – AI Advisor",
-    desc: "A strategy session to help you figure out <b>where and how to use AI to automate in your business.</b>",
+    title: "Consultation – <span class='text-[#00FF93]'>AI Advisor</span>",
+    desc: "A strategy session to help you figure out where and how to use AI to automate in your business.",
     price: "$9",
     features: [
-      "60-minute deep-dive strategy session",
-      "Custom AI roadmap & priority tool recommendations",
-      "Hallucination guardrails & reliability checks",
-      "Team training on how to manage your AI Agents",
-      "Bonus: KPI checklist to prove ROI",
+      "Deep-dive Strategy Sessions",
+      "Custom AI Roadmap & Tech Stack Recommendations",
+      "Hallucination Guardrails & Reliability Checks",
+      "Team Training on How to Manage your AI Agents",
+      "Assistance in Ensuring Security, Scalability, & Ease of Use",
+      "Bonus: KPI Checklist to Measure ROI",
     ],
     button: "Get started",
     highlighted: false,
   },
   {
-    title: "Done & Built For You",
-    desc: "We <b>build and launch AI Employees for you</b> — no technical work needed on your end.",
+    title:
+      "Done & Built For You - <span class='text-[#00FF93]'>AI Employee System Setup</span>",
+    desc: "We build and launch AI Employees for you — no technical work needed on your end.",
     price: "$49",
     features: [
-      "End-to-end design & deployment of your AI Agents",
-      "Full integration with Slack, WhatsApp, CRM, calendar, etc.",
-      "Real-time lead qualification, outreach, or customer support bot",
-      "Complete testing, fallback strategies, and documentation",
-      "30-day tuning & performance guarantee",
+      "End-to-End Design & Deployment of your AI Agents",
+      "Full Integration with any Software you Use (needs API)",
+      "Complete Testing, Fallback Strategies, and Documentation",
+      "Real-time Lead Qualification, Outreach, or Customer Support Bot",
+      "Bonus: Free Tuning & Maintenance for the First Month.",
     ],
     button: "Get started →",
     highlighted: true,
   },
   {
-    title: "AI Partner (All your AI needs)",
-    desc: "A monthly subscription where we become your <b>on-demand dedicated AI team</b>, ready to help anytime.",
+    title:
+      "AI Partner - <span class='text-[#00FF93]'>Your Dedicated AI Team</span>",
+    desc: "A monthly subscription where you get an on-demand dedicated AI team, ready to help anytime.",
     price: "$99",
     features: [
-      "Dedicated fractional AI specialists at your service",
+      "Dedicated AI specialists at your service",
       "Unlimited agent builds, updates, and custom features",
       "24/7 monitoring, maintenance & reliability audits",
       "Quarterly ROI reviews with cost-savings report",
-      "Priority support & instant scaling for peak periods",
+      "Priority support & instant scaling for peak periods",
 
       ,
     ],
@@ -50,28 +53,29 @@ const pricingData = [
 
 const ServicesSection = () => {
   return (
-    <section className="relative text-white pb-20 px-4">
-      <div className="max-w-5xl mx-auto ">
-        <h2 className="text-4xl text-center font-bold mb-16 text-white">
-          Services
+    <section className="relative z-10 text-white pb-20 px-4">
+      <div className="max-w-6xl mx-auto ">
+        <h2 className="gradient-title  text-center font-bold  text-white">
+          AI Transformation Services
         </h2>
 
         <div className="grid md:grid-cols-3 gap-6">
           {pricingData.map((plan, index) => (
             <div
-              className={`border-glow-wrapper  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#00FF93]/50 rounded-3xl p-4 md:p-8 shadow-2xl transition-transform duration-500 ${
+              className={`border-glow-wrapper  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#00FF93]/50 rounded-3xl p-4 md:p-6 shadow-2xl transition-transform duration-500 ${
                 plan.highlighted
                   ? "highlighted-service-box relative"
                   : "content-box "
               }`}
             >
-              <div className="inside-shadow"></div>
               <div className="border-glow"></div>
-              <h3 className="text-2xl font-semibold mb-6">{plan.title}</h3>
-              {/* <p className="text-4xl font-bold text-[#00FF93] mb-4">
-                {plan.price}
-              </p> */}
-              <ul className="text-gray-300 text-left list-outside space-y-4 mb-6">
+              <h3
+                className="text-3xl font-semibold mb-4"
+                dangerouslySetInnerHTML={{ __html: plan.title }}
+              ></h3>
+              <p className=" text-[#F8F9FB]/70 mb-4 ">{plan.desc}</p>
+              <p className="text-gray-300 font-semibold mb-1">Includes:</p>
+              <ul className="text-[#f8f9fb]/90 text-left list-outside space-y-4 mb-6">
                 {plan.features.map((feature, i) => (
                   <li key={i} className="flex gap-2">
                     <span className="text-[#00FF93]">✔</span>

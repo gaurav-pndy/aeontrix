@@ -22,6 +22,28 @@ html {
   scroll-behavior: smooth;
 }
 
+.gradient-title{
+    position: relative;
+  background: linear-gradient(
+    110deg,
+    #00FF93 0%,
+    #ffffff 20%,
+    #c0c0c0 30%,
+    #00FF93 40%,
+    #ffffff 50%,
+    #c0c0c0 60%,
+    #00FF93 70%,
+    #ffffff 80%,
+    #00FF93 100%
+  );
+  background-size: 300% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
 .text-seasalt{
   color: #F8F9FB;
 }
@@ -33,6 +55,7 @@ html {
     linear-gradient(90deg, rgba(24, 24, 24, 0.35) 1.3px, transparent 1px);
   background-size: 70px 70px;
   background-position: 0 0, 0 0;
+  position: fixed;
 }
 
 .grid-overlay {
@@ -47,6 +70,15 @@ html {
 }
 
 
+.glow-background {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    rgba(0, 255, 147, 0.1) 0%,
+    transparent 80%
+  );
+}
 
 
 
@@ -55,8 +87,10 @@ html {
 /* Content boxes that block the cursor light */
 .content-box {
   position: relative;
-border: none;
+border: 3px solid #062b2b;
   /* overflow: hidden; */
+  background-color: #042222;
+
 }
 
 .border-glow {
@@ -76,7 +110,7 @@ border: none;
   z-index: 2;
 }
 
-
+/* 
  .content-box::before {
   content: '';
   position: absolute;
@@ -88,11 +122,10 @@ border: none;
     #080808 0%, 
     
     #042222 100%);
-    /* border: none; */
   border-radius: inherit;
   z-index: -1;
   pointer-events: none;
-} 
+}  */
 
  .highlighted-service-box::before {
   content: '';
@@ -102,10 +135,10 @@ border: none;
   right: 0;
   bottom: 0;
    background: linear-gradient(30deg, 
-    #080808 0%, 
-    #080808 60%, 
+    #062b2b 0%, 
+    #062b2b 60%, 
     
-    #00ff9541 100%);
+    #00ff952a 100%);
     /* border: none; */
   border-radius: inherit;
   z-index: -1;
@@ -114,7 +147,7 @@ border: none;
 
 
 
-.highlighted-box {
+/* .highlighted-box {
   position: relative;
   
   box-shadow: 
@@ -125,9 +158,9 @@ border: none;
 
 
 
-}
+} */
 
-.highlighted-box-small .inside-shadow {
+/* .highlighted-box-small .inside-shadow {
   position: absolute;
   top: 0%;
   left: 50%;
@@ -141,23 +174,12 @@ border: none;
     0px 20px 20px #080808; 
     z-index: -2;  
 
-}
-
-
-.highlighted-box {
-  position: relative;
-  
-  box-shadow: 
-    0 -30rem 30rem  rgba(0, 255, 147, 0.1),   
-   -100px -100px 120px rgba(0, 255, 147, 0.1),
-    100px -100px 120px rgba(0, 255, 147, 0.1), 
-    0px 20px 20px #080808;             
+} */
 
 
 
-}
 
-.highlighted-box .inside-shadow{
+/* .highlighted-box .inside-shadow{
   position: absolute;
   top: 0%;
   left: 50%;
@@ -171,21 +193,20 @@ border: none;
     0px 20px 20px #080808; 
     z-index: -2;  
 
-}
+} */
 
-.highlighted-box::after {
+/* .highlighted-box::after {
   content: '';
   position: absolute;
   top: -3px;
   left: -3px;
   right: -3px;
   bottom: -3px;
-  /* background: rgba(0, 255, 147, 0.2); */
   border-radius: inherit;
   z-index: -2;
   pointer-events: none;
   filter: blur(8px);
-}
+} */
 
 /* Green Glass Badge Effect */
 .green-glass-badge {

@@ -121,8 +121,8 @@ const Footer = () => {
       </div>
 
       {/* Bottom Row */}
-      <div className="flex flex-col md:flex-row justify-between items-center text-[#F8F9FB]/40 pt-6 text-xs gap-2">
-        <span>© 2025 iEmployee. All rights reserved.</span>
+      <div className="flex flex-col max-w-7xl mx-auto md:flex-row justify-between items-center text-[#F8F9FB]/40 pt-6 text-xs gap-2">
+        <span>© 2025 Aeontrix AI. All rights reserved.</span>
         <div className="flex gap-4">
           <a
             href="/privacy-policy"

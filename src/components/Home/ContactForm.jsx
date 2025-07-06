@@ -5,6 +5,7 @@ const ContactForm = () => {
     fullName: "",
     email: "",
     company: "",
+    website: "",
     employees: "1-10",
     interest: "Sales AI",
   });
@@ -19,13 +20,15 @@ const ContactForm = () => {
   };
 
   return (
-    <section id="Contact" className="w-full max-w-6xl mx-auto px-6 py-12 mt-10">
+    <section
+      id="Contact"
+      className="w-full max-w-6xl mx-auto px-6 py-12 mt-10 z-10 relative"
+    >
       <div className="  overflow-visible flex flex-col md:flex-row content-box border-glow-wrapper highlighted-box-timeline  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:py-8 shadow-2xl relative text-seasalt">
-        <div className="inside-shadow"></div>
         <div className="border-glow"></div>
         {/* Left Section */}
         <div className="md:w-1/2 p-8  space-y-10">
-          <h2 className="text-3xl md:text-4xl font-bold">
+          <h2 className="gradient-title leading-16 font-bold">
             Ready to Upgrade Your Workforce?
           </h2>
           <p className="text-[#F8F9FB]/60 text-lg">
@@ -35,9 +38,9 @@ const ContactForm = () => {
           </p>
           <div className="text-lg  space-y-3">
             <p>After contacting us, you'll receive:</p>
-            <p>✓ Free workforce efficiency analysis</p>
+            <p>✓ Free AI Audit for your Business</p>
             <p>✓ Custom AI implementation roadmap</p>
-            <p>✓ 30-day free trial of your first AI employee</p>
+            {/* <p>✓ 30-day free trial of your first AI employee</p> */}
           </div>
         </div>
 
@@ -47,7 +50,9 @@ const ContactForm = () => {
           className="md:w-1/2  p-5 space-y-5 text-white"
         >
           <div>
-            <label className="text-sm font-medium">Full Name</label>
+            <label className="text-sm font-medium">
+              Full Name <span className="text-[#00FF93]">*</span>
+            </label>
             <input
               type="text"
               name="fullName"
@@ -59,7 +64,9 @@ const ContactForm = () => {
             />
           </div>
           <div>
-            <label className="text-sm font-medium">Work Email</label>
+            <label className="text-sm font-medium">
+              Work Email <span className="text-[#00FF93]">*</span>
+            </label>
             <input
               type="email"
               name="email"
@@ -71,8 +78,11 @@ const ContactForm = () => {
             />
           </div>
           <div>
-            <label className="text-sm font-medium">Company Name</label>
+            <label className="text-sm font-medium">
+              Company Name <span className="text-[#00FF93]">*</span>
+            </label>
             <input
+              required
               type="text"
               name="company"
               placeholder="Company Inc."
@@ -82,12 +92,26 @@ const ContactForm = () => {
             />
           </div>
           <div>
-            <label className="text-sm font-medium">Number of Employees</label>
+            <label className="text-sm font-medium">Website</label>
+            <input
+              type="text"
+              name="website"
+              placeholder="Website URL"
+              value={formData.website}
+              onChange={handleChange}
+              className="mt-1 w-full px-4 py-2 bg-[#1c1f21] border border-[#00FF93]/30 rounded-lg focus:outline-none focus:border-[#00FF93] text-white"
+            />
+          </div>
+          <div>
+            <label className="text-sm font-medium">
+              Number of Employees <span className="text-[#00FF93]">*</span>
+            </label>
             <select
+              required
               name="employees"
               value={formData.employees}
               onChange={handleChange}
-              className="mt-1 w-full px-4 py-2 bg-[#1c1f21] border border-[#00FF93]/30 rounded-lg focus:outline-none focus:border-[#00FF93] text-white"
+              className="mt-1 w-full px-4 py-2.5 bg-[#1c1f21] border border-[#00FF93]/30 rounded-lg focus:outline-none focus:border-[#00FF93] text-white"
             >
               <option>1-10</option>
               <option>11-50</option>
@@ -97,18 +121,23 @@ const ContactForm = () => {
             </select>
           </div>
           <div>
-            <label className="text-sm font-medium">Interested In</label>
+            <label className="text-sm font-medium">
+              Interested In <span className="text-[#00FF93]">*</span>
+            </label>
             <select
+              required
               name="interest"
               value={formData.interest}
               onChange={handleChange}
-              className="mt-1 w-full px-4 py-2 bg-[#1c1f21] border border-[#00FF93]/30 rounded-lg focus:outline-none focus:border-[#00FF93] text-white"
+              className="mt-1 w-full px-4 py-2.5 bg-[#1c1f21] border border-[#00FF93]/30 rounded-lg focus:outline-none focus:border-[#00FF93] text-white"
             >
-              <option>Sales AI</option>
-              <option>Marketing AI</option>
-              <option>HR AI</option>
-              <option>Customer AI</option>
-              <option>Finance AI</option>
+              <option>Sales AI Automation</option>
+              <option>Marketing AI Automation</option>
+              <option>Human Resources AI Automation</option>
+              <option>Customer Support AI Automation</option>
+              <option>Personal Assistant AI Automation</option>
+              <option>Consultation</option>
+              <option>AI Partner Program</option>
             </select>
           </div>
 
