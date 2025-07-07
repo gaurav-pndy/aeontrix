@@ -9,6 +9,7 @@ import CalEmbed from "../components/Home/CalEmbed";
 import ContactForm from "../components/Home/ContactForm";
 import Footer from "../components/Footer";
 import { useLocation } from "react-router";
+import BlogSection from "../components/Home/BlogSection";
 
 function HomePage() {
   const location = useLocation();
@@ -57,6 +58,7 @@ function HomePage() {
         <Benefits />
         <HumanAIComparison />
         <Timeline />
+        <BlogSection />
         <CalEmbed />
         <ContactForm />
         <Footer />

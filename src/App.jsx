@@ -8,6 +8,8 @@ import ConfirmToken from "./pages/ConfirmToken";
 import PrivacyPolicy from "./pages/PriPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import TermsOfService from "./pages/TermsOfService";
+import BlogsPage from "./pages/BlogsPage";
+import BlogDetails from "./pages/BlogDetails";
 
 function App() {
   useEffect(() => {
@@ -21,6 +23,14 @@ function App() {
         {
           path: "/",
           element: <HomePage />,
+        },
+        {
+          path: "/blogs",
+          element: <BlogsPage />,
+        },
+        {
+          path: "/blogs/:blogId",
+          element: <BlogDetails />,
         },
         {
           path: "/unsubscribe",

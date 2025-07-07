@@ -7,7 +7,7 @@ const ContactForm = () => {
     company: "",
     website: "",
     employees: "1-10",
-    interest: "Sales AI",
+    interest: "",
   });
 
   const handleChange = (e) =>
@@ -124,21 +124,14 @@ const ContactForm = () => {
             <label className="text-sm font-medium">
               Interested In <span className="text-[#00FF93]">*</span>
             </label>
-            <select
-              required
+            <input
+              type="text"
               name="interest"
+              placeholder="What are you looking for ?"
               value={formData.interest}
               onChange={handleChange}
-              className="mt-1 w-full px-4 py-2.5 bg-[#1c1f21] border border-[#00FF93]/30 rounded-lg focus:outline-none focus:border-[#00FF93] text-white"
-            >
-              <option>Sales AI Automation</option>
-              <option>Marketing AI Automation</option>
-              <option>Human Resources AI Automation</option>
-              <option>Customer Support AI Automation</option>
-              <option>Personal Assistant AI Automation</option>
-              <option>Consultation</option>
-              <option>AI Partner Program</option>
-            </select>
+              className="mt-1 w-full px-4 py-2 bg-[#1c1f21] border border-[#00FF93]/30 rounded-lg focus:outline-none focus:border-[#00FF93] text-white"
+            />
           </div>
 
           <button
