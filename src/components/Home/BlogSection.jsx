@@ -3,13 +3,13 @@ import { blogsData } from "../../data/blogsData";
 
 const BlogSection = () => {
   return (
-    <section className="py-20 relative z-10 px-6 md:px-10 lg:px-20  text-[#F8F9FB]">
+    <section className="py-20 relative z-10 px-4 max-w-7xl mx-auto  text-[#F8F9FB]">
       <div className="text-center mb-12">
         <h2 className="gradient-title font-bold">Latest from our Blog</h2>
       </div>
 
       {/* Blog Cards */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {blogsData.slice(0, 3).map((blog) => (
           <Link
             to={`/blogs/${blog.id}`}
