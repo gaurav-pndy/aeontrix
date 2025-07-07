@@ -45,7 +45,11 @@ const BlogsPage = () => {
   );
 
   const handleCategoryClick = (cat) => {
-    setSelectedCategory(cat);
+    if (cat === selectedCategory) {
+      setSelectedCategory("All");
+    } else {
+      setSelectedCategory(cat);
+    }
     setCurrentPage(1);
   };
 
