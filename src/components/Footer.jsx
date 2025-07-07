@@ -84,7 +84,7 @@ const Footer = () => {
             </li>
             <li>
               <a
-                href="http://cal.com/aeontrix-ai/ai-audit"
+                href="https://cal.com/aeontrix-ai/aeontrix-discovery"
                 target="_blank"
                 className="hover:text-[#00FF93] transition-colors duration-200"
               >

@@ -186,7 +186,7 @@ const Timeline = () => {
                     <div
                       className="absolute w-1 bg-gradient-to-b from-gray-600 left-2.5 md:left-[30px] via-gray-400 to-gray-600"
                       style={{
-                        top: `calc(${lineStartPosition}px - 20px)`,
+                        top: `calc(${lineStartPosition}px - 10px)`,
                         height: `${lineHeight}px`,
                       }}
                     />

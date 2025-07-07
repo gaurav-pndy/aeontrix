@@ -276,7 +276,7 @@ const HeroSection = () => {
                             You're already subscribed! If you're interested in
                             more automations,{" "}
                             <a
-                              href="http://cal.com/aeontrix-ai/ai-audit"
+                              href="https://cal.com/aeontrix-ai/aeontrix-discovery"
                               className="underline"
                               target="_blank"
                             >

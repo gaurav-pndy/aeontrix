@@ -20,7 +20,7 @@ const CalEmbed = () => {
 
         cal("inline", {
           elementOrSelector: "#cal-embed",
-          calLink: "aeontrix-ai/ai-audit",
+          calLink: "aeontrix-ai/aeontrix-discovery",
         });
 
         setCalLoaded(true);

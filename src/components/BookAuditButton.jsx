@@ -31,12 +31,15 @@ const BookAuditButton = ({
 
   return (
     <button
-      data-cal-link="aeontrix-ai/ai-audit"
+      data-cal-link="aeontrix-ai/aeontrix-discovery"
       data-cal-config='{"layout":"month_view","theme":"dark"}'
       onClick={() => {
         if (!calLoaded) {
           console.warn("Cal.com not loaded, opening fallback link");
-          window.open("https://cal.com/aeontrix-ai/ai-audit", "_blank");
+          window.open(
+            "https://cal.com/aeontrix-ai/aeontrix-discovery",
+            "_blank"
+          );
         }
       }}
       className={`glow-button group bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-4 rounded-full font-bold transition-all duration-300 hover:scale-105 relative overflow-hidden flex items-center justify-center ${className}`}
