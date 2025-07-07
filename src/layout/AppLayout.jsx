@@ -103,7 +103,7 @@ function AppLayout() {
     });
   }, []);
   return (
-    <div className="min-h-screen bg-[#060606] relative overflow-hidden">
+    <div className="min-h-screen wrapper bg-[#060606] relative overflow-hidden">
       <div className="absolute inset-0 grid-background">
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div className="glow-background"></div>
