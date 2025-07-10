@@ -17,6 +17,37 @@ const Navbar = () => {
     window.scrollTo({ top: y, behavior: "smooth" });
   };
 
+  const solutions = [
+    {
+      id: "ai-sales-assistant",
+      title: "AI Sales Assistant",
+    },
+    {
+      id: "ai-influencer",
+      title: "AI Influencer",
+    },
+    {
+      id: "ai-marketing-suite",
+      title: "AI Marketing Suite",
+    },
+    {
+      id: "ai-clone",
+      title: "AI Clone",
+    },
+    {
+      id: "ai-customer-support",
+      title: "AI Customer Support",
+    },
+    {
+      id: "ai-business-partner",
+      title: "AI Business Partner",
+    },
+  ];
+
+  const goToPage = (pageId) => {
+    navigate(`${pageId}`);
+    setMobileMenuOpen(false);
+  };
   const handleClick = (targetId) => {
     if (location.pathname === "/") {
       const el = document.getElementById(targetId);
@@ -52,7 +83,7 @@ const Navbar = () => {
             onMouseLeave={() => setDropdownOpen(false)}
             className="relative flex items-center h-full"
           >
-            <div className="flex items-center gap-1 cursor-pointer">
+            <div className="flex hover:text-[#00FF93] transition-all duration-200 items-center gap-1 cursor-pointer">
               Solutions <ChevronDown size={16} />
             </div>
             <AnimatePresence>
@@ -64,20 +95,12 @@ const Navbar = () => {
                   transition={{ type: "tween", duration: 0.12 }}
                   className="absolute top-full mt-1 left-[50%] translate-x-[-50%] bg-[#0F1114] border border-white/10 rounded-lg shadow-[#00FF93]/10 shadow  w-56 z-50"
                 >
-                  {[
-                    "AI Sales Assistant",
-                    "AI Influencer",
-                    "AI Marketing Suite",
-                    "Your AI Clone",
-                    "AI Customer Support",
-                    "AI Business Partner",
-                  ].map((item) => (
-                    <button
-                      key={item}
-                      className="w-full text-left px-4 py-3 hover:bg-[#1A1D21] text-white"
-                    >
-                      {item}
-                    </button>
+                  {solutions.map((item) => (
+                    <Link to={`/solutions/${item.id}`} key={item.id}>
+                      <button className="w-full text-left px-4 py-3 hover:bg-[#1A1D21] text-white">
+                        {item.title}
+                      </button>
+                    </Link>
                   ))}
                 </motion.div>
               )}
@@ -90,7 +113,7 @@ const Navbar = () => {
             onMouseLeave={() => setDropdownOpen2(false)}
             className="relative flex items-center h-full"
           >
-            <div className="flex items-center gap-1 cursor-pointer">
+            <div className="flex items-center hover:text-[#00FF93] transition-all duration-200 gap-1 cursor-pointer">
               Use Cases <ChevronDown size={16} />
             </div>
             <AnimatePresence>
@@ -113,7 +136,7 @@ const Navbar = () => {
                   ].map((item) => (
                     <button
                       key={item}
-                      className="w-full text-left px-4 py-3 hover:bg-[#1A1D21] text-white"
+                      className="w-full text-left px-4 py-3 hover:bg-[#1A1D21] text-white hover:text-[#00FF93] transition-all duration-200"
                     >
                       {item}
                     </button>
@@ -123,9 +146,24 @@ const Navbar = () => {
             </AnimatePresence>
           </div>
 
-          <Link to="/blogs">Blogs</Link>
-          <button onClick={() => handleClick("pricing")}>Pricing</button>
-          <button onClick={() => handleClick("Contact")}>Contact</button>
+          <Link
+            className="hover:text-[#00FF93] transition-all duration-200"
+            to="/blogs"
+          >
+            Blogs
+          </Link>
+          <button
+            className="hover:text-[#00FF93] transition-all duration-200 cursor-pointer"
+            onClick={() => handleClick("pricing")}
+          >
+            Pricing
+          </button>
+          <button
+            className="hover:text-[#00FF93] transition-all duration-200 cursor-pointer"
+            onClick={() => handleClick("Contact")}
+          >
+            Contact
+          </button>
         </div>
 
         {/* Mobile Menu Icon */}
@@ -160,7 +198,7 @@ const Navbar = () => {
               }}
               className="relative flex gap-2 flex-col items-center h-full"
             >
-              <div className="flex items-center gap-1 cursor-pointer">
+              <div className="flex  items-center gap-1 cursor-pointer">
                 Solutions <ChevronDown size={16} />
               </div>
               <AnimatePresence>
@@ -172,19 +210,12 @@ const Navbar = () => {
                     transition={{ duration: 0.2 }}
                     className="w-full bg-[#111111] py-1 text-sm overflow-hidden"
                   >
-                    {[
-                      "AI Sales Assistant",
-                      "AI Influencer",
-                      "AI Marketing Suite",
-                      "Your AI Clone",
-                      "AI Customer Support",
-                      "AI Business Partner",
-                    ].map((item) => (
+                    {solutions.map((item) => (
                       <button
-                        key={item}
-                        className="w-full text-center px-4 py-3 hover:bg-[#1A1D21] text-white"
+                        onClick={() => goToPage(`/solutions/${item.id}`)}
+                        className="w-full  px-4 py-3 hover:bg-[#1A1D21] text-white"
                       >
-                        {item}
+                        {item.title}
                       </button>
                     ))}
                   </motion.div>

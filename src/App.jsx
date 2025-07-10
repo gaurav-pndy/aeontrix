@@ -10,6 +10,7 @@ import RefundPolicy from "./pages/RefundPolicy";
 import TermsOfService from "./pages/TermsOfService";
 import BlogsPage from "./pages/BlogsPage";
 import BlogDetails from "./pages/BlogDetails";
+import Solutions from "./pages/Solutions";
 
 function App() {
   useEffect(() => {
@@ -39,6 +40,10 @@ function App() {
         {
           path: "/newsletter/confirm",
           element: <ConfirmToken />,
+        },
+        {
+          path: "/solutions/:solutionId",
+          element: <Solutions />,
         },
         {
           path: "/privacy-policy",
