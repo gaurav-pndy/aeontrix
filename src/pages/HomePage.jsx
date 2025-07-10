@@ -13,6 +13,10 @@ import BlogSection from "../components/Home/BlogSection";
 
 function HomePage() {
   const location = useLocation();
+  const scrollWithOffset = (el, offset = 100) => {
+    const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
 
   useEffect(() => {
     const targetId = location.state?.scrollTo;

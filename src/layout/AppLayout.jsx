@@ -112,7 +112,9 @@ function AppLayout() {
         <div id="gridOverlay" className="grid-overlay"></div>
       </div>
       <Navbar />
-      <Outlet />
+      <div className="mt-26">
+        <Outlet />
+      </div>
     </div>
   );
 }
