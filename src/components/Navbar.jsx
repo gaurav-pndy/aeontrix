@@ -97,7 +97,7 @@ const Navbar = () => {
                 >
                   {solutions.map((item) => (
                     <Link to={`/solutions/${item.id}`} key={item.id}>
-                      <button className="w-full text-left px-4 py-3 hover:bg-[#1A1D21] text-white">
+                      <button className="w-full text-left px-4 py-3 hover:text-[#00FF93] transition-all duration-200 hover:bg-[#1A1D21] text-white">
                         {item.title}
                       </button>
                     </Link>
