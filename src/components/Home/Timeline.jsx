@@ -93,58 +93,6 @@ const Timeline = () => {
     return () => clearTimeout(timer);
   }, []);
 
-  const handleScroll = () => {
-    const container = timelineRef.current;
-    if (!container) return;
-
-    const scrollTop = container.scrollTop;
-    const scrollHeight = container.scrollHeight - container.clientHeight;
-    const scrolled = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
-    setScrollPercent(Math.min(scrolled, 100)); // Cap at 100%
-
-    const containerRect = container.getBoundingClientRect();
-    const containerTop = containerRect.top;
-    const gradientLinePosition =
-      containerTop + (Math.min(scrolled, 100) / 100) * containerRect.height;
-
-    // Check visibility for sections
-    const newVisibleSections = new Set([0]); // Always keep first section visible
-    sectionRefs.current.forEach((ref, index) => {
-      if (ref && index > 0) {
-        // Skip first section as it's always visible
-        const dotElement = ref.querySelector("[data-dot]");
-        if (dotElement) {
-          const dotRect = dotElement.getBoundingClientRect();
-          const dotCenter = dotRect.top + dotRect.height / 2;
-
-          if (gradientLinePosition >= dotCenter - 50) {
-            newVisibleSections.add(index);
-          }
-        }
-      }
-    });
-    setVisibleSections(newVisibleSections);
-
-    // Check visibility for events
-    const newVisibleEvents = new Set();
-    eventRefs.current.forEach((ref, index) => {
-      if (ref) {
-        const rect = ref.getBoundingClientRect();
-        const eventTop = rect.top;
-
-        if (gradientLinePosition >= eventTop) {
-          newVisibleEvents.add(index);
-        }
-      }
-    });
-    setVisibleEvents(newVisibleEvents);
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(handleScroll, 100);
-    return () => clearTimeout(timer);
-  }, []);
-
   return (
     <section className="relative z-10 max-w-6xl mx-auto px-4    text-seasalt mt-10">
       <div className="flex flex-col items-center justify-center max-w-5xl mx-auto w-full   p-4 md:py-8  relative  md:pb-0 ">
@@ -154,12 +102,11 @@ const Timeline = () => {
         </h2>
         <div
           ref={timelineRef}
-          onScroll={handleScroll}
-          className="timeline-container  relative w-full max-w-4xl h-[80vh] overflow-y-auto pt-4 rounded-3xl"
+          className="timeline-container  relative w-full max-w-4xl  overflow-y-auto pt-4 rounded-3xl"
         >
-          <div className="relative w-full flex">
+          <div className="relative w-full h-fit flex">
             {/* Timeline Line Section */}
-            <div className="relative hidden md:block md:w-12 flex-shrink-0">
+            <div className="relative hidden  md:block md:w-12 flex-shrink-0">
               {/* Reduced top spacer */}
               <div className="h-5" />
 
@@ -193,7 +140,7 @@ const Timeline = () => {
                   <>
                     {/* Base timeline line - starts below first dot, ends at last dot */}
                     <div
-                      className="absolute w-1 bg-gradient-to-b from-gray-600 left-2.5 md:left-[30px] via-gray-400 to-gray-600"
+                      className="absolute w-1 bg-gradient-to-b from-green-600 left-2.5 md:left-[30px] via-green-400 to-green-600"
                       style={{
                         top: `calc(${lineStartPosition}px - 10px)`,
                         height: `${lineHeight}px`,
@@ -241,11 +188,7 @@ const Timeline = () => {
                   >
                     <div
                       data-dot
-                      className={`timeline-dot absolute w-3 md:w-5 h-3 md:h-5 rounded-full border-2 border-white transition-all duration-500 left-3 md:left-[32px] ${
-                        visibleSections.has(sectionIndex)
-                          ? "bg-[#07cc7a] active"
-                          : "bg-gray-600"
-                      }`}
+                      className={`timeline-dot absolute w-3 md:w-5 h-3 md:h-5 rounded-full border-2 border-white transition-all duration-500 left-3 md:left-[32px] bg-[#07cc7a] `}
                       style={{
                         transform: "translateX(-50%)",
                         zIndex: 10,
@@ -254,14 +197,15 @@ const Timeline = () => {
                   </div>
 
                   {/* Spacer for events */}
-                  <div
-                    style={{ height: `${section.process.length * 100}px` }}
-                  />
+                  {sectionIndex !== 2 && (
+                    <div
+                      style={{ height: `${section.process.length * 100}px` }}
+                    />
+                  )}
                 </div>
               ))}
 
               {/* Reduced bottom spacer */}
-              <div className="h-20" />
             </div>
 
             {/* Content Section */}
@@ -270,7 +214,6 @@ const Timeline = () => {
               <div className="h-5" />
 
               {eventsData.map((section, sectionIndex) => {
-                const isVisible = visibleSections.has(sectionIndex);
                 return (
                   <div
                     key={sectionIndex}
@@ -281,19 +224,14 @@ const Timeline = () => {
                     <div
                       className={`content-box  rounded-2xl p-4 md:p-8 ${
                         sectionIndex === 2 ? "mb-0" : "mb-10"
-                      } max-w-3xl transition-all duration-700 ease-out ${
-                        visibleSections.has(sectionIndex)
-                          ? "visible opacity-100 translate-y-0"
-                          : "opacity-30 translate-y-3"
-                      }`}
+                      } max-w-3xl transition-all duration-700 ease-out `}
                     >
                       {/* Section Title */}
                       <h2
-                        className={`text-xl font-bold tracking-wide mb-3 pb-3 transition-all duration-500 ${
-                          visibleSections.has(sectionIndex)
-                            ? "text-seasalt border-b-2 border-white"
-                            : "text-gray-400 border-b border-gray-700"
-                        }`}
+                        className={`text-xl font-bold tracking-wide mb-3 pb-3 transition-all duration-500 
+                       
+                            text-seasalt border-b-2 border-white
+                    `}
                       >
                         {section.phase}
                       </h2>
@@ -308,9 +246,7 @@ const Timeline = () => {
                       <ul className="list-inside list-disc space-y-1">
                         {section.process.map((step, idx) => (
                           <li
-                            className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 ${
-                              isVisible ? "text-[#F8F9FB]/70" : "text-gray-500"
-                            }`}
+                            className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 text-[#F8F9FB]/70`}
                             key={idx}
                             dangerouslySetInnerHTML={{ __html: step }}
                           ></li>
@@ -325,11 +261,7 @@ const Timeline = () => {
                           <ul className="list-inside list-disc space-y-1">
                             {section.whatYouGet.content.map((step, idx) => (
                               <li
-                                className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 ${
-                                  isVisible
-                                    ? "text-[#F8F9FB]/70"
-                                    : "text-gray-500"
-                                }`}
+                                className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 text-[#F8F9FB]/70`}
                                 key={idx}
                                 dangerouslySetInnerHTML={{ __html: step }}
                               ></li>
