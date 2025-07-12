@@ -20,11 +20,15 @@ import {
   FaRegClone,
   FaRobot,
   FaShoppingCart,
+  FaSlack,
   FaStore,
   FaTools,
   FaUserShield,
 } from "react-icons/fa";
 import {
+  FaBrain,
+  FaCalendar,
+  FaClock,
   FaDatabase,
   FaPhone,
   FaRegClock,
@@ -62,104 +66,123 @@ import { PiPhonePlusFill } from "react-icons/pi";
 import { IoBookmarks, IoLanguage } from "react-icons/io5";
 import { GrCloudSoftware } from "react-icons/gr";
 import { GoLaw } from "react-icons/go";
+import { BsBuildings } from "react-icons/bs";
+import { TiSocialAtCircular } from "react-icons/ti";
 
 export const solutionsData = [
   {
-    id: "ai-sales-assistant",
-    title: "AI Sales Assistant",
+    id: "ai-sales-suite",
+    title: "AI Sales Suite",
     heading: "Turn Conversations into Customers — on Autopilot",
     desc: "Supercharge your outreach with AI voice callers, SMS, cold emails, and WhatsApp campaigns.",
+    heroBtn: "Book a Call",
     overviewDesc:
       "Manual prospecting is outdated. Your AI Sales Assistant handles cold outreach and follow-ups — intelligently, consistently, and at scale.",
+    useCases: [
+      {
+        icon: LuBuilding2,
+        title: "Real Estate",
+        desc: "Use AI to manage multi-channel outreach, follow up with property inquiries, and auto-book showings.",
+      },
+      {
+        icon: FaRobot,
+        title: "Insurance",
+        desc: "Use AI to manage multi-channel outreach, including follow up. Streamline client onboarding.",
+      },
+      {
+        icon: GoLaw,
+        title: "Law Firms",
+        desc: "Automate onboarding, Qualify leads and Book consultations with AI Voice Caller.",
+      },
+      {
+        icon: MdSportsSoccer,
+        title: "Coaches and Consultants",
+        desc: "Let AI handle discovery calls, follow-ups, and onboarding sequences.",
+      },
+      {
+        icon: LuBuilding2,
+        title: "Marketing and Creative Agencies",
+        desc: "Use AI to generate consistent pipeline with outbound multi-channel outreach.",
+      },
+      {
+        icon: BsBuildings,
+        title: "SMBs (e.g., Medspas, Dentists, Gyms, Restaurants) ",
+        desc: "Reactivate past clients, Book Appointments, with reminder, rescheduling and cancellation options available.",
+      },
+      {
+        icon: FaStore,
+        title: "E-commerce",
+        desc: "Recover abandoned carts with personalized outreach via SMS, Calls, Email, and WhatsApp.",
+      },
+    ],
+    featuresGrid: "lg:grid-cols-3",
     coreFeatures: [
       {
         icon: FaPhone,
-        title: "Voice Cold Caller (AI makes real-time outbound calls)",
+        title: "AI Cold Caller – Real-time conversations with leads",
       },
       {
         icon: FaRegMessage,
-        title: "SMS Marketing",
+        title: "SMS + Email + WhatsApp Campaigns",
       },
-      {
-        icon: FaUsers,
-        title: "Cold DMs - Social Media",
-      },
-      {
-        icon: IoMdMail,
-        title: "Cold Email Campaigns",
-      },
-      {
-        icon: FaWhatsapp,
-        title: "WhatsApp Messaging",
-      },
+
       {
         icon: FaDatabase,
-        title: "Database Reactivation",
+        title: "Leads Database Reactivation + Follow-Up Flows",
       },
-      {
-        icon: RiChatFollowUpLine,
-        title: "Smart Follow-Up Sequences",
-      },
-      {
-        icon: FaShoppingCart,
-        title: "Abandoned Cart Retrieval – Call, E-mail, SMS, WhatsApp",
-      },
+
       {
         icon: CgTranscript,
-        title: "Meeting Transcripts & Summaries",
+        title: "Meeting Transcripts and Smart Summaries",
       },
       {
         icon: FaUsersBetweenLines,
-        title: "Automated Onboarding",
+        title: "Automated Client Onboarding",
       },
+
       {
-        icon: FaChartLine,
-        title: "Increase Conversions Without Increasing Headcount",
-      },
-      {
-        icon: FaRegClock,
-        title: "Operates 24/7",
+        icon: SiGitconnected,
+        title: "CRM Integration for all of the above",
       },
       {
         icon: TbMessageUser,
         title: "Personalized Messaging at Scale",
       },
       {
-        icon: SiGitconnected,
-        title: "Integrates with your CRM",
-      },
-      {
         icon: LuMessagesSquare,
-        title:
-          "Multichannel Outreach (You choose the channels you want to integrate)",
+        title: "Multichannel Outreach",
+      },
+      {
+        icon: FaRegClock,
+        title: "Works 24/7, never misses a follow-up",
       },
     ],
-    whoItsFor: [
-      {
-        icon: MdOutlineAttachMoney,
-        title: "Sales Teams",
-      },
-      {
-        icon: RiFileAddLine,
+    // whoItsFor: [
+    //   {
+    //     icon: MdOutlineAttachMoney,
+    //     title: "Sales Teams",
+    //   },
+    //   {
+    //     icon: RiFileAddLine,
 
-        title: "Lead Generation Agencies",
-      },
-      {
-        icon: LuBuilding2,
+    //     title: "Lead Generation Agencies",
+    //   },
+    //   {
+    //     icon: LuBuilding2,
 
-        title: "Real Estate Agents",
-      },
-      {
-        icon: FaUserTie,
+    //     title: "Real Estate Agents",
+    //   },
+    //   {
+    //     icon: FaUserTie,
 
-        title: "Insurance Brokers",
-      },
-      {
-        icon: FaUserShield,
+    //     title: "Insurance Brokers",
+    //   },
+    //   {
+    //     icon: FaUserShield,
 
-        title: "Consultants",
-      },
-    ],
+    //     title: "Consultants",
+    //   },
+    // ],
     howItWorks: [
       {
         step: "1",
@@ -182,68 +205,88 @@ export const solutionsData = [
     button2: "Book a Call",
   },
   {
-    id: "ai-influencer",
-    title: "AI Influencer",
-    heading: "Meet Your Brand’s AI Face",
-    desc: "Photorealistic AI models that promote your brand, showcase products, and create unlimited content.",
+    id: "ai-influencer-studio",
+    title: "AI Influencer Studio",
+    heading: "Create Your Brand’s AI Influencer in Minutes",
+    desc: "From product modeling to reels, create unlimited marketing content with your virtual model.",
+    heroBtn: "Create Your AI Influencer Now",
     overviewDesc:
       "No more scheduling photoshoots or hiring influencers. Create a hyper-realistic AI model to represent your brand across platforms.",
+    useCases: [
+      {
+        icon: FaStore,
+        title: "E-commerce ",
+        desc: "Showcase products using AI models in photos and videos for ads or organic content.",
+      },
+      {
+        icon: MdSportsSoccer,
+        title: "Coaches and Consultants",
+        desc: "Build your personal brand with an AI face that matches your vibe.",
+      },
+      {
+        icon: LuBuilding2,
+        title: "Marketing and Creative Agencies ",
+        desc: "Partner with us and sell influencer content to your clients.",
+      },
+      {
+        icon: BsBuildings,
+        title: "SMBs (e.g., Salons, Fashion Boutiques, Medspas) ",
+        desc: "Run ads and promote products without needing models or studios.",
+      },
+    ],
+    featuresGrid: "lg:grid-cols-4",
     coreFeatures: [
       {
-        icon: FaUser,
-        title: "Virtual Influencer Model (Customizable Appearance)",
-      },
-      {
-        icon: IoMdPhotos,
-        title: "Photos Modelling",
-      },
-      {
-        icon: TfiVideoClapper,
-        title: "Reels & Short Videos",
-      },
-      {
-        icon: MdRecordVoiceOver,
-        title: "AI Voice for Narration",
-      },
-      {
-        icon: RiUserHeartLine,
-        title: "Influencer Social Media",
-      },
-      {
-        icon: MdOutlineAttachMoney,
-        title: "Save 90% on production costs",
-      },
-      {
-        icon: TbSocial,
-        title: "Post consistently across channels",
-      },
-      {
-        icon: MdOutlineCampaign,
-        title: "Use one model across all campaigns",
+        icon: FaRobot,
+        title: "AI-Generated Influencer Models",
       },
       {
         icon: MdDashboardCustomize,
-        title: "Tailor appearance, voice, and tone to your brand",
+        title: "Customizable Appearance",
+      },
+      {
+        icon: FaPhotoVideo,
+        title: "Social Media Photo and Video Content",
+      },
+      {
+        icon: TfiVideoClapper,
+        title: "Branded Reels and Shorts",
+      },
+      {
+        icon: MdRecordVoiceOver,
+        title: "Voice Narration with Custom AI Voice",
+      },
+      {
+        icon: RiUserHeartLine,
+        title: "Ad-Ready Visuals",
+      },
+      {
+        icon: MdOutlineAttachMoney,
+        title: "Save Money on Production Costs",
+      },
+      {
+        icon: FaBrain,
+        title: "Your Imagination is the Limit",
       },
     ],
-    whoItsFor: [
-      {
-        icon: FaStore,
-        title: "E-commerce Brands",
-      },
-      {
-        icon: FaShirt,
-        title: "Fashion & Beauty Companies",
-      },
-      {
-        icon: FaUserTie,
-        title: "Digital Agencies",
-      },
-      {
-        icon: MdBusinessCenter,
-        title: "Businesses that want a Mascot for their Social Media",
-      },
-    ],
+    // whoItsFor: [
+    //   {
+    //     icon: FaStore,
+    //     title: "E-commerce Brands",
+    //   },
+    //   {
+    //     icon: FaShirt,
+    //     title: "Fashion & Beauty Companies",
+    //   },
+    //   {
+    //     icon: FaUserTie,
+    //     title: "Digital Agencies",
+    //   },
+    //   {
+    //     icon: MdBusinessCenter,
+    //     title: "Businesses that want a Mascot for their Social Media",
+    //   },
+    // ],
     howItWorks: [
       {
         step: "1",
@@ -268,70 +311,118 @@ export const solutionsData = [
   {
     id: "ai-marketing-suite",
     title: "AI Marketing Suite",
-    heading: "Effortless Content. Explosive Reach.",
-    desc: "Automate your content generation and dominate every digital channel with AI-powered marketing tools.",
+    heading: "10x Your Content Production with AI",
+    desc: "Generate SEO blogs, image/video ads, and social content in minutes – all tailored to your audience.",
+    heroBtn: "Try the AI Marketing Suite",
     overviewDesc:
       "Forget writer’s block and costly creatives. The AI Marketing Suite creates blog posts, ad creatives, social media content, and more — in minutes.",
-    coreFeatures: [
+    useCases: [
       {
-        icon: MdArticle,
-        title: "SEO Blog/Article Generator",
-      },
-      {
-        icon: FaPhotoVideo,
-        title: "Ad Creative Generator (image/video)",
-      },
-      {
-        icon: FaHashtag,
-        title: "Instagram/Facebook Caption + Hashtag Generator",
-      },
-      {
-        icon: TfiVideoClapper,
-        title: "Reel Generator",
-      },
-      {
-        icon: FaLinkedinIn,
-        title: "LinkedIn Post Generator",
-      },
-      {
-        icon: FaChartLine,
-        title: "10x content output",
-      },
-      {
-        icon: MdRecordVoiceOver,
-        title: "Consistent brand voice",
-      },
-      {
-        icon: TbSeo,
-        title: "Fully SEO-optimized",
-      },
-      {
-        icon: MdDashboardCustomize,
-        title: "Customizable per audience & platform",
-      },
-    ],
-    whoItsFor: [
-      {
-        icon: FaUserTie,
-        title: "Marketers",
-      },
-      {
-        icon: TbSeo,
-        title: "SEO Agencies",
-      },
-      {
-        icon: FaUsers,
-        title: "Content Teams",
+        icon: FaStore,
+        title: "E-commerce",
+        desc: "Turn Product Data into SEO Articles, Stunning Ad Creatives, and Social Media Content.",
       },
       {
         icon: MdSportsSoccer,
-        title: "Coaches",
+        title: "Coaches and Consultants ",
+        desc: "Repurpose Long Form Content into multiple Instagram Reels, TikTokscarousels, lead magnets.",
       },
       {
-        icon: FaHospitalUser,
-        title: "Founders",
+        icon: LuBuilding2,
+        title: "Marketing and Creative Agencies ",
+        desc: "Offer fast-turnaround content for multiple clients.",
+      },
+      {
+        icon: LuBuilding2,
+        title: "Real Estate ",
+        desc: "AI-written local blogs, market reports, video listings.",
+      },
+      {
+        icon: FaRobot,
+        title: "Insurance",
+        desc: "Build authority through educational content and social ads.",
+      },
+      {
+        icon: BsBuildings,
+        title: "SMBs (e.g., Restaurants, Gyms, Medspas) ",
+        desc: "Boost visibility with automated blog and post generation.",
       },
     ],
+    featuresGrid: "lg:grid-cols-4",
+    coreFeatures: [
+      {
+        icon: MdArticle,
+        title: "SEO Optimized Blog/Article Generator",
+      },
+      {
+        icon: TiSocialAtCircular,
+        title:
+          "Connect Unlimited Social Media Accounts (Pricing differs based on number of accounts)",
+      },
+      {
+        icon: FaHashtag,
+        title: "Instagram, Facebook Image, Hashtag and Caption Creator",
+      },
+      {
+        icon: FaClock,
+        title:
+          "Schedule and Post Content to Instagram, Facebook, YouTube, X, LinkedIn, TikTok",
+      },
+      {
+        icon: FaLinkedinIn,
+        title: "LinkedIn, Twitter Content Creator",
+      },
+      {
+        icon: FaPhotoVideo,
+        title: "Ads Creatives Generator - Image and Video",
+      },
+      {
+        icon: LuMessagesSquare,
+        title: "Automate DMs",
+      },
+      {
+        icon: FaChartLine,
+        title: "View Analytics in the Same Place",
+      },
+      {
+        icon: FaRobot,
+        title: "Repurpose Content Across Platforms",
+      },
+      {
+        icon: IoLanguage,
+        title: "Multilingual Content Creation",
+      },
+      {
+        icon: FaUser,
+        title: "Consistent with Brand Image and Voice",
+      },
+      {
+        icon: LuBuilding2,
+        title: "White Label Option for Agencies",
+      },
+    ],
+    // whoItsFor: [
+    //   {
+    //     icon: FaUserTie,
+    //     title: "Marketers",
+    //   },
+    //   {
+    //     icon: TbSeo,
+    //     title: "SEO Agencies",
+    //   },
+    //   {
+    //     icon: FaUsers,
+    //     title: "Content Teams",
+    //   },
+    //   {
+    //     icon: MdSportsSoccer,
+    //     title: "Coaches",
+    //   },
+    //   {
+    //     icon: FaHospitalUser,
+    //     title: "Founders",
+    //   },
+    // ],
     howItWorks: [
       {
         step: "1",
@@ -351,62 +442,102 @@ export const solutionsData = [
     id: "ai-clone",
     title: "Your AI Clone",
     heading: "Let People Talk to You — Even When You’re Asleep",
-    desc: "Clone your voice, face, and brain to automate consultations, support, and content.",
+    desc: "Clone your Voice, Face, and Brain to Automate Calls, Support, and Content.",
+    heroBtn: "Create Your AI Clone Now",
     overviewDesc:
       "Imagine a digital version of yourself that can speak, advise, sell, and support. From voice calls to video, your AI Clone handles it all.",
-    coreFeatures: [
+    useCases: [
+      {
+        icon: MdSportsSoccer,
+        title: "Coaches and Consultants",
+        desc: "Let your AI version answer questions, sell programs, or guide users 24/7.",
+      },
+      {
+        icon: GoLaw,
+        title: "Law Firms",
+        desc: "AI clone of an attorney to handle client FAQs.",
+      },
+      {
+        icon: LuBuilding2,
+        title: "Real Estate",
+        desc: "AI agent assistant to handle property queries.",
+      },
       {
         icon: FaRobot,
-        title: "Chatbot trained on your knowledge",
-      },
-      {
-        icon: FaRegClone,
-        title: "Video Clone (you speaking a script)",
-      },
-      {
-        icon: FaPhone,
-        title: "Voice Clone for phone calls",
+        title: "Marketing and Creative Agencies ",
+        desc: "Founder clones to scale personal brand presence.",
       },
       {
         icon: FaUser,
-        title: "Personal branding AI",
+        title: "Insurance",
+        desc: "Educate clients and onboard them with a digital version of your top rep.",
       },
       {
-        icon: FaUsers,
-        title:
-          "Allow all your students to speak to your knowledge at the same time",
-      },
-      {
-        icon: FaUserTie,
-        title: "Preserve your personality and expertise",
-      },
-      {
-        icon: MdOutlineAttachMoney,
-        title: "Monetize your knowledge 24/7",
+        icon: BsBuildings,
+        title: "SMBs (e.g., Medspas, Dental Clinics) ",
+        desc: "AI receptionist with your personality.",
       },
     ],
-    whoItsFor: [
+    featuresGrid: "lg:grid-cols-4",
+    coreFeatures: [
       {
-        icon: MdSportsSoccer,
-        title: "Coaches",
-      },
-      {
-        icon: FaUserShield,
-        title: "Consultants",
-      },
-      {
-        icon: RiUserHeartLine,
-        title: "Influencers",
-      },
-      {
-        icon: FaUserTie,
-        title: "CEOs",
+        icon: FaRobot,
+        title: "AI Chatbot with Your Knowledge",
       },
       {
         icon: RiCustomerServiceFill,
-        title: "Customer Support Professionals",
+        title: "Can be integrated into Website for Customer Support",
+      },
+      {
+        icon: FaUser,
+        title: "AI Internal Knowledge Base Chatbot",
+      },
+      {
+        icon: FaSlack,
+        title:
+          "Can be integrated into Slack, or any other Internal System you Use",
+      },
+      {
+        icon: FaRegClone,
+        title: "Video Clone for Social Media Content",
+      },
+      {
+        icon: FaPhone,
+        title: "Voice Clone for Phone Support",
+      },
+
+      {
+        icon: FaUsers,
+        title: "Train with Your Courses, FAQs, or Content",
+      },
+
+      {
+        icon: FaClock,
+        title: "Always Available, Always On-Brand",
       },
     ],
+    // whoItsFor: [
+    //   {
+    //     icon: MdSportsSoccer,
+    //     title: "Coaches",
+    //   },
+    //   {
+    //     icon: FaUserShield,
+    //     title: "Consultants",
+    //   },
+    //   {
+    //     icon: RiUserHeartLine,
+    //     title: "Influencers",
+    //   },
+    //   {
+    //     icon: FaUserTie,
+    //     title: "CEOs",
+    //   },
+    //   {
+    //     icon: RiCustomerServiceFill,
+    //     title: "Customer Support Professionals",
+    //   },
+    // ],
     howItWorks: [
       {
         step: "1",
@@ -426,73 +557,95 @@ export const solutionsData = [
     id: "ai-customer-support",
     title: "AI Customer Support",
     heading: "AI That Picks Up Every Call — Instantly",
-    desc: "Meet your multilingual voice support agent that works 24/7 without burnout.",
+    desc: "Never Miss a Lead, Booking, or Inquiry again, with Your Multilingual AI Voice Support Agent that works 24/7 without Burnout.",
+    heroBtn: "Deploy AI Support Now",
     overviewDesc:
       "No more missed calls or long hold times. Our AI handles inbound support calls, answers questions, and even books appointments.",
-    coreFeatures: [
+    useCases: [
       {
-        icon: PiPhonePlusFill,
-        title: "Multiple AI Inbound Voice Calls Simultaneously",
-      },
-      {
-        icon: IoLanguage,
-        title: "Multilingual Conversations",
-      },
-      {
-        icon: IoBookmarks,
-        title: "Real-Time Appointment Booking, Rescheduling & Cancelling",
-      },
-      {
-        icon: FaQuestion,
-        title: "FAQ & Knowledge Base Integration",
+        icon: GoLaw,
+        title: "Law Firms",
+        desc: "Manage Intake Calls, Multilingual Inquiries, After-Hours Responses.",
       },
       {
         icon: FaUser,
-        title: "Human Transfer if necessary",
-      },
-      {
-        icon: FaDatabase,
-        title: "Collect and Store Customer data in a CRM",
-      },
-      {
-        icon: FaRegClock,
-        title: "Serve customers 24/7",
-      },
-      {
-        icon: FaPhone,
-        title: "Handle multiple calls at once",
-      },
-      {
-        icon: RiUserHeartLine,
-        title: "Improve satisfaction",
-      },
-      {
-        icon: MdOutlineAttachMoney,
-        title: "Reduce support costs",
-      },
-    ],
-    whoItsFor: [
-      {
-        icon: FaUserDoctor,
-        title: "Healthcare",
+        title: "Insurance",
+        desc: "Handle Claim Inquiries, Quotes, and Appointment Bookings.",
       },
       {
         icon: LuBuilding2,
         title: "Real Estate",
+        desc: "Manage Listing Inquiries, Schedule Showings, and Call-Backs.",
       },
       {
-        icon: GrCloudSoftware,
-        title: "SaaS",
+        icon: FaStore,
+        title: "E-commerce",
+        desc: "Answer Order Related Questions and Product Queries 24/7.",
       },
       {
-        icon: GoLaw,
-        title: "Law Firms",
-      },
-      {
-        icon: FaUserTie,
-        title: "SMBs",
+        icon: BsBuildings,
+        title: "SMBs (e.g., Gyms, Medspas, Dental Clinics, Restaurants) ",
+        desc: "Bookings, service explanations, FAQs answered instantly.",
       },
     ],
+    featuresGrid: "lg:grid-cols-4",
+    coreFeatures: [
+      {
+        icon: FaRegClock,
+        title: "24/7 AI Voice Support Agent",
+      },
+      {
+        icon: FaPhone,
+        title: "Handles Multiple Calls Simultaneously",
+      },
+      {
+        icon: IoBookmarks,
+        title: "Appointment Booking System",
+      },
+      {
+        icon: FaCalendar,
+        title: "CRM and Calendar Integration",
+      },
+      {
+        icon: IoLanguage,
+        title: "Multilingual Support",
+      },
+      {
+        icon: FaDatabase,
+        title: "Can Collect Customer Data and Store it in CRM",
+      },
+      {
+        icon: RiCustomerServiceFill,
+        title:
+          "Can Raise Support Tickets for Customer Problems and Send Internal Notifications",
+      },
+      {
+        icon: FaQuestion,
+        title: "Trained on Your Business FAQs",
+      },
+    ],
+    // whoItsFor: [
+    //   {
+    //     icon: FaUserDoctor,
+    //     title: "Healthcare",
+    //   },
+    //   {
+    //     icon: LuBuilding2,
+    //     title: "Real Estate",
+    //   },
+    //   {
+    //     icon: GrCloudSoftware,
+    //     title: "SaaS",
+    //   },
+    //   {
+    //     icon: GoLaw,
+    //     title: "Law Firms",
+    //   },
+    //   {
+    //     icon: FaUserTie,
+    //     title: "SMBs",
+    //   },
+    // ],
     howItWorks: [
       {
         step: "1",
@@ -513,20 +666,26 @@ export const solutionsData = [
     title: "AI Business Partner",
     heading: "Your Own Dedicated AI Ops Team",
     desc: "One flat fee. Unlimited automations. All your AI needs handled for you.",
+    heroBtn: "Book a Call",
     overviewDesc:
       "An elite-level service for serious businesses. Get a dedicated AI specialist who automates your operations, trains your team, and maintains everything.",
+    featuresGrid: "lg:grid-cols-3",
     coreFeatures: [
       {
         icon: FaRobot,
-        title: "Dedicated AI Strategist",
+        title: "Access to all our AI Solutions",
       },
       {
         icon: TbAutomation,
-        title: "Unlimited Workflow Automations",
+        title: "Unlimited AI Automations",
       },
       {
-        icon: RiCustomerServiceFill,
-        title: "Personalized Support & Documentation",
+        icon: FaBrain,
+        title: "Dedicated AI Strategist",
+      },
+      {
+        icon: MdArticle,
+        title: "Full Documentation and SOPs",
       },
       {
         icon: FaUsers,
@@ -534,19 +693,7 @@ export const solutionsData = [
       },
       {
         icon: MdOutlineAttachMoney,
-        title: "Save thousands on operations",
-      },
-      {
-        icon: BarChart3,
-        title: "10x productivity",
-      },
-      {
-        icon: FaTools,
-        title: "Stay ahead with cutting-edge tools",
-      },
-      {
-        icon: IoIosSettings,
-        title: "Scalable, repeatable systems",
+        title: "Flat Monthly Rate — No Surprises",
       },
     ],
     whoItsFor: [

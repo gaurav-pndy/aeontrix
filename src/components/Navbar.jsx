@@ -19,12 +19,12 @@ const Navbar = () => {
 
   const solutions = [
     {
-      id: "ai-sales-assistant",
-      title: "AI Sales Assistant",
+      id: "ai-sales-suite",
+      title: "AI Sales Suite",
     },
     {
-      id: "ai-influencer",
-      title: "AI Influencer",
+      id: "ai-influencer-studio",
+      title: "AI Influencer Studio",
     },
     {
       id: "ai-marketing-suite",
@@ -84,7 +84,7 @@ const Navbar = () => {
             className="relative flex items-center h-full"
           >
             <div className="flex hover:text-[#00FF93] transition-all duration-200 items-center gap-1 cursor-pointer">
-              Solutions <ChevronDown size={16} />
+              Solutions with Use Cases <ChevronDown size={16} />
             </div>
             <AnimatePresence>
               {dropdownOpen && (
@@ -93,7 +93,7 @@ const Navbar = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ type: "tween", duration: 0.12 }}
-                  className="absolute top-full mt-1 left-[50%] translate-x-[-50%] bg-[#0F1114] border border-white/10 rounded-lg shadow-[#00FF93]/10 shadow  w-56 z-50"
+                  className="absolute overflow-hidden top-full mt-1 left-[50%] translate-x-[-50%] bg-[#0F1114] border border-white/10 rounded-lg shadow-[#00FF93]/10 shadow  w-56 z-50"
                 >
                   {solutions.map((item) => (
                     <Link to={`/solutions/${item.id}`} key={item.id}>
@@ -101,45 +101,6 @@ const Navbar = () => {
                         {item.title}
                       </button>
                     </Link>
-                  ))}
-                </motion.div>
-              )}
-            </AnimatePresence>
-          </div>
-
-          {/* Use Cases */}
-          <div
-            onMouseEnter={() => setDropdownOpen2(true)}
-            onMouseLeave={() => setDropdownOpen2(false)}
-            className="relative flex items-center h-full"
-          >
-            <div className="flex items-center hover:text-[#00FF93] transition-all duration-200 gap-1 cursor-pointer">
-              Use Cases <ChevronDown size={16} />
-            </div>
-            <AnimatePresence>
-              {dropdownOpen2 && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ type: "tween", duration: 0.12 }}
-                  className="absolute top-full mt-1 left-[50%] translate-x-[-50%] bg-[#0F1114] border border-white/10 rounded-lg shadow-[#00FF93]/10 shadow  w-56 z-50"
-                >
-                  {[
-                    "E-commerce",
-                    "Real Estate",
-                    "Insurance",
-                    "Law Firms",
-                    "Coaches & Consultants",
-                    "SaaS & Tech",
-                    "Agencies",
-                  ].map((item) => (
-                    <button
-                      key={item}
-                      className="w-full text-left px-4 py-3 hover:bg-[#1A1D21] text-white hover:text-[#00FF93] transition-all duration-200"
-                    >
-                      {item}
-                    </button>
                   ))}
                 </motion.div>
               )}
@@ -199,7 +160,7 @@ const Navbar = () => {
               className="relative flex gap-2 flex-col items-center h-full"
             >
               <div className="flex  items-center gap-1 cursor-pointer">
-                Solutions <ChevronDown size={16} />
+                Solutions with Use Cases <ChevronDown size={16} />
               </div>
               <AnimatePresence>
                 {dropdownOpen && (
@@ -216,47 +177,6 @@ const Navbar = () => {
                         className="w-full  px-4 py-3 hover:bg-[#1A1D21] text-white"
                       >
                         {item.title}
-                      </button>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            {/* Use Cases */}
-            <div
-              onClick={() => {
-                setDropdownOpen2(!dropdownOpen2);
-                setDropdownOpen(false);
-              }}
-              className="relative flex gap-2 flex-col items-center h-full"
-            >
-              <div className="flex items-center gap-1 cursor-pointer">
-                Use Cases <ChevronDown size={16} />
-              </div>
-              <AnimatePresence>
-                {dropdownOpen2 && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.2 }}
-                    className="w-full bg-[#111111] py-1 text-sm overflow-hidden"
-                  >
-                    {[
-                      "E-commerce",
-                      "Real Estate",
-                      "Insurance",
-                      "Law Firms",
-                      "Coaches & Consultants",
-                      "SaaS & Tech",
-                      "Agencies",
-                    ].map((item) => (
-                      <button
-                        key={item}
-                        className="w-full  px-4 py-3 hover:bg-[#1A1D21] text-white"
-                      >
-                        {item}
                       </button>
                     ))}
                   </motion.div>

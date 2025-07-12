@@ -3,29 +3,38 @@ import "./Timeline.css";
 
 const eventsData = [
   {
-    phase: "Phase 1: Exploration & Planning (AI Consultation)",
+    phase: "Phase 1: Discovery & AI Audit (Exploration & Planning)",
     duration: "1 week",
     process: [
-      "<b>Kick-off call:</b> We chat about your goals and pick a small, high-impact AI use case.",
-      "<b>Data check:</b> We look at your existing systems and data to see what’s ready.",
-      "<b>Quick prototype:</b> We build a basic demo so you can see AI in action.",
+      "Discovery Call to see <b>if we’ll be a good fit</b>",
+      "You pay a <b>refundable AI Audit fee</b>",
+      "We’ll have Stakeholder Interviews to understand your business inside-out",
+      "We analyse your processes for 2-3 days",
+      `AI Audit Presentation:
+      <ul class='list-disc ml-8 -space-y-6 -mt-6  -mb-6'>
+        <li>Opportunity Matrix</li>
+        <li>AI Transformation Plan</li>
+        <li>AI Implementation Roadmap</li>
+        <li>Actionable Steps</li>
+      </ul>`,
     ],
     whatYouGet: {
       heading: "What you get:",
       content: [
-        "A short list of top AI ideas for your business",
-        "A simple diagram showing how it all fits together",
-        "A clear quote and plan for the next steps",
+        "A List of High-Impact AI Opportunities",
+        "Clear AI Implementation Plan",
+        "Estimate of Costs",
       ],
     },
   },
   {
     phase: "Phase 2: Building, Testing & Launching",
-    duration: "1 - 2 weeks+ (depending on scope)",
+    duration: "More than a week (scope-dependent)",
     process: [
-      "<b>Development:</b> We build the full AI automation—integrating AI with your processes.",
-      "<b>Testing & Security:</b> We make sure everything works reliably and is locked down.",
-      "<b>Training:</b> We show your team how to use and maintain the new system (If required).",
+      "<b>Audit fee refunded</b> once you commit to the transformation journey",
+      "Development: We build and Integrate AI into Your Business",
+      "Testing & Security: Ensure Reliability, Security and Data Privacy",
+      "Training (if needed): We Upskill Your Team on Usage & Maintenance",
     ],
     whatYouGet: {
       heading: "What you get:",
@@ -33,18 +42,18 @@ const eventsData = [
         "A live, working AI solution in your environment",
         "Test reports and security checklist",
         "User guide/Documentation",
-        "Loom video explaining the workflow, & requesting feedback such as Edge Cases",
+        "Loom video walkthrough, with requests for feedback on edge cases",
       ],
     },
   },
   {
-    phase: "Phase 3: Optimizing & Scaling (for AI Partner clients)",
+    phase: "Phase 3: Optimizing & Scaling (AI Partner Program)",
     duration: "Ongoing",
     process: [
-      "<b>Performance checks:</b> We track results and tweak for better accuracy.",
-      "<b>New features:</b> We add more automations or AI models as you need them.",
-      "<b>Regular reviews:</b> We meet quarterly to review ROI and plan ahead.",
-      "<b>Priority support:</b> Fast responses and unlimited tweaks all year long.",
+      "<b>Performance checks:</b> Continuous Monitoring and Accuracy Tweaks",
+      "<b>New features:</b> Additional Automations or AI models as needed",
+      "<b>Quarterly Reviews:</b> ROI Analysis and Forward Planning",
+      "<b>Priority Support:</b> Fast Responses and Unlimited Tweaks",
     ],
   },
 ];
@@ -137,9 +146,9 @@ const Timeline = () => {
   }, []);
 
   return (
-    <section className="relative z-10 max-w-6xl mx-auto px-4 pb-24  min-h-screen text-seasalt mt-10">
-      <div className="flex flex-col items-center justify-center max-w-5xl mx-auto w-full  content-box border-glow-wrapper highlighted-box-timeline  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:py-8 shadow-2xl relative ">
-        <div className="border-glow"></div>
+    <section className="relative z-10 max-w-6xl mx-auto px-4    text-seasalt mt-10">
+      <div className="flex flex-col items-center justify-center max-w-5xl mx-auto w-full   p-4 md:py-8  relative  md:pb-0 ">
+        {/* <div className="border-glow"></div> */}
         <h2 className="gradient-title font-bold text-center !my-4">
           AI Implementation Roadmap
         </h2>
@@ -223,7 +232,7 @@ const Timeline = () => {
                 <div
                   key={sectionIndex}
                   className={`${
-                    sectionIndex === 0 ? "mt-0" : "mt-25"
+                    sectionIndex === 0 ? "mt-0" : "mt-10"
                   } relative`}
                 >
                   <div
@@ -265,12 +274,14 @@ const Timeline = () => {
                 return (
                   <div
                     key={sectionIndex}
-                    className={`${
+                    className={` ${
                       sectionIndex === 0 ? "mt-0" : "mt-20"
                     } relative`}
                   >
                     <div
-                      className={`content-box  rounded-2xl p-4 md:p-8 mb-10 max-w-3xl transition-all duration-700 ease-out ${
+                      className={`content-box  rounded-2xl p-4 md:p-8 ${
+                        sectionIndex === 2 ? "mb-0" : "mb-10"
+                      } max-w-3xl transition-all duration-700 ease-out ${
                         visibleSections.has(sectionIndex)
                           ? "visible opacity-100 translate-y-0"
                           : "opacity-30 translate-y-3"
@@ -294,7 +305,7 @@ const Timeline = () => {
                         {section.duration}
                       </h4>
 
-                      <ul className="list-inside list-disc space-y-2">
+                      <ul className="list-inside list-disc space-y-1">
                         {section.process.map((step, idx) => (
                           <li
                             className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 ${
@@ -311,7 +322,7 @@ const Timeline = () => {
                           <h6 className=" font-semibold mb-2">
                             {section.whatYouGet.heading}
                           </h6>
-                          <ul className="list-inside list-disc space-y-2">
+                          <ul className="list-inside list-disc space-y-1">
                             {section.whatYouGet.content.map((step, idx) => (
                               <li
                                 className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 ${

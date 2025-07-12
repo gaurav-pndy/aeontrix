@@ -5,6 +5,7 @@ import { solutionsData } from "../data/solutionsData";
 import BookAuditButton from "../components/BookAuditButton";
 import { FaCalendarAlt } from "react-icons/fa";
 import { MdOutlineAttachMoney } from "react-icons/md";
+import Timeline from "../components/Home/Timeline";
 
 const Solutions = () => {
   const { solutionId } = useParams();
@@ -31,12 +32,58 @@ const Solutions = () => {
             {solution.desc}
           </p>
           <div className="flex w-full justify-center">
-            <BookAuditButton label="Book a Call" className="!text-lg !py-2.5" />
+            <BookAuditButton
+              label={solution.heroBtn}
+              className="!text-lg !py-2.5"
+            />
           </div>
         </div>
       </section>
 
-      {/* Core Features */}
+      <section className="pb-20 text-seasalt">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold gradient-title !mb-4">
+              {solution.useCases ? "Use Cases" : "Who It's For"}
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {solution.useCases &&
+              solution.useCases.map((use, index) => (
+                <div
+                  key={index}
+                  className="bg-purple-50  border border-purple-100 hover:bg-purple-100 transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
+                >
+                  <div className="border-glow"></div>
+                  <div className="flex gap-4 items-center mb-4">
+                    <div className="w-12 shrink-0 h-12 p-1  flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
+                      <use.icon className="w-6 shrink-0 h-6 text-[#00FF93]" />
+                    </div>
+                    <h3 className="text-xl font-semibold ">{use.title}</h3>
+                  </div>
+                  <p className="text-[#F8F9FB]/80">{use.desc}</p>
+                </div>
+              ))}
+            {solution.whoItsFor &&
+              solution.whoItsFor.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-purple-50  border border-purple-100 hover:bg-purple-100 transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
+                >
+                  <div className="border-glow"></div>
+                  <div className="flex gap-4 items-center mb-4">
+                    <div className="w-12 h-12 p-1 shrink-0 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
+                      <item.icon className="w-6 h-6 shrink-0 text-[#00FF93]" />
+                    </div>
+                    <h3 className="text-xl  ">{item.title}</h3>
+                  </div>
+                </div>
+              ))}
+          </div>
+        </div>
+      </section>
+
       <section className="pb-20 ">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -48,52 +95,27 @@ const Solutions = () => {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className={`grid md:grid-cols-2 ${solution.featuresGrid} gap-8`}>
             {solution.coreFeatures.map((feature, index) => (
               <div
                 key={index}
                 className="bg-purple-50  border border-purple-100 hover:bg-purple-100 transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
               >
                 <div className="border-glow"></div>
-                <div className="w-12 h-12 p-1 mb-4 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
-                  <feature.icon className="w-6 h-6 text-[#00FF93]" />
+                <div className="flex gap-4 items-start mb-4">
+                  <div className="w-10 h-10 p-1 shrink-0 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
+                    <feature.icon className="w-6 h-6 shrink-0 text-[#00FF93]" />
+                  </div>
+                  <h3 className="text-xl  ">{feature.title}</h3>
                 </div>
-                <h3 className="text-xl  ">{feature.title}</h3>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
-              Key Benefits
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {benefits.map((benefit, index) => (
-              <div
-                key={index}
-                className="bg-white p-8 rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow duration-300"
-              >
-                <div className="w-16 h-16 bg-purple-600 rounded-full flex items-center justify-center mb-6">
-                  <benefit.icon className="w-8 h-8 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600">{benefit.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
       {/* Who It's For */}
-      <section className="py-20 ">
+      {/* <section className="py-20 ">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold gradient-title mb-4">
@@ -107,7 +129,6 @@ const Solutions = () => {
             {solution.whoItsFor.map((target, index) => (
               <div key={index} className="text-center">
                 <div className=" h-full  rounded-2xl p-4 md:p-5  ">
-                  {/* <div className="border-glow"></div> */}
                   <div className="flex flex-col items-center ">
                     <div className=" mb-6 flex items-center justify-center ">
                       <target.icon className="text-5xl text-[#00FF93]" />
@@ -119,10 +140,10 @@ const Solutions = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* How It Works */}
-      <section className="py-20 ">
+      {/* <section className="py-20 ">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold gradient-title mb-4">
@@ -150,7 +171,9 @@ const Solutions = () => {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
+
+      <Timeline />
 
       {solution.pricing && (
         <section className="py-20 ">
