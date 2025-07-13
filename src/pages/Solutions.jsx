@@ -176,45 +176,6 @@ const Solutions = () => {
 
       <Timeline />
 
-      {solution.pricing && (
-        <section className="py-20 ">
-          <div className="max-w-2xl mx-auto px-6">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold gradient-title mb-4">
-                Pricing{" "}
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-2  gap-8 md:gap-12">
-              <div className="text-center content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative ">
-                <div className="border-glow"></div>
-                <div className=" h-full    ">
-                  {/* <div className="border-glow"></div> */}
-                  <div className="flex flex-col items-center ">
-                    <div className=" p-2 mb-6 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg ">
-                      <MdOutlineAttachMoney className="text-6xl text-[#00FF93]" />
-                    </div>
-                    <h3 className="text-2xl ">{solution.pricing.price}</h3>
-                  </div>
-                </div>
-              </div>
-              <div className="text-center content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative ">
-                <div className="border-glow"></div>
-                <div className=" h-full    ">
-                  {/* <div className="border-glow"></div> */}
-                  <div className="flex flex-col items-center ">
-                    <div className="  p-2 mb-6 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
-                      <FaCalendarAlt className="text-6xl text-[#00FF93]" />
-                    </div>
-                    <h3 className="text-2xl ">{solution.pricing.desc}</h3>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* CTA Section */}
       <section className="py-20 ">
         <div className="max-w-4xl mx-auto px-6 text-center">
