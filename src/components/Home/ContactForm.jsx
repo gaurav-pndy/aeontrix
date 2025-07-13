@@ -28,20 +28,19 @@ const ContactForm = () => {
         <div className="border-glow"></div>
         {/* Left Section */}
         <div className="md:w-1/2 md:p-8  space-y-10">
-          <h2 className="gradient-title leading-16 font-bold">
+          <h2 className="gradient-title text-center leading-16 font-bold">
             Ready to Upgrade Your Workforce?
           </h2>
-          <p className="text-[#F8F9FB]/60 text-lg">
+          <p className="text-[#F8F9FB]/60 text-justify text-lg">
             Fill out the form to schedule a demo and see how our AI employees
             can transform your business. Our experts will create a custom
             implementation plan for your organization.
           </p>
-          <div className="text-lg  space-y-3">
+          {/* <div className="text-lg  space-y-3">
             <p>After contacting us, you'll receive:</p>
             <p>✓ Free AI Audit for your Business</p>
             <p>✓ Custom AI implementation roadmap</p>
-            {/* <p>✓ 30-day free trial of your first AI employee</p> */}
-          </div>
+          </div> */}
         </div>
 
         {/* Right Section - Form */}

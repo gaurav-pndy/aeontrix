@@ -79,6 +79,7 @@ const Navbar = () => {
         <div className="hidden lg:flex h-16 items-center space-x-6 xl:space-x-10 text-[#F8F9FB] font-medium">
           {/* Solutions */}
           <div
+            onClick={() => handleClick("services")}
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
             className="relative flex items-center h-full"

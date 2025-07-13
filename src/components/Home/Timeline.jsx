@@ -109,8 +109,12 @@ const Timeline = () => {
     <section className="relative z-10 max-w-6xl mx-auto px-4 text-white mt-10">
       <div className="flex flex-col items-center justify-center max-w-5xl mx-auto w-full p-4 md:py-8 relative md:pb-0">
         <h2 className="gradient-title font-bold text-center !my-4">
-          AI Implementation Roadmap
+          Your AI Timeline and Pricing{" "}
         </h2>
+        <p className="text-xl text-[#F8F9FB]/70 max-w-3xl mx-auto text-center">
+          Every business is different. So are our prices. You only pay for what
+          you need — based on your goals, workflow, and team size.{" "}
+        </p>
 
         <div
           ref={timelineRef}
@@ -184,6 +188,11 @@ const Timeline = () => {
 
                       {/* Events */}
 
+                      <h4 className="text-lg  tracking-wide mb-3 leading-tight  text-[#00FF93]">
+                        <span className="font-semibold">Pricing: </span> Start
+                        with a Refundable AI Audit Fee, Credited toward your AI
+                        Solutions if you Proceed.
+                      </h4>
                       <h4 className="text-lg  tracking-wide mb-3 leading-tight  text-[#00FF93]">
                         <span className="font-semibold">Duration: </span>{" "}
                         {section.duration}

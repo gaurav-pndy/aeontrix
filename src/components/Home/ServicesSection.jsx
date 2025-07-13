@@ -58,7 +58,7 @@ const pricingData = [
 
 const ServicesSection = () => {
   return (
-    <section className="relative z-10 text-white pb-20 px-4">
+    <section id="services" className="relative z-10 text-white pb-20 px-4">
       <div className="max-w-6xl mx-auto ">
         <h2 className="gradient-title  text-center font-bold  text-white">
           AI Transformation Services
@@ -79,7 +79,7 @@ const ServicesSection = () => {
                   dangerouslySetInnerHTML={{ __html: plan.title }}
                 ></h3>
                 <p className=" text-[#F8F9FB]/70 text-xl mb-4 ">
-                  {plan.heading}
+                  {plan.heading.replace(/<br\s*\/?>/gi, " ")}
                 </p>
               </div>
 

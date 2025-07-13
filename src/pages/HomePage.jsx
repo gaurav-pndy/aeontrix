@@ -67,8 +67,6 @@ function HomePage() {
         <CalEmbed />
         <ContactForm />
         <FaqSection />
-
-        <Footer />
       </div>
     </div>
   );

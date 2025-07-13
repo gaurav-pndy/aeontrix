@@ -115,6 +115,7 @@ function AppLayout() {
       <div className="mt-26">
         <Outlet />
       </div>
+      <Footer />
     </div>
   );
 }
