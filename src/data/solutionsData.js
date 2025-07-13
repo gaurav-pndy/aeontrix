@@ -612,7 +612,8 @@ export const solutionsData = [
       },
       {
         icon: FaDatabase,
-        title: "Can Collect Customer Data and Store it in CRM",
+        title:
+          "Can collect and securely store customer data in CRM, compliant with data protection laws.",
       },
       {
         icon: RiCustomerServiceFill,

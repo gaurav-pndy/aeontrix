@@ -157,13 +157,11 @@ const HeroSection = () => {
       </div>
       <div className="text-center mb-8">
         <h1 className="text-5xl md:text-7xl font-bold text-[#F8F9FB] mb-6">
-          <span className="shiny-text">Upgrade</span> Your Business Operations
-          with <span className="shiny-text">AI Solutions</span>
+          Upgrade Your Business Operations with AI Solution
         </h1>
         <p className="text-xl text-[#F8F9FB]/80 max-w-3xl mx-auto leading-relaxed">
-          Revolutionize your business operations with intelligent AI solutions.
-          We help companies upgrade their workforce capabilities and achieve
-          unprecedented efficiency.
+          We build Secure, ROI-focused AI Automations that helps you Cut Costs,
+          Save Time, and Scale Faster.
         </p>
       </div>
       <div className="flex justify-center mb-16">
