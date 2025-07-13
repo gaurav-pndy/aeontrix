@@ -211,10 +211,7 @@ const HeroSection = () => {
                 <div className="flex justify-center mt-8">
                   <button
                     onClick={handleSubmitCompany}
-                    disabled={company === ""}
-                    className={`glow-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden ${
-                      company === "" ? "opacity-60 cursor-not-allowed" : ""
-                    }`}
+                    className={`glow-button bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-8 py-3 rounded-full font-bold text-base transition-all duration-300 hover:scale-105 relative overflow-hidden `}
                   >
                     <span className="relative z-10">
                       Generate AI Workforce Plan

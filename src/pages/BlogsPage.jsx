@@ -9,14 +9,17 @@ import {
   FaUsersCog,
   FaCogs,
 } from "react-icons/fa";
+import { BsBuildings } from "react-icons/bs";
+import { TbAutomation } from "react-icons/tb";
 
 const categoryIcons = {
-  "AI Technology": <FaRobot size={20} />,
-  "Business Growth": <FaChartLine size={20} />,
-  "Customer Service": <FaHeadset size={20} />,
   Marketing: <FaBullhorn size={20} />,
-  "HR & Recruitment": <FaUsersCog size={20} />,
-  Automation: <FaCogs size={20} />,
+  Sales: <FaChartLine size={20} />,
+  "Customer Support": <FaHeadset size={20} />,
+  "AI Influencer": <FaRobot size={20} />,
+  "AI Clone": <FaUsersCog size={20} />,
+  "Automation Templates": <TbAutomation size={20} />,
+  "AI Tools": <FaCogs size={20} />,
 };
 
 const categories = Object.keys(categoryIcons);
@@ -63,7 +66,7 @@ const BlogsPage = () => {
         Browse by Category
       </h2>
 
-      <div className="grid grid-cols-3 md:grid-cols-6 gap-2 md:gap-4 mb-10">
+      <div className="grid grid-cols-3 md:grid-cols-7 gap-2 md:gap-4 mb-10">
         {categories.map((cat) => (
           <button
             key={cat}
