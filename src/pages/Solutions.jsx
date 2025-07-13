@@ -25,9 +25,10 @@ const Solutions = () => {
           </div>
         </div>
         <div className="max-w-5xl mx-auto px-6 text-center">
-          <h1 className="!text-5xl md:!text-[4rem] text-seasalt font-bold !mb-6">
-            {solution.heading}{" "}
-          </h1>
+          <h1
+            dangerouslySetInnerHTML={{ __html: solution.heading }}
+            className="!text-5xl md:!text-[4rem] text-seasalt font-bold !mb-6"
+          ></h1>
           <p className="text-xl text-[#F8F9FB]/80 max-w-3xl mx-auto leading-relaxed mb-8">
             {solution.desc}
           </p>

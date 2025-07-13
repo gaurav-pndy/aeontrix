@@ -556,7 +556,7 @@ export const solutionsData = [
   {
     id: "ai-customer-support",
     title: "AI Customer Support",
-    heading: "AI That Picks Up Every Call — Instantly",
+    heading: "AI that Answers<br/>All Your Calls - Instantly",
     desc: "Never Miss a Lead, Booking, or Inquiry again, with Your Multilingual AI Voice Support Agent that works 24/7 without Burnout.",
     heroBtn: "Deploy AI Support Now",
     overviewDesc:
@@ -665,7 +665,7 @@ export const solutionsData = [
   {
     id: "ai-business-partner",
     title: "AI Business Partner",
-    heading: "Your Own Dedicated AI Ops Team",
+    heading: "Your Own Dedicated <br/>AI Team",
     desc: "One flat fee. Unlimited automations. All your AI needs handled for you.",
     heroBtn: "Book a Call",
     overviewDesc:
