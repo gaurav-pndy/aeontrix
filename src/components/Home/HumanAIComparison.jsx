@@ -195,9 +195,9 @@ const HumanAIComparison = () => {
           </div>
 
           {/* Right Column */}
-          <div className="content-box border-glow-wrapper highlighted-box-small md:col-span-2 bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-3 md:p-8 shadow-2xl relative ">
+          <div className="content-box border-glow-wrapper highlighted-box-small md:col-span-2 bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-0 md:p-8 shadow-2xl relative ">
             <div className="border-glow"></div>
-            <h3 className="text-xl font-semibold mb-4 text-white">
+            <h3 className="text-xl p-4 pb-0 md:p-0 font-semibold mb-4 text-white">
               {selectedOption} Comparison
             </h3>
             <div className="overflow-x-auto">

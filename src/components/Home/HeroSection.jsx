@@ -147,7 +147,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative z-10 max-w-7xl mx-auto px-6 pt-6 pb-24">
+    <section className="relative z-10 max-w-7xl mx-auto px-4 pt-6 pb-24">
       <div className="flex justify-center mb-8">
         <div className="green-glass-badge backdrop-blur-md rounded-full px-6 py-2 shadow-lg">
           <span className="text-[#00FF93] font-medium">

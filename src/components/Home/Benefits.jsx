@@ -55,7 +55,7 @@ const Benefits = () => {
     },
   ];
   return (
-    <section className="relative z-10 max-w-7xl mx-auto px-6 pt-6 pb-24">
+    <section className="relative z-10 max-w-7xl mx-auto px-4 pt-6 pb-24">
       {/* Content Box with Cards */}
       <div className="max-w-5xl mx-auto pt-20 ">
         <div>

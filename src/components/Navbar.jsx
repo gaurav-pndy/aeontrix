@@ -157,6 +157,7 @@ const Navbar = () => {
               onClick={() => {
                 setDropdownOpen(!dropdownOpen);
                 setDropdownOpen2(false);
+                handleClick("services");
               }}
               className="relative flex gap-2 flex-col items-center h-full"
             >

@@ -1,9 +1,57 @@
+import { useState } from "react";
 import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
-import { useLocation, useNavigate } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
 
 const Footer = () => {
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [isChecked, setIsChecked] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [attemptedSubmitDetails, setAttemptedSubmitDetails] = useState(false);
+
+  const handleSubmit = async () => {
+    setAttemptedSubmitDetails(true);
+
+    if (name.trim() === "" || !email.includes("@") || !isChecked || isLoading) {
+      return;
+    }
+
+    try {
+      // Check subscription status first
+      const isUnsubscribedUser = await checkSubscriptionStatus();
+      if (isUnsubscribedUser) {
+        return; // Block submission if unsubscribed and show popup
+      }
+
+      // Proceed with subscription for new or subscribed users
+      const response = await fetch("https://api.aeontrix.com/api/subscribe", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, company }),
+      });
+      const data = await response.json();
+      if (!response.ok) {
+        if (response.status === 409) {
+          setErrorMessage(
+            "You have already filled this form. If you believe this is an error, please contact: contact@aeontrix.com."
+          );
+        } else {
+          setErrorMessage(
+            data.error || "Failed to subscribe. Please try again."
+          );
+        }
+        return;
+      }
+      setIsSubmitted(true);
+    } catch (error) {
+      setErrorMessage("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   const scrollWithOffset = (el, offset = 100) => {
     const y = el.getBoundingClientRect().top + window.pageYOffset - offset;
@@ -20,28 +68,168 @@ const Footer = () => {
   };
 
   return (
-    <footer className="bg-black relative text-[#F8F9FB]/70 text-sm pt-16 pb-6 px-6 md:px-12">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr_0.8fr] gap-8 border-b border-[#F8F9FB]/20 pb-10">
+    <footer className="bg-black relative text-[#F8F9FB]/70 text-sm pt-10 pb-6 px-6 md:px-12">
+      <div className="max-w-[85rem] mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr_0.8fr] gap-8 border-b border-[#F8F9FB]/20 pb-6">
         {/* Logo + CTA */}
         <div>
           <img src="/logo-light.png" alt="logo" className="w-52" />
+          <div className="w-84">
+            <div className=" my-2.5">
+              <h2 className="text-base font-semibold text-seasalt mb-1">
+                Sign up to our Weekly Newsletter{" "}
+              </h2>
+              <p className="text-[#F8F9FB]/70 text-xs">
+                Get Weekly Latest AI Tools, News, High Value Automation Ideas,
+                delivered to your inbox
+              </p>
+            </div>
+            <div className="space-y-2">
+              {/* <div className="flex "> */}
+              <div>
+                {/* <label className="block text-seasalt font-semibold mb-1 text-[0.8rem]">
+                  Your Name <span className="text-[#00FF93]">*</span>
+                </label> */}
+                <input
+                  type="text"
+                  className="w-[90%] bg-[#042222]/80 border border-[#03624C]/30 rounded-lg px-4 py-1.5 text-seasalt placeholder-[#F8F9FB]/40 focus:outline-none focus:border-[#00FF93] focus:ring-2 focus:ring-[#00FF93]/20 transition-all duration-300 text-xs"
+                  placeholder="Enter your name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
+                {name.trim() === "" && attemptedSubmitDetails && (
+                  <p className="text-[#00ff93] text-xs mt-1">
+                    Name is required.
+                  </p>
+                )}
+              </div>
+              <div>
+                {/* <label className="block text-seasalt font-semibold mb-1 text-[0.8rem]">
+                  Your E-mail <span className="text-[#00FF93]">*</span>
+                </label> */}
+                <input
+                  type="email"
+                  className="w-[90%] text-xs bg-[#042222]/80 border border-[#03624C]/30 rounded-lg px-4 py-1.5 text-seasalt placeholder-[#F8F9FB]/40 focus:outline-none focus:border-[#00FF93] focus:ring-2 focus:ring-[#00FF93]/20 transition-all duration-300"
+                  placeholder="Enter your email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+                {email && !email.includes("@") && attemptedSubmitDetails && (
+                  <p className="text-[#00ff93] text-[0.7rem] mt-1">
+                    Please enter a valid email address.
+                  </p>
+                )}
+                {errorMessage && (
+                  <p className="text-[#00FF93] mt-2 text-[0.7rem]">
+                    {errorMessage.includes("contact@aeontrix.com") ? (
+                      <>
+                        You're already subscribed! If you're interested in more
+                        automations,{" "}
+                        <a
+                          href="https://cal.com/aeontrix-ai/aeontrix-discovery"
+                          className="underline"
+                          target="_blank"
+                        >
+                          Book a Call
+                        </a>{" "}
+                        or contact us at:{" "}
+                        <a
+                          href="mailto:contact@aeontrix.com"
+                          className="underline"
+                          target="_blank"
+                        >
+                          contact@aeontrix.com
+                        </a>
+                        .
+                      </>
+                    ) : (
+                      errorMessage
+                    )}
+                  </p>
+                )}
+              </div>
+              {/* </div> */}
+              <div className="flex items-start gap-2 mt-2">
+                <input
+                  value={isChecked}
+                  onChange={() => setIsChecked((prev) => !prev)}
+                  type="checkbox"
+                  id="terms"
+                  className="accent-[#00FF93] mt-0.5 w-3 h-3"
+                />
+                <label
+                  htmlFor="terms"
+                  className="text-seasalt text-xs leading-snug cursor-pointer"
+                >
+                  I have read, understood, and agree to the{" "}
+                  <a
+                    href="/privacy-policy"
+                    target="_blank"
+                    className="underline text-[#00FF93]"
+                  >
+                    Privacy Policy
+                  </a>
+                  ,{" "}
+                  <a
+                    href="/refund-policy"
+                    target="_blank"
+                    className="underline text-[#00FF93]"
+                  >
+                    Refund & Cancellation Policy
+                  </a>
+                  , and{" "}
+                  <a
+                    href="/terms-of-service"
+                    target="_blank"
+                    className="underline text-[#00FF93]"
+                  >
+                    Terms of Service
+                  </a>
+                  . <span className="text-[#00FF93]">*</span>
+                </label>
+              </div>
+
+              <div className="flex justify-center pt-2">
+                <button
+                  disabled={name === "" || email === "" || !isChecked}
+                  onClick={handleSubmit}
+                  className={`glow-button text-xs bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-5 py-1 rounded-full font-bold transition-all duration-300 hover:scale-105 relative overflow-hidden ${
+                    name === "" || email === "" || !isChecked
+                      ? "opacity-60 cursor-not-allowed"
+                      : ""
+                  }`}
+                >
+                  <span className="relative z-10">Submit</span>
+                  <span className="cursor-glow"></span>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Products */}
         <div>
-          <h3 className="font-semibold text-base text-white mb-5">Products</h3>
+          <h3 className="font-semibold text-base text-white mb-5">
+            Solutions with Use Cases
+          </h3>
           <ul className="space-y-3">
             {[
-              { label: "Consultation – AI Advisor", id: "consultation" },
-              { label: "Done & Built For You", id: "built-for-you" },
-              { label: "AI Partner (All your AI needs)", id: "ai-partner" },
+              { label: "AI Sales Suite", id: "ai-sales-suite" },
+              { label: "AI Influencer Studio", id: "ai-influencer-studio" },
+              { label: "AI Marketing Suite", id: "ai-marketing-suite" },
+              { label: "AI Clone", id: "ai-clone" },
+              { label: "AI Customer Support", id: "ai-customer-support" },
+              { label: "AI Business Partner", id: "ai-business-partner" },
             ].map((item) => (
-              <li
-                className="hover:text-[#00FF93] transition-colors duration-200 cursor-pointer"
-                onClick={() => handleClick(item.id)}
-                key={item.id}
-              >
-                {item.label}
+              <li>
+                {" "}
+                <Link
+                  to={`/solutions/${item.id}`}
+                  className="hover:text-[#00FF93] transition-colors duration-200 cursor-pointer"
+                  onClick={() => handleClick(item.id)}
+                  key={item.id}
+                >
+                  {item.label}
+                </Link>
               </li>
             ))}
           </ul>
@@ -57,7 +245,7 @@ const Footer = () => {
             >
               Free AI Plan Generator{" "}
             </li>
-            {["Case Studies", "Blogs"].map((item) => (
+            {["Blogs"].map((item) => (
               <li key={item}>
                 <a
                   href="#"
@@ -109,7 +297,7 @@ const Footer = () => {
               <FaLinkedin />
             </a>
             <a
-              href="https://www.instagram.com/aeontrixai/"
+              href="https://www.instagram.com/aeontrix.ai?igsh=MXQxenh3YWY0N292MQ=="
               target="_blank"
               className="hover:text-[#00FF93]"
             >
