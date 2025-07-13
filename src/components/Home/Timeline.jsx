@@ -1,14 +1,13 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./Timeline.css";
 
 const eventsData = [
   {
     phase: "Phase 1: Discovery & AI Audit (Exploration & Planning)",
     duration: "1 week",
     process: [
-      "Discovery Call to see <b>if we’ll be a good fit</b>",
+      "Discovery Call to see <b>if we'll be a good fit</b>",
       "You pay a <b>refundable AI Audit fee</b>",
-      "We’ll have Stakeholder Interviews to understand your business inside-out",
+      "We'll have Stakeholder Interviews to understand your business inside-out",
       "We analyse your processes for 2-3 days",
       `AI Audit Presentation:
       <ul class='list-disc ml-8 -space-y-6 -mt-6  -mb-6'>
@@ -61,166 +60,113 @@ const eventsData = [
 const Timeline = () => {
   const timelineRef = useRef(null);
   const [scrollPercent, setScrollPercent] = useState(0);
-  const [visibleSections, setVisibleSections] = useState(new Set([0])); // Start with first section visible
-  const [visibleEvents, setVisibleEvents] = useState(new Set());
-  const sectionRefs = useRef([]);
-  const eventRefs = useRef([]);
-
-  const [dotPositions, setDotPositions] = useState([]);
+  const [activePhase, setActivePhase] = useState(0);
+  const phaseRefs = useRef([]);
 
   useEffect(() => {
-    // Calculate actual dot positions after render
-    const calculateDotPositions = () => {
-      const positions = [];
-      sectionRefs.current.forEach((ref, index) => {
+    const handleScroll = () => {
+      if (!timelineRef.current) return;
+
+      const container = timelineRef.current;
+      const containerRect = container.getBoundingClientRect();
+      const containerTop = containerRect.top;
+      const containerBottom = containerRect.bottom;
+      const containerHeight = containerRect.height;
+
+      // Calculate scroll progress based on container visibility
+      const viewportHeight = window.innerHeight;
+      const scrollProgress = Math.max(
+        0,
+        Math.min(
+          1,
+          (viewportHeight - containerTop) / (containerHeight + viewportHeight)
+        )
+      );
+      setScrollPercent(scrollProgress * 100);
+
+      // Determine active phase based on which phase is most visible
+      let newActivePhase = 0;
+      phaseRefs.current.forEach((ref, index) => {
         if (ref) {
-          const dotElement = ref.querySelector("[data-dot]");
-          if (dotElement) {
-            const rect = dotElement.getBoundingClientRect();
-            const containerRect = timelineRef.current?.getBoundingClientRect();
-            if (containerRect) {
-              const relativeTop =
-                rect.top - containerRect.top + timelineRef.current.scrollTop;
-              positions[index] = relativeTop;
-            }
+          const rect = ref.getBoundingClientRect();
+          const phaseCenter = rect.top;
+          const viewportCenter = viewportHeight / 2;
+
+          if (phaseCenter <= viewportCenter) {
+            newActivePhase = index;
           }
         }
       });
-      setDotPositions(positions);
+      setActivePhase(newActivePhase);
     };
 
-    const timer = setTimeout(calculateDotPositions, 200);
-    return () => clearTimeout(timer);
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial call
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <section className="relative z-10 max-w-6xl mx-auto px-4    text-seasalt mt-10">
-      <div className="flex flex-col items-center justify-center max-w-5xl mx-auto w-full   p-4 md:py-8  relative  md:pb-0 ">
-        {/* <div className="border-glow"></div> */}
+    <section className="relative z-10 max-w-6xl mx-auto px-4 text-white mt-10">
+      <div className="flex flex-col items-center justify-center max-w-5xl mx-auto w-full p-4 md:py-8 relative md:pb-0">
         <h2 className="gradient-title font-bold text-center !my-4">
           AI Implementation Roadmap
         </h2>
+
         <div
           ref={timelineRef}
-          className="timeline-container  relative w-full max-w-4xl  overflow-y-auto pt-4 rounded-3xl"
+          className="relative w-full max-w-4xl pt-4 rounded-3xl "
         >
           <div className="relative w-full h-fit flex">
             {/* Timeline Line Section */}
-            <div className="relative hidden  md:block md:w-12 flex-shrink-0">
-              {/* Reduced top spacer */}
-              <div className="h-5" />
+            <div className="hidden md:block absolute left-5 overflow-y-hidden top-12 w-px h-[80%]">
+              <div
+                className="absolute left-0 w-full bg-gray-600/30"
+                style={{
+                  top: "11px",
+                  bottom: "0px",
+                }}
+              ></div>
 
-              {/* Calculate positions for first and last dots */}
-              {(() => {
-                let firstDotPosition,
-                  lastDotPosition,
-                  lineStartPosition,
-                  lineEndPosition,
-                  lineHeight;
-                if (dotPositions.length < 2) {
-                  // Fallback to manual calculation if dot positions aren't ready
-                  const topSpacer = 80;
-                  const sectionSpacing = 160;
-                  firstDotPosition = topSpacer;
-                  lastDotPosition =
-                    firstDotPosition + (eventsData.length - 1) * sectionSpacing;
-                  lineStartPosition = firstDotPosition;
-                  lineEndPosition = lastDotPosition;
-                  lineHeight = lineEndPosition - lineStartPosition;
-                } else {
-                  // Use actual dot positions
-                  firstDotPosition = dotPositions[0];
-                  lastDotPosition = dotPositions[dotPositions.length - 1];
-                  lineStartPosition = firstDotPosition; // Start below first dot
-                  lineEndPosition = lastDotPosition;
-                  lineHeight = lineEndPosition - lineStartPosition;
-                }
-
-                return (
-                  <>
-                    {/* Base timeline line - starts below first dot, ends at last dot */}
-                    <div
-                      className="absolute w-1 bg-gradient-to-b from-green-600 left-2.5 md:left-[30px] via-green-400 to-green-600"
-                      style={{
-                        top: `calc(${lineStartPosition}px - 10px)`,
-                        height: `${lineHeight}px`,
-                      }}
-                    />
-
-                    {/* Progress line - also constrained between first dot bottom and last dot center */}
-                    {scrollPercent > 0 && (
-                      <div
-                        className="absolute w-1 transition-all duration-300 ease-out left-2.5 md:left-[30px]"
-                        style={{
-                          top: `calc(${lineStartPosition}px - 25px)`,
-                          height: `${
-                            Math.min(scrollPercent / 100, 1) * lineHeight
-                          }px`,
-                          background: `linear-gradient(
-                            to bottom,
-                            rgba(0, 255, 147, 0) 0%,
-                            rgba(0, 255, 147, 0.6) 15%,
-                            rgba(0, 255, 147, 1) 50%,
-                            rgba(0, 255, 147, 0.6) 85%,
-                            rgba(0, 255, 147, 0) 100%
-                          )`,
-                          zIndex: 10,
-                        }}
-                      />
-                    )}
-
-                    {/* Debug: Show calculated positions */}
-                  </>
-                );
-              })()}
-
-              {/* Timeline dots */}
-              {eventsData.map((section, sectionIndex) => (
-                <div
-                  key={sectionIndex}
-                  className={`${
-                    sectionIndex === 0 ? "mt-0" : "mt-10"
-                  } relative`}
-                >
-                  <div
-                    ref={(el) => (sectionRefs.current[sectionIndex] = el)}
-                    className="sticky top-10 z-20 h-5 mb-10"
-                  >
-                    <div
-                      data-dot
-                      className={`timeline-dot absolute w-3 md:w-5 h-3 md:h-5 rounded-full border-2 border-white transition-all duration-500 left-3 md:left-[32px] bg-[#07cc7a] `}
-                      style={{
-                        transform: "translateX(-50%)",
-                        zIndex: 10,
-                      }}
-                    />
-                  </div>
-
-                  {/* Spacer for events */}
-                  {sectionIndex !== 2 && (
-                    <div
-                      style={{ height: `${section.process.length * 100}px` }}
-                    />
-                  )}
-                </div>
-              ))}
-
-              {/* Reduced bottom spacer */}
+              <div
+                className="absolute left-0 w-full bg-gradient-to-b from-[#00FF93] to-[#94f2cb] transition-all duration-300 ease-out"
+                style={{
+                  top: "11px",
+                  height: `calc((100% + 250px) * ${
+                    activePhase < 1 ? scrollPercent / 110 : scrollPercent / 80
+                  })`,
+                }}
+              ></div>
             </div>
 
             {/* Content Section */}
-            <div className="flex-1  md:pl-16 max-w-4xl">
-              {/* Reduced top spacer */}
+            <div className="flex-1 md:pl-16 max-w-4xl">
               <div className="h-5" />
 
               {eventsData.map((section, sectionIndex) => {
                 return (
                   <div
                     key={sectionIndex}
-                    className={` ${
+                    ref={(el) => (phaseRefs.current[sectionIndex] = el)}
+                    className={`${
                       sectionIndex === 0 ? "mt-0" : "mt-20"
-                    } relative`}
+                    } relative transition-all duration-700 ease-out `}
                   >
+                    {/* Timeline dot positioned relative to the phase heading */}
+                    <div className="hidden md:block absolute -left-14 top-9">
+                      <div
+                        className={`w-6 h-6 rounded-full border-2 transition-all duration-500 relative z-10 ${
+                          sectionIndex <= activePhase
+                            ? "bg-[#00FF93] border-[#00FF93] shadow-lg shadow-cyan-400/50"
+                            : "bg-gray-800 border-gray-600"
+                        }`}
+                      >
+                        {/* Pulse animation for active dot */}
+                        {sectionIndex === activePhase && (
+                          <div className="absolute inset-0 rounded-full bg-[#00FF93] animate-ping opacity-75"></div>
+                        )}
+                      </div>
+                    </div>
+
                     <div
                       className={`content-box  rounded-2xl p-4 md:p-8 ${
                         sectionIndex === 2 ? "mb-0" : "mb-10"
@@ -273,9 +219,6 @@ const Timeline = () => {
                   </div>
                 );
               })}
-
-              {/* Reduced bottom spacer */}
-              {/* <div className="h-20" /> */}
             </div>
           </div>
         </div>

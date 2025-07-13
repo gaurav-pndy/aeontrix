@@ -157,9 +157,8 @@ const HeroSection = () => {
       </div>
       <div className="text-center mb-8">
         <h1 className="text-5xl md:text-7xl font-bold text-[#F8F9FB] mb-6">
-          Transform Your <span className="shiny-text">Workforce</span>
-          <br />
-          with <span className="shiny-text">AI Systems</span>
+          <span className="shiny-text">Upgrade</span> Your Business Operations
+          with <span className="shiny-text">AI Solutions</span>
         </h1>
         <p className="text-xl text-[#F8F9FB]/80 max-w-3xl mx-auto leading-relaxed">
           Revolutionize your business operations with intelligent AI solutions.

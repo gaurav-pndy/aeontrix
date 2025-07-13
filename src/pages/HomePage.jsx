@@ -10,6 +10,7 @@ import ContactForm from "../components/Home/ContactForm";
 import Footer from "../components/Footer";
 import { useLocation } from "react-router";
 import BlogSection from "../components/Home/BlogSection";
+import FaqSection from "../components/Home/FaqSection";
 
 function HomePage() {
   const location = useLocation();
@@ -65,6 +66,8 @@ function HomePage() {
         <BlogSection />
         <CalEmbed />
         <ContactForm />
+        <FaqSection />
+
         <Footer />
       </div>
     </div>

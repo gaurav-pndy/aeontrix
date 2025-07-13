@@ -311,7 +311,7 @@ export const solutionsData = [
   {
     id: "ai-marketing-suite",
     title: "AI Marketing Suite",
-    heading: "10x Your Content Production with AI",
+    heading: "Boost Your Marketing ROI with Our All-in-One AI Suite",
     desc: "Generate SEO blogs, image/video ads, and social content in minutes – all tailored to your audience.",
     heroBtn: "Try the AI Marketing Suite",
     overviewDesc:

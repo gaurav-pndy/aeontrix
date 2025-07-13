@@ -1,5 +1,7 @@
 import React from "react";
 import BookAuditButton from "../BookAuditButton";
+import { solutionsData } from "../../data/solutionsData";
+import { Link } from "react-router";
 
 const pricingData = [
   {
@@ -62,37 +64,46 @@ const ServicesSection = () => {
           AI Transformation Services
         </h2>
 
-        <div className="grid md:grid-cols-3 gap-6">
-          {pricingData.map((plan, index) => (
+        <div className="grid md:grid-cols-3 gap-8">
+          {solutionsData.map((plan, index) => (
             <div
               key={index}
               id={plan.id}
-              className={`border-glow-wrapper  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#00FF93]/50 rounded-3xl p-4 md:p-6 shadow-2xl transition-transform duration-500 ${
-                plan.highlighted
-                  ? "highlighted-service-box relative"
-                  : "content-box "
-              }`}
+              className={`border-glow-wrapper  bg-[#F8F9FB]/10 backdrop-blur-lg border flex flex-col justify-between border-[#00FF93]/50 rounded-3xl p-4 md:p-6 shadow-2xl transition-transform duration-500 
+                  content-box `}
             >
               <div className="border-glow"></div>
-              <h3
-                className="text-3xl font-semibold mb-4"
-                dangerouslySetInnerHTML={{ __html: plan.title }}
-              ></h3>
-              <p className=" text-[#F8F9FB]/70 mb-4 ">{plan.desc}</p>
-              <p className="text-gray-300 font-semibold mb-1">Includes:</p>
-              <ul className="text-[#f8f9fb]/90 text-left list-outside space-y-4 mb-6">
-                {plan.features.map((feature, i) => (
-                  <li key={i} className="flex gap-2">
-                    <span className="text-[#00FF93]">✔</span>
-                    <p>{feature}</p>
-                  </li>
-                ))}
-              </ul>
-              <div className="w-full flex justify-center mt-4">
-                <BookAuditButton
-                  label="Book a Call"
-                  className="px-5 md:px-6 py-2 md:py-3 text-base space-x-2"
-                />
+              <div>
+                <h3
+                  className="text-3xl font-semibold mb-4"
+                  dangerouslySetInnerHTML={{ __html: plan.title }}
+                ></h3>
+                <p className=" text-[#F8F9FB]/70 text-xl mb-4 ">
+                  {plan.heading}
+                </p>
+              </div>
+
+              <div className="w-full flex justify-center mt-8">
+                <Link to={`/solutions/${plan.id}`}>
+                  <button
+                    className={`glow-button group bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-6 py-2 rounded-full font-bold transition-all duration-300 hover:scale-105 relative overflow-hidden flex items-center justify-center`}
+                  >
+                    Learn More
+                    <svg
+                      className="w-5 h-5 ml-1 group-hover:translate-x-1 transition-transform duration-300 relative z-10"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                        d="M17 8l4 4m0 0l-4 4m4-4H3"
+                      />
+                    </svg>
+                  </button>
+                </Link>
               </div>
               {/* {plan.highlighted && (
                 <span className="absolute top-4 right-4 text-xs bg-[#00FF93] text-black px-2 py-1 rounded-full font-medium">

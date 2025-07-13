@@ -218,7 +218,7 @@ const Solutions = () => {
       <section className="py-20 ">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <h2 className="text-4xl font-bold gradient-title !mb-6">
-            Ready to Transform Your Sales Process?
+            Ready to Upgrade Your Business with AI?{" "}
           </h2>
           <p className="text-xl text-[#F8F9FB]/80 mb-8">
             Join hundreds of businesses already using AI to accelerate their
