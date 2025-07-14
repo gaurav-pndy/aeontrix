@@ -23,7 +23,7 @@ const HumanAIComparison = () => {
       ],
       ["Follow-up Consistency", "Variable (~67%)", "100%", "No leads dropped"],
       ["Languages Supported", "1-3 per rep", "95+", "Truly global"],
-      ["working hours", "9-to-5, weekdays", "24/7/365", "+128 hrs/week"],
+      ["Working hours", "9-to-5, weekdays", "24/7/365", "+128 hrs/week"],
       ["Cost per qualified lead", "$30 - $120", "$3 - $7", "5-20x cheaper"],
     ],
     "AI Marketing Suite": [
