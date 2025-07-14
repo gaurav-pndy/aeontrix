@@ -6,7 +6,7 @@ import {
   MdOutlineSecurity,
 } from "react-icons/md";
 import { FaBrain, FaChartLine } from "react-icons/fa";
-import { TbClock24 } from "react-icons/tb";
+import { TbAutomation, TbClock24 } from "react-icons/tb";
 import { RiUserHeartLine } from "react-icons/ri";
 
 const Benefits = () => {
@@ -30,6 +30,11 @@ const Benefits = () => {
       icon: <TbClock24 className="text-2xl text-[#00FF93]   mx-auto" />,
       title: "24/7/365 Availability",
       desc: "Aeontrix agents never sleep. Whether it’s lead response or customer support, your business stays active around the clock.",
+    },
+    {
+      icon: <TbAutomation className="text-2xl text-[#00FF93]   mx-auto" />,
+      title: "Data Compliance",
+      desc: "Our automations meet standards like GDPR, CCPA, SOC 2 and HIPAA, ensuring your data stays secure and compliant by design.",
     },
     {
       icon: <RiUserHeartLine className="text-2xl text-[#00FF93]   mx-auto" />,
@@ -66,7 +71,7 @@ const Benefits = () => {
             className="grid gap-10 justify-items-center
   lg:grid-cols-3 text-left"
           >
-            {benefits.slice(0, 3).map((benefit, idx) => (
+            {benefits.map((benefit, idx) => (
               <div
                 key={idx}
                 className="content-box border-glow-wrapper highlighted-box-small  lg:w-[300px] lg:min-h-60 rounded-2xl p-4 md:p-5 shadow-2xl relative "
@@ -74,14 +79,16 @@ const Benefits = () => {
                 <div className="border-glow"></div>
 
                 {/* Icon inside square */}
-                <div className="w-10 h-10 p-1 mb-4 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
-                  {benefit.icon}
-                </div>
+                <div className="flex gap-3 items-center mb-4">
+                  <div className="w-10 h-10 p-1 shrink-0 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
+                    {benefit.icon}
+                  </div>
 
-                {/* Heading */}
-                <h3 className="text-xl text-seasalt mb-3 font-semibold">
-                  {benefit.title}
-                </h3>
+                  {/* Heading */}
+                  <h3 className="text-xl text-seasalt  font-semibold">
+                    {benefit.title}
+                  </h3>
+                </div>
 
                 {/* Paragraph */}
                 <p className="text-[#F8F9FB]/70 text-left leading-relaxed">
@@ -92,89 +99,6 @@ const Benefits = () => {
           </div>
 
           {/* Row with robot centered on small screens */}
-          <div
-            className="grid gap-10 justify-items-center
- lg:grid-cols-3 text-left mt-10 lg:mt-14  items-stretch "
-          >
-            {/* Card 1 */}
-            <div className="content-box border-glow-wrapper highlighted-box-small  lg:w-[300px] lg:min-h-60 rounded-2xl p-4 md:p-5 shadow-2xl relative ">
-              <div className="border-glow"></div>
-
-              {/* Icon inside square */}
-              <div className="w-10 h-10 p-1 mb-4 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
-                {benefits[3].icon}
-              </div>
-
-              {/* Heading */}
-              <h3 className="text-xl text-seasalt mb-3 font-semibold">
-                {benefits[3].title}
-              </h3>
-
-              {/* Paragraph */}
-              <p className="text-[#F8F9FB]/70 text-left leading-relaxed">
-                {benefits[3].desc}
-              </p>
-            </div>
-
-            {/* Robot image */}
-            <div className=" sm:w-[300px] md:min-h-60">
-              <img
-                loading="lazy"
-                src="/ai-robot-doing-office-work.gif"
-                className="w-fit"
-              ></img>
-            </div>
-
-            {/* Card 3 */}
-            <div className="content-box border-glow-wrapper highlighted-box-small  lg:w-[300px] lg:min-h-60 rounded-2xl p-4 md:p-5 shadow-2xl relative ">
-              <div className="border-glow"></div>
-
-              {/* Icon inside square */}
-              <div className="w-10 h-10 p-1 mb-4 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
-                {benefits[4].icon}
-              </div>
-
-              {/* Heading */}
-              <h3 className="text-xl text-seasalt mb-3 font-semibold">
-                {benefits[4].title}
-              </h3>
-
-              {/* Paragraph */}
-              <p className="text-[#F8F9FB]/70 text-left leading-relaxed">
-                {benefits[4].desc}
-              </p>
-            </div>
-          </div>
-
-          {/* Final row */}
-          <div
-            className="grid gap-10 justify-items-center
- lg:grid-cols-3 text-left mt-10 lg:mt-14"
-          >
-            {benefits.slice(5).map((benefit, idx) => (
-              <div
-                key={idx}
-                className="content-box border-glow-wrapper highlighted-box-small  lg:w-[300px] lg:min-h-60 rounded-2xl p-4 md:p-5 shadow-2xl relative "
-              >
-                <div className="border-glow"></div>
-
-                {/* Icon inside square */}
-                <div className="w-10 h-10 p-1 mb-4 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
-                  {benefit.icon}
-                </div>
-
-                {/* Heading */}
-                <h3 className="text-xl text-seasalt mb-3 font-semibold">
-                  {benefit.title}
-                </h3>
-
-                {/* Paragraph */}
-                <p className="text-[#F8F9FB]/70 text-left leading-relaxed">
-                  {benefit.desc}
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
       </div>
     </section>

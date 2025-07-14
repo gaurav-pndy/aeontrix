@@ -74,16 +74,22 @@ const ServicesSection = () => {
             >
               <div className="border-glow"></div>
               <div>
-                <h3
-                  className="text-3xl font-semibold mb-4"
-                  dangerouslySetInnerHTML={{ __html: plan.title }}
-                ></h3>
-                <p className=" text-[#F8F9FB]/70 text-xl mb-4 ">
+                <div className="flex gap-4 items-center mb-4">
+                  <div className="w-12 h-12 p-1 shrink-0 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
+                    <plan.icon className="w-8 h-8 shrink-0 text-[#00FF93]" />
+                  </div>
+                  <h3
+                    dangerouslySetInnerHTML={{ __html: plan.title }}
+                    className="text-2xl font-semibold  "
+                  ></h3>
+                </div>
+
+                <p className=" text-[#F8F9FB]/70 text-lg mb-4 ">
                   {plan.heading.replace(/<br\s*\/?>/gi, " ")}
                 </p>
               </div>
 
-              <div className="w-full flex justify-center mt-8">
+              <div className="w-full flex justify-center mt-4">
                 <Link to={`/solutions/${plan.id}`}>
                   <button
                     className={`glow-button group bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-6 py-2 rounded-full font-bold transition-all duration-300 hover:scale-105 relative overflow-hidden flex items-center justify-center`}

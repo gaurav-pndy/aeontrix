@@ -11,6 +11,7 @@ import {
   Settings,
 } from "lucide-react";
 import {
+  FaBullhorn,
   FaChartLine,
   FaHashtag,
   FaHospitalUser,
@@ -46,6 +47,7 @@ import {
   RiChatFollowUpLine,
   RiCustomerServiceFill,
   RiFileAddLine,
+  RiUserHeartFill,
   RiUserHeartLine,
 } from "react-icons/ri";
 import { CgTranscript } from "react-icons/cg";
@@ -73,6 +75,7 @@ export const solutionsData = [
   {
     id: "ai-sales-suite",
     title: "AI Sales Suite",
+    icon: FaShoppingCart,
     heading: "Turn Conversations into Customers — on Autopilot",
     desc: "Supercharge your outreach with AI voice callers, SMS, cold emails, and WhatsApp campaigns.",
     heroBtn: "Book a Call",
@@ -207,6 +210,7 @@ export const solutionsData = [
   {
     id: "ai-influencer-studio",
     title: "AI Influencer Studio",
+    icon: RiUserHeartFill,
     heading: "Create Your Brand’s AI Influencer in Minutes",
     desc: "From product modeling to reels, create unlimited marketing content with your virtual model.",
     heroBtn: "Create Your AI Influencer Now",
@@ -311,6 +315,7 @@ export const solutionsData = [
   {
     id: "ai-marketing-suite",
     title: "AI Marketing Suite",
+    icon: FaBullhorn,
     heading: "Boost Your Marketing ROI with Our All-in-One AI Suite",
     desc: "Generate SEO blogs, image/video ads, and social content in minutes – all tailored to your audience.",
     heroBtn: "Try the AI Marketing Suite",
@@ -441,6 +446,7 @@ export const solutionsData = [
   {
     id: "ai-clone",
     title: "Your AI Clone",
+    icon: FaRobot,
     heading: "Let People Talk to You — Even When You’re Asleep",
     desc: "Clone your Voice, Face, and Brain to Automate Calls, Support, and Content.",
     heroBtn: "Create Your AI Clone Now",
@@ -556,6 +562,7 @@ export const solutionsData = [
   {
     id: "ai-customer-support",
     title: "AI Customer Support",
+    icon: RiCustomerServiceFill,
     heading: "AI that Answers<br/>All Your Calls - Instantly",
     desc: "Never Miss a Lead, Booking, or Inquiry again, with Your Multilingual AI Voice Support Agent that works 24/7 without Burnout.",
     heroBtn: "Deploy AI Support Now",
@@ -665,6 +672,7 @@ export const solutionsData = [
   {
     id: "ai-business-partner",
     title: "AI Business Partner",
+    icon: MdBusinessCenter,
     heading: "Your Own Dedicated <br/>AI Team",
     desc: "One flat fee. Unlimited automations. All your AI needs handled for you.",
     heroBtn: "Book a Call",
