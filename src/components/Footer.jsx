@@ -247,12 +247,12 @@ const Footer = () => {
             </li>
             {["Blogs"].map((item) => (
               <li key={item}>
-                <a
-                  href="#"
+                <Link
+                  to={"/blogs"}
                   className="hover:text-[#00FF93] transition-colors duration-200"
                 >
                   {item}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
