@@ -20,7 +20,7 @@ function AppLayout() {
     function updateCursorLight(e) {
       const x = e.clientX;
       const y = e.clientY;
-      gridOverlay.style.background = `radial-gradient(280px circle at ${x}px ${y}px, rgba(0, 255, 147, 0.2) 0%, transparent 40%)`;
+      gridOverlay.style.background = `radial-gradient(180px circle at ${x}px ${y}px, rgba(0, 255, 147, 0.2) 0%, transparent 40%)`;
       lastMouseEvent = e;
     }
 
