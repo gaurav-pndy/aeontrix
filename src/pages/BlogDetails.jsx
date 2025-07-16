@@ -10,7 +10,6 @@ const BlogDetails = () => {
 
   const baseUrl = import.meta.env.VITE_API_BASE_URL; // Prefer `VITE_` prefix for Vite
 
-
   useEffect(() => {
     const fetchBlog = async () => {
       try {
@@ -86,18 +85,23 @@ const BlogDetails = () => {
         <span>{blog.date}</span>
       </div>
 
-      <img
-        src={blog.image_url}
-        alt={blog.title}
-        className="rounded-xl max-h-[33rem] w-full object-fit mb-4"
-      />
+      <div className="content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-6 shadow-2xl relative ">
+        <div className="border-glow"></div>
 
-      <div
-        className="prose prose-invert prose-sm sm:prose-base lg:prose-lg max-w-none"
-        dangerouslySetInnerHTML={{
-          __html: blog.content?.replace(/\n/g, "<br/>") || "<p>No content</p>",
-        }}
-      ></div>
+        <img
+          src={blog.image_url}
+          alt={blog.title}
+          className="rounded-xl max-h-[33rem] w-full object-fit mb-4"
+        />
+
+        <div
+          className="prose prose-invert prose-sm sm:prose-base lg:prose-lg max-w-none"
+          dangerouslySetInnerHTML={{
+            __html:
+              blog.content?.replace(/\n/g, "<br/>") || "<p>No content</p>",
+          }}
+        ></div>
+      </div>
     </div>
   );
 };
