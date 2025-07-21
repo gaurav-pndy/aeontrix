@@ -100,7 +100,7 @@ const FaqSection = () => {
 
               <div className="flex justify-between items-center">
                 <p className="font-medium text-lg">{faq.questionKey}</p>
-                <span className="border rounded border-[#00FF93]/30 text-[#00FF93] p-px">
+                <span className="border rounded bg-neutral-800 border-[#00FF93]/30 text-[#00FF93] p-px">
                   <ChevronDown
                     className={`w-4  h-4 transition-all duration-300 ${
                       openIndex === index ? "rotate-180" : ""

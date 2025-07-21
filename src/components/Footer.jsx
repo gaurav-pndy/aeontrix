@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaTwitter, FaFacebook, FaLinkedin, FaInstagram } from "react-icons/fa";
 import { Link, useLocation, useNavigate } from "react-router";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -11,6 +12,8 @@ const Footer = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [attemptedSubmitDetails, setAttemptedSubmitDetails] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async () => {
     setAttemptedSubmitDetails(true);
@@ -74,135 +77,161 @@ const Footer = () => {
         <div>
           <img src="/logo-light.png" alt="logo" className="w-52" />
           <div className="w-84">
-            <div className=" my-2.5">
-              <h2 className="text-base font-semibold text-seasalt mb-1">
-                Sign up to our Weekly Newsletter{" "}
-              </h2>
-              <p className="text-[#F8F9FB]/70 text-xs">
-                Get Weekly Latest AI Tools, News, High Value Automation Ideas,
-                delivered to your inbox
-              </p>
-            </div>
-            <div className="space-y-2">
-              {/* <div className="flex "> */}
-              <div>
-                {/* <label className="block text-seasalt font-semibold mb-1 text-[0.8rem]">
-                  Your Name <span className="text-[#00FF93]">*</span>
-                </label> */}
-                <input
-                  type="text"
-                  className="w-[90%] bg-[#042222]/80 border border-[#03624C]/30 rounded-lg px-4 py-1.5 text-seasalt placeholder-[#F8F9FB]/40 focus:outline-none focus:border-[#00FF93] focus:ring-2 focus:ring-[#00FF93]/20 transition-all duration-300 text-xs"
-                  placeholder="Enter your name"
-                  value={name}
-                  onChange={(e) => setName(e.target.value)}
-                />
-                {name.trim() === "" && attemptedSubmitDetails && (
-                  <p className="text-[#00ff93] text-xs mt-1">
-                    Name is required.
-                  </p>
-                )}
-              </div>
-              <div>
-                {/* <label className="block text-seasalt font-semibold mb-1 text-[0.8rem]">
-                  Your E-mail <span className="text-[#00FF93]">*</span>
-                </label> */}
-                <input
-                  type="email"
-                  className="w-[90%] text-xs bg-[#042222]/80 border border-[#03624C]/30 rounded-lg px-4 py-1.5 text-seasalt placeholder-[#F8F9FB]/40 focus:outline-none focus:border-[#00FF93] focus:ring-2 focus:ring-[#00FF93]/20 transition-all duration-300"
-                  placeholder="Enter your email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                />
-                {email && !email.includes("@") && attemptedSubmitDetails && (
-                  <p className="text-[#00ff93] text-[0.7rem] mt-1">
-                    Please enter a valid email address.
-                  </p>
-                )}
-                {errorMessage && (
-                  <p className="text-[#00FF93] mt-2 text-[0.7rem]">
-                    {errorMessage.includes("contact@aeontrix.com") ? (
-                      <>
-                        You're already subscribed! If you're interested in more
-                        automations,{" "}
-                        <a
-                          href="https://cal.com/aeontrix-ai/aeontrix-discovery"
-                          className="underline"
-                          target="_blank"
-                        >
-                          Book a Call
-                        </a>{" "}
-                        or contact us at:{" "}
-                        <a
-                          href="mailto:contact@aeontrix.com"
-                          className="underline"
-                          target="_blank"
-                        >
-                          contact@aeontrix.com
-                        </a>
-                        .
-                      </>
-                    ) : (
-                      errorMessage
-                    )}
-                  </p>
-                )}
-              </div>
-              {/* </div> */}
-              <div className="flex items-start gap-2 mt-2">
-                <input
-                  value={isChecked}
-                  onChange={() => setIsChecked((prev) => !prev)}
-                  type="checkbox"
-                  id="terms"
-                  className="accent-[#00FF93] mt-0.5 w-3 h-3"
-                />
-                <label
-                  htmlFor="terms"
-                  className="text-seasalt text-xs leading-snug cursor-pointer"
+            <AnimatePresence mode="wait">
+              {!isSubmitted ? (
+                <motion.div
+                  key="form"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
                 >
-                  I have read, understood, and agree to the{" "}
-                  <a
-                    href="/privacy-policy"
-                    target="_blank"
-                    className="underline text-[#00FF93]"
-                  >
-                    Privacy Policy
-                  </a>
-                  ,{" "}
-                  <a
-                    href="/refund-policy"
-                    target="_blank"
-                    className="underline text-[#00FF93]"
-                  >
-                    Refund & Cancellation Policy
-                  </a>
-                  , and{" "}
-                  <a
-                    href="/terms-of-service"
-                    target="_blank"
-                    className="underline text-[#00FF93]"
-                  >
-                    Terms of Service
-                  </a>
-                  . <span className="text-[#00FF93]">*</span>
-                </label>
-              </div>
+                  <div className="my-2.5">
+                    <h2 className="text-base font-semibold text-seasalt mb-1">
+                      Sign up to our Weekly Newsletter{" "}
+                    </h2>
+                    <p className="text-[#F8F9FB]/70 text-xs">
+                      Get Weekly Latest AI Tools, News, High Value Automation
+                      Ideas, delivered to your inbox
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <div>
+                      <input
+                        type="text"
+                        className="w-[90%] bg-[#042222]/80 border border-[#03624C]/30 rounded-lg px-4 py-1.5 text-seasalt placeholder-[#F8F9FB]/40 focus:outline-none focus:border-[#00FF93] focus:ring-2 focus:ring-[#00FF93]/20 transition-all duration-300 text-xs"
+                        placeholder="Enter your name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                      />
+                      {name.trim() === "" && attemptedSubmitDetails && (
+                        <p className="text-[#00ff93] text-xs mt-1">
+                          Name is required.
+                        </p>
+                      )}
+                    </div>
+                    <div>
+                      <input
+                        type="email"
+                        className="w-[90%] text-xs bg-[#042222]/80 border border-[#03624C]/30 rounded-lg px-4 py-1.5 text-seasalt placeholder-[#F8F9FB]/40 focus:outline-none focus:border-[#00FF93] focus:ring-2 focus:ring-[#00FF93]/20 transition-all duration-300"
+                        placeholder="Enter your email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                      {email &&
+                        !email.includes("@") &&
+                        attemptedSubmitDetails && (
+                          <p className="text-[#00ff93] text-[0.7rem] mt-1">
+                            Please enter a valid email address.
+                          </p>
+                        )}
+                      {errorMessage && (
+                        <p className="text-[#00FF93] mt-2 text-[0.7rem]">
+                          {errorMessage.includes("contact@aeontrix.com") ? (
+                            <>
+                              You're already subscribed! If you're interested in
+                              more automations,{" "}
+                              <a
+                                href="https://cal.com/aeontrix-ai/aeontrix-discovery"
+                                className="underline"
+                                target="_blank"
+                              >
+                                Book a Call
+                              </a>{" "}
+                              or contact us at:{" "}
+                              <a
+                                href="mailto:contact@aeontrix.com"
+                                className="underline"
+                                target="_blank"
+                              >
+                                contact@aeontrix.com
+                              </a>
+                              .
+                            </>
+                          ) : (
+                            errorMessage
+                          )}
+                        </p>
+                      )}
+                    </div>
 
-              <div className="flex justify-center pt-2">
-                <button
-                  disabled={name === "" || email === "" || !isChecked}
-                  onClick={handleSubmit}
-                  className={`glow-button text-xs bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-5 py-1 rounded-full font-bold transition-all duration-300 hover:scale-105 relative overflow-hidden ${
-                    name === "" || email === "" || !isChecked
-                      ? "opacity-60 cursor-not-allowed"
-                      : ""
-                  }`}
+                    <div className="flex items-start gap-2 mt-2">
+                      <input
+                        value={isChecked}
+                        onChange={() => setIsChecked((prev) => !prev)}
+                        type="checkbox"
+                        id="terms"
+                        className="accent-[#00FF93] mt-0.5 w-3 h-3"
+                      />
+                      <label
+                        htmlFor="terms"
+                        className="text-seasalt text-xs leading-snug cursor-pointer"
+                      >
+                        I have read, understood, and agree to the{" "}
+                        <a
+                          href="/privacy-policy"
+                          target="_blank"
+                          className="underline text-[#00FF93]"
+                        >
+                          Privacy Policy
+                        </a>
+                        ,{" "}
+                        <a
+                          href="/refund-policy"
+                          target="_blank"
+                          className="underline text-[#00FF93]"
+                        >
+                          Refund & Cancellation Policy
+                        </a>
+                        , and{" "}
+                        <a
+                          href="/terms-of-service"
+                          target="_blank"
+                          className="underline text-[#00FF93]"
+                        >
+                          Terms of Service
+                        </a>
+                        . <span className="text-[#00FF93]">*</span>
+                      </label>
+                    </div>
+
+                    <div className="flex justify-center pt-2">
+                      <button
+                        disabled={name === "" || email === "" || !isChecked}
+                        onClick={handleSubmit}
+                        className={`glow-button text-xs bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-5 py-1 rounded-full font-bold transition-all duration-300 hover:scale-105 relative overflow-hidden ${
+                          name === "" || email === "" || !isChecked
+                            ? "opacity-60 cursor-not-allowed"
+                            : ""
+                        }`}
+                      >
+                        <span className="relative z-10">Submit</span>
+                        <span className="cursor-glow"></span>
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="thankyou"
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="text-center text-sm mt-5 text-[#F8F9FB]"
                 >
-                  <span className="relative z-10">Submit</span>
-                  <span className="cursor-glow"></span>
-                </button>
-              </div>
-            </div>
+                  <h3 className="text-[#00FF93] font-bold text-2xl">
+                    Thank You
+                  </h3>
+                  <p className="mt-2">
+                    We have sent you a{" "}
+                    <span className="font-medium">Confirmation Email</span>.
+                    <br />
+                    Check your spam folder if you can’t find it.
+                  </p>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
         </div>
 

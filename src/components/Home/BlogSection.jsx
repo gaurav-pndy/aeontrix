@@ -13,7 +13,6 @@ const BlogSection = () => {
 
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
 
-
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
@@ -113,15 +112,14 @@ const BlogSection = () => {
       {/* Blog Cards */}
       {blogs.length > 0 ? (
         <>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
             {blogs.slice(0, 3).map((blog) => (
               <Link
-  to={`/blogs/${blog.slug}`}
-  state={{ id: blog.id }} // 👈 Pass blog ID in location state
-  key={blog.id}
-  className="rounded-2xl overflow-hidden shadow-lg content-box border-glow-wrapper highlighted-box-small relative"
->
-
+                to={`/blogs/${blog.slug}`}
+                state={{ id: blog.id }} // 👈 Pass blog ID in location state
+                key={blog.id}
+                className="rounded-2xl overflow-hidden shadow-lg content-box border-glow-wrapper highlighted-box-small relative"
+              >
                 <div className="h-55 w-full overflow-hidden">
                   <img
                     src={blog.image_url}
