@@ -101,7 +101,7 @@ function AppLayout() {
       box.addEventListener("mousemove", handleMouseMove);
       box.addEventListener("mouseleave", handleMouseLeave);
     });
-  }, []);
+  }, [pathname]);
   return (
     <div className="min-h-screen wrapper bg-[#060606] relative overflow-hidden">
       <div className="absolute inset-0 grid-background">
