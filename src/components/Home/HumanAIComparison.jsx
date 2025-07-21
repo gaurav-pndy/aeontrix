@@ -160,7 +160,7 @@ const HumanAIComparison = () => {
         <h2 className="gradient-title font-bold text-center ">
           Your AI Upgrade, Quantified{" "}
         </h2>
-        <div className="grid lg:grid-cols-3 gap-2 lg:gap-8">
+        <div className="grid lg:grid-cols-3 gap-4 lg:gap-8">
           {/* Left Column */}
           <div className="content-box border-glow-wrapper highlighted-box-small  bg-[#F8F9FB]/10 backdrop-blur-lg  rounded-3xl p-4 md:p-8 shadow-2xl relative ">
             <div className="border-glow"></div>

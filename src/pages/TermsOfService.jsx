@@ -4,12 +4,14 @@ const TermsOfService = () => {
   return (
     <div className="max-w-6xl relative text-lg mx-auto px-4 py-8 pb-20 text-seasalt space-y-10">
       <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
-        Terms of Service
+        Terms of Service - Aeontrix
       </h1>
 
       <div className="space-y-2">
-        <p className="text-[#F8F9FB]/70">Effective Date: 01 July 2025</p>
-        <p className="text-[#F8F9FB]/70 italic">
+        <p className="text-[#F8F9FB]/70 font-bold text-spring">
+          Effective Date: 20 July 2025
+        </p>
+        <p className="text-[#F8F9FB]/70 font-bold text-spring">
           <strong>Operated By:</strong> Aeontrix, the AI Division of Pasovit
           Technologies Private Limited
         </p>
@@ -27,14 +29,35 @@ const TermsOfService = () => {
 
       <section>
         <h2 className="text-2xl font-semibold mb-2">2. Nature of Services</h2>
-        <p className="text-[#F8F9FB]/80 md:ml-4">Aeontrix provides: </p>
+        <p className="text-[#F8F9FB]/80 md:ml-4">
+          Aeontrix provides a suite of AI-driven solutions including:{" "}
+        </p>
 
         <ul className="list-disc md:ml-8 list-inside text-[#F8F9FB]/80 space-y-1">
-          <li>AI Strategy & Consultation</li>
-          <li>Custom AI Agent Development</li>
-          <li>Business Process Automation</li>
-          <li>AI System Management (Retainers)</li>
-          <li>Digital Products & Resources (e.g., lead magnets, templates)</li>
+          <li>
+            <strong>AI Sales Suite: </strong> Multi Channel Outreach with
+            follow-ups, Database Reactivation, CRM integration
+          </li>
+          <li>
+            <strong>AI Influencer Studio: </strong> Your own Customizable AI
+            Influencer Model/Mascot
+          </li>
+          <li>
+            <strong>AI Marketing Suite: </strong> Managing Various Social Media
+            Platforms from a single place, powered by AI
+          </li>
+          <li>
+            <strong>AI Business Partner: </strong> Dedicated AI Dev Team at your
+            disposal
+          </li>
+          <li>
+            <strong>AI Customer Support: </strong> Chatbots, Voice AI, E-mail
+            support automation, CRM integration
+          </li>
+          <li>
+            <strong>AI Clone: </strong> Personalized, Branded Replicas with
+            Knowledge
+          </li>
         </ul>
         <p className="mt-2 md:ml-4 text-[#F8F9FB]/80">
           These services are offered as configuration, integration, and
@@ -102,7 +125,7 @@ const TermsOfService = () => {
           We do <strong>not control, own,</strong> or <strong>guarantee</strong>{" "}
           the uptime, performance, or data policies of these platforms. Any data
           generated, stored, or transmitted via those platforms is{" "}
-          <strong>governed by the respective platform,</strong> not by Aeontrix.{" "}
+          <strong>governed by the respective platform</strong>, not by Aeontrix.{" "}
           <br />
           Clients are subject to those third-party terms of service and privacy
           policies.
@@ -170,12 +193,17 @@ const TermsOfService = () => {
           <li>Pay all service fees as agreed upon via invoice or contract.</li>
           <li>
             Understand that delays in payment may result in{" "}
-            <strong>pausing</strong> service or termination.
+            <strong>pausing service</strong> or termination.
           </li>
           <li>
             Understand that usage-based charges (e.g., LLM API usage,
             third-party tools) may apply and are billed transparently or
-            directly through the provide
+            directly through the provider.
+          </li>
+          <li>
+            Understand that the AI Audit fee is charged in advance and{" "}
+            <b>credited</b> toward a full AI transformation engagement,
+            effectively making it refundable in the form of service credit.
           </li>
         </ul>
       </section>
@@ -231,22 +259,13 @@ const TermsOfService = () => {
           <strong>7 days written notice</strong>. Upon termination:
         </p>
         <ul className="list-disc list-inside md:ml-4 text-[#F8F9FB]/80 space-y-1 mt-2">
-          <li>Outstanding fees become immediately due.</li>
           <li>
             Aeontrix will transfer access to all deliverables developed up to
             the termination date.
           </li>
           <li>
-            Refunds, if applicable, will be governed by our{" "}
-            <a
-              href="/refund-policy"
-              target="_blank"
-              className="underline text-[#00FF93]"
-            >
-              {" "}
-              Refund Policy
-            </a>
-            .
+            Refunds upon termination will be governed by our updated Refund &
+            Cancellation Policy, including how the AI Audit fee is handled.
           </li>
         </ul>
       </section>
@@ -287,6 +306,15 @@ const TermsOfService = () => {
           >
             contact@pasovit.com
           </a>
+          <br />
+          Website:{" "}
+          <a
+            target="_blank"
+            href="https://pasovit.com"
+            className="underline italic text-[#00FF93]"
+          >
+            https://pasovit.com
+          </a>
         </address>
       </section>
 
@@ -295,10 +323,10 @@ const TermsOfService = () => {
           13. Reference to Parent Company Policies{" "}
         </h2>
         <p className="text-[#F8F9FB]/80 md:ml-4">
-          Aeontrix operates under the legal and corporate framework of Pasovit
-          Technologies Private Limited. For any matters not explicitly covered
-          in these Terms & Conditions, including legal rights, liabilities, and
-          definitions of service, please refer to:{" "}
+          Aeontrix operates under the legal and corporate framework of{" "}
+          <b>Pasovit Technologies Private Limited</b>. For any matters not
+          explicitly covered in these Terms & Conditions, including legal
+          rights, liabilities, and definitions of service, please refer to:{" "}
           <a
             href="https://pasovit.com/terms"
             target="_blank"

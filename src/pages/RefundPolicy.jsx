@@ -4,12 +4,12 @@ const RefundPolicy = () => {
   return (
     <div className="max-w-6xl relative mx-auto px-4 py-8 pb-20 text-lg text-seasalt space-y-10">
       <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-        Refund & Cancellation Policy
+        Refund & Cancellation Policy – Aeontrix{" "}
       </h1>
 
       <div className="space-y-2">
-        <p className="text-[#F8F9FB]/70">Effective Date: 01 July 2025</p>
-        <p className="text-[#F8F9FB]/70 italic">
+        <p className=" font-bold text-spring">Effective Date: 20 July 2025</p>
+        <p className="font-bold text-spring">
           <strong>Operated By:</strong> Aeontrix, the AI Division of Pasovit
           Technologies Private Limited
         </p>
@@ -28,27 +28,31 @@ const RefundPolicy = () => {
       </section>
 
       <section>
-        <h2 className="text-2xl font-semibold mb-2">2. General Policy</h2>
+        <h2 className="text-2xl font-semibold mb-2">
+          2. AI Audit & Transformation Journey Credit
+        </h2>
         <p className="text-[#F8F9FB]/80 md:ml-4">
-          Payments made to Aeontrix are for:
+          We charge a fee <b>upfront</b> for the <b>AI Audit</b>, which involves
+          evaluating your current systems, workflows, and business potential for
+          AI transformation.
         </p>
 
         <ul className="list-disc list-inside  md:ml-8 text-[#F8F9FB]/80 space-y-1">
-          <li>Time and expertise spent on custom development</li>
-          <li>Technical consultation and integration work</li>
           <li>
-            Ongoing management and optimization services (in retainer plans)
+            If you <b>proceed with a transformation engagement</b> (e.g.
+            onboarding into any of our AI Suites), the full Audit amount is{" "}
+            <b>credited toward your total project cost</b>.
           </li>
           <li>
-            Delivery of digital content (e.g., templates, lead magnets, training
-            materials)
+            This effectively makes the AI Audit fee{" "}
+            <b>refundable in the form of service credit</b>.
+          </li>
+          <li>
+            If you do <b>not</b> proceed with a transformation engagement, the
+            Audit fee remains <b>non-refundable</b>, as it represents the time
+            and strategic insight already delivered.
           </li>
         </ul>
-        <p className="mt-2 text-[#F8F9FB]/80 md:ml-4">
-          Because our services are largely time-based, knowledge-based, and
-          custom-built, they are generally <strong>non-refundable</strong> once
-          work has begun or deliverables have been provided.
-        </p>
       </section>
 
       <section>
@@ -61,8 +65,9 @@ const RefundPolicy = () => {
         <ul className="list-disc list-inside  md:ml-4 text-[#F8F9FB]/80 space-y-1">
           <li>
             {" "}
-            <strong>Non-Delivery of Service:</strong> If a service you paid for
-            was never initiated or delivered, and no work has begun.
+            <strong>Non-Delivery of Service:</strong> No work was started within
+            7 business days of payment, and no audit, design, or onboarding
+            sessions were delivered.
           </li>
           <li>
             {" "}
@@ -76,8 +81,9 @@ const RefundPolicy = () => {
             within 14 days.
           </li>
           <li>
-            <strong>Pre-Work Cancellations:</strong> If you cancel a service
-            before any work has begun and within 7 days of payment.
+            <strong>Pre-Work Cancellations:</strong> If you cancel a service{" "}
+            <b>before any onboarding, kickoff call, or work session begins</b>,
+            and within 7 calendar days of payment.
           </li>
         </ul>
         <p className="mt-2 text-[#F8F9FB]/80 md:ml-4">
@@ -90,14 +96,13 @@ const RefundPolicy = () => {
           4. Non-Refundable Scenarios
         </h2>
         <p className="text-[#F8F9FB]/80 md:ml-4">
-          Refunds may be granted under the following conditions:{" "}
+          Refunds will not be provided in the following cases:{" "}
         </p>
         <ul className="list-disc  md:ml-8 list-inside text-[#F8F9FB]/80 space-y-1">
           <li>
-            <strong>Consultation Fees (Once Booked or Delivered):</strong> AI
-            Advisor sessions and strategy consultations are non-refundable once
-            scheduled or completed. This includes roadmap development, tech
-            stack planning, KPI guidance, or security review sessions.
+            <strong>• AI Audit Only (No Project Commitment):</strong> If you
+            complete the AI Audit but do not proceed with transformation, the
+            fee is not refunded.
           </li>
           <li>
             <strong>Custom AI Work Already Delivered:</strong> This includes
@@ -113,10 +118,13 @@ const RefundPolicy = () => {
           <li>
             <strong>Retainer Plans (Post-Usage):</strong> Monthly or ongoing
             service retainers are non-refundable once work has begun in that
-            billing cycle. However, you may cancel your retainer plan at any
-            time before the next billing cycle to avoid future charges. Once the
-            new cycle begins and work has started, no refund will be issued for
-            that period.
+            billing cycle. However,{" "}
+            <b>
+              you may cancel your retainer plan at any time before the next
+              billing cycle
+            </b>{" "}
+            to avoid future charges. Once the new cycle begins and work has
+            started, no refund will be issued for that period.
           </li>
           <li>
             <strong>Delays Due to Client Inaction:</strong> If we are unable to

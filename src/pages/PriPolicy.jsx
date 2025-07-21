@@ -4,12 +4,12 @@ const PrivacyPolicy = () => {
   return (
     <div className="max-w-6xl relative text-lg mx-auto px-4 py-8 pb-20 text-seasalt space-y-10">
       <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
-        Privacy Policy
+        Privacy Policy - Aeontrix
       </h1>
 
       <div className="space-y-2">
-        <p className="text-[#F8F9FB]/70">Effective Date: 01 July 2025</p>
-        <p className="text-[#F8F9FB]/70 italic">
+        <p className=" font-bold text-spring">Effective Date: 20 July 2025</p>
+        <p className="font-bold text-spring">
           <strong>Operated By:</strong> Aeontrix, the AI Division of Pasovit
           Technologies Private Limited
         </p>
@@ -18,11 +18,10 @@ const PrivacyPolicy = () => {
       <section>
         <h2 className="text-2xl font-semibold mb-2">1. Overview</h2>
         <p className="text-[#F8F9FB]/80 md:ml-4">
-          Aeontrix designs, builds, and manages AI agents and automation
-          workflows across platforms like Slack, WhatsApp, n8n, Make, Zapier,
-          and others. This policy explains how we handle your data when you use
-          our services, download our lead magnets, or subscribe to our
-          newsletter. <br />
+          Aeontrix designs, builds, and manages AI powered automation systems.
+          This policy explains how we handle your data when you use our
+          services, download our lead magnets, or subscribe to our newsletter.{" "}
+          <br />
           By interacting with Aeontrix (via services, website forms, or content
           downloads), you consent to the data practices outlined here.
         </p>
@@ -31,6 +30,30 @@ const PrivacyPolicy = () => {
       <section>
         <h2 className="text-2xl font-semibold mb-2">2. What Data We Collect</h2>
         <div className="md:ml-4">
+          <h3 className="text-xl font-semibold mb-1 mt-4">
+            a. Stakeholder Interview Data (AI Audit Clients Only)
+          </h3>
+          <p className="text-[#F8F9FB]/80 md:ml-4">
+            <p className="text-[#F8F9FB]/80 md:ml-4">
+              Aeontrix provides a suite of AI-driven solutions including:{" "}
+            </p>
+          </p>
+          <ul className="list-disc md:ml-4 list-inside text-[#F8F9FB]/80 space-y-1">
+            <li>• Role/title and department</li>
+            <li>• Qualitative input on workflows, pain points, and goals</li>
+            <li>
+              • Opinions or perspectives on internal tools, processes, and
+              automation potential
+            </li>
+            <li>• Operational challenges and business context</li>
+          </ul>
+          <p className="mt-2 text-[#F8F9FB]/80">
+            This information is used solely to assess your organization's
+            readiness and opportunities for AI transformation. With explicit
+            consent, stakeholder interviews may be audio or video recorded for
+            internal analysis. These recordings are never shared externally.{" "}
+          </p>
+
           <h3 className="text-xl font-semibold mb-1 mt-4">
             a. Client & Subscriber Data
           </h3>
@@ -52,29 +75,29 @@ const PrivacyPolicy = () => {
           </ul>
 
           <h3 className="text-xl font-semibold mb-1 mt-4">
-            b. System & Debug Data (Clients Only)
+            b. System & AI Performance Data (for Clients)
           </h3>
           <ul className="list-disc md:ml-4 list-inside text-[#F8F9FB]/80 space-y-1">
-            <li>Workflow setups</li>
-            <li>API logs, error reports</li>
-            <li>Agent performance data</li>
+            <li>Chatbot and workflow logs</li>
+            <li>Lead funnel data (AI Sales Suite)</li>
+            <li>Engagement metrics (AI Marketing/Influencer Studio)</li>
+            <li>AI agent feedback loops and analytics</li>
           </ul>
 
           <h3 className="text-xl font-semibold mb-1 mt-4">
-            c. End-User Data (Managed Services Only)
+            c. End-User Data (for Managed/Hosted Services)
           </h3>
-          <p className="text-[#F8F9FB]/80 md:ml-4">
-            Access to chat transcripts or usage data is limited to retainer
-            clients who explicitly permit this access. It's used for:
-          </p>
+
           <ul className="list-disc md:ml-8 list-inside text-[#F8F9FB]/80 space-y-1">
-            <li>Debugging</li>
-            <li>Agent optimization</li>
-            <li>Improving system reliability</li>
+            <li>Only accessed with permission from the client</li>
+            <li>
+              Includes chat transcripts, AI responses, and behavioral metrics
+            </li>
+            <li>Used strictly for improvement, debugging, and optimization</li>
           </ul>
           <p className="text-[#F8F9FB]/80 md:ml-4">
-            We never use end-user data for unsolicited outreach, resale, or
-            profiling.
+            We do <b>not</b> use end-user data for profiling, marketing, or
+            resale.
           </p>
         </div>
       </section>
@@ -83,7 +106,11 @@ const PrivacyPolicy = () => {
         <h2 className="text-2xl font-semibold mb-2">3. How We Use Your Data</h2>
         <p className="text-[#F8F9FB]/80 md:ml-4">We use your data to:</p>
         <ul className="list-disc md:ml-8 list-inside text-[#F8F9FB]/80 space-y-1">
-          <li>Deliver AI services or consulting</li>
+          <li>
+            Analyze stakeholder input to shape AI transformation proposals,
+            ensure contextual accuracy, and prioritize automation opportunities.
+          </li>
+          <li>Deliver AI services</li>
           <li>Send requested resources (e.g., lead magnets)</li>
           <li>
             Send newsletters and educational content (only to subscribers who’ve
@@ -136,7 +163,8 @@ const PrivacyPolicy = () => {
         <p className="text-[#F8F9FB]/80 md:ml-4">
           Aeontrix builds and deploys AI systems that operate on third-party
           platforms such as messaging tools, automation platforms, CRMs, and
-          cloud services. <br />
+          cloud services.
+          <br />
           As part of our onboarding process, we will{" "}
           <strong>
             {" "}
@@ -167,20 +195,39 @@ const PrivacyPolicy = () => {
       <section>
         <h2 className="text-2xl font-semibold mb-2">6. Security Measures</h2>
         <p className="text-[#F8F9FB]/80 md:ml-4">
-          We implement appropriate technical and organizational measures to:
+          We implement appropriate technical and organizational measures to
+          safeguard all client and user data, including:
         </p>
         <ul className="list-disc md:ml-8 list-inside text-[#F8F9FB]/80 space-y-1">
-          <li>Encrypt sensitive data (e.g., credentials, API tokens)</li>
           <li>
-            Restrict internal access to configuration data by using Role-based
-            access control (RBAC)
+            <strong>Encryption of Sensitive Information: </strong> API tokens,
+            credentials, and personal data are encrypted both at rest and in
+            transit.
           </li>
-          <li>Conduct periodic reviews of system access logs</li>
+          <li>
+            <strong>Access Control: </strong> Stakeholder inputs, interview
+            notes, and recordings (if applicable) are restricted to the Aeontrix
+            project team through role-based access control (RBAC).
+          </li>
+          <li>
+            <strong>Audit Logging: </strong> Access to sensitive data is logged
+            and periodically reviewed.
+          </li>
+          <li>
+            <strong>Storage Protocols: </strong> Interview recordings (if taken)
+            are stored securely on encrypted drives or cloud storage with access
+            restricted to relevant audit personnel.
+          </li>
         </ul>
         <p className="mt-2 md:ml-4 text-[#F8F9FB]/80">
-          While we strive to protect your data, we cannot guarantee absolute
-          security due to the nature of internet-based services and third-party
-          dependencies.
+          We <b>do not share</b>, publish, or use interview insights outside
+          your project scope. All data collected during the AI Audit, including
+          stakeholder input, is handled with confidentiality and used
+          exclusively to inform your AI transformation recommendations.
+          <br />
+          While we take strong measures to protect your data, no method of
+          transmission or storage is 100% secure. We continuously review our
+          practices to ensure ongoing compliance and data protection.
         </p>
       </section>
 
