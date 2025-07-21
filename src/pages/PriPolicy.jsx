@@ -31,7 +31,7 @@ const PrivacyPolicy = () => {
         <h2 className="text-2xl font-semibold mb-2">2. What Data We Collect</h2>
         <div className="md:ml-4">
           <h3 className="text-xl font-semibold mb-1 mt-4">
-            a. Stakeholder Interview Data (AI Audit Clients Only)
+            a. Stakeholder Interview Data (AI Audit)
           </h3>
           <p className="text-[#F8F9FB]/80 md:ml-4">
             <p className="text-[#F8F9FB]/80 md:ml-4">
