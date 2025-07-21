@@ -19,7 +19,7 @@ const OptimizeAnim = () => {
     {
       title: "Operational cost",
       value: "-11%",
-      color: "text-red-400",
+      color: "text-green-400",
     },
     {
       title: "Security",
