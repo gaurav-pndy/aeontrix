@@ -79,12 +79,14 @@ const Navbar = () => {
         <div className="hidden lg:flex h-16 items-center space-x-6 xl:space-x-10 text-[#F8F9FB] font-medium">
           {/* Solutions */}
           <div
-            onClick={() => handleClick("services")}
             onMouseEnter={() => setDropdownOpen(true)}
             onMouseLeave={() => setDropdownOpen(false)}
             className="relative flex items-center h-full"
           >
-            <div className="flex hover:text-[#00FF93] transition-all duration-200 items-center gap-1 cursor-pointer">
+            <div
+              onClick={() => handleClick("services")}
+              className="flex hover:text-[#00FF93] transition-all duration-200 items-center gap-1 cursor-pointer"
+            >
               Solutions with Use Cases <ChevronDown size={16} />
             </div>
             <AnimatePresence>
@@ -157,11 +159,13 @@ const Navbar = () => {
               onClick={() => {
                 setDropdownOpen(!dropdownOpen);
                 setDropdownOpen2(false);
-                handleClick("services");
               }}
               className="relative flex gap-2 flex-col items-center h-full"
             >
-              <div className="flex  items-center gap-1 cursor-pointer">
+              <div
+                onClick={() => handleClick("services")}
+                className="flex  items-center gap-1 cursor-pointer"
+              >
                 Solutions with Use Cases <ChevronDown size={16} />
               </div>
               <AnimatePresence>

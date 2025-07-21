@@ -54,7 +54,7 @@ const Solutions = () => {
               solution.useCases.map((use, index) => (
                 <div
                   key={index}
-                  className="bg-purple-50  border border-purple-100 hover:bg-purple-100 transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
+                  className="bg-purple-50   transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
                 >
                   <div className="border-glow"></div>
                   <div className="flex gap-4 items-center mb-4">
@@ -70,7 +70,7 @@ const Solutions = () => {
               solution.whoItsFor.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-purple-50  border border-purple-100 hover:bg-purple-100 transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
+                  className="bg-purple-50  transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
                 >
                   <div className="border-glow"></div>
                   <div className="flex gap-4 items-center mb-4">
@@ -100,7 +100,7 @@ const Solutions = () => {
             {solution.coreFeatures.map((feature, index) => (
               <div
                 key={index}
-                className="bg-purple-50  border border-purple-100 hover:bg-purple-100 transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
+                className="bg-purple-50   transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
               >
                 <div className="border-glow"></div>
                 <div className="flex gap-4 items-start mb-4">

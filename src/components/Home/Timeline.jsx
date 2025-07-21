@@ -180,10 +180,11 @@ const Timeline = () => {
                     </div>
 
                     <div
-                      className={`content-box  rounded-2xl p-4 md:p-8 ${
+                      className={`content-box border-glow-wrapper rounded-2xl p-4 md:p-8 ${
                         sectionIndex === 2 ? "mb-0" : "mb-10"
                       } max-w-6xl transition-all duration-700 ease-out `}
                     >
+                      <div className="border-glow"></div>
                       {/* Section Title */}
                       <h2
                         className={`text-2xl font-bold tracking-wide mb-3 pb-3 transition-all duration-500 
