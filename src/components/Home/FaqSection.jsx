@@ -100,11 +100,13 @@ const FaqSection = () => {
 
               <div className="flex justify-between items-center">
                 <p className="font-medium text-lg">{faq.questionKey}</p>
-                <ChevronDown
-                  className={`w-5 h-5 transition-transform duration-300 ${
-                    openIndex === index ? "rotate-180" : ""
-                  }`}
-                />
+                <span className="border rounded border-[#00FF93]/30 text-[#00FF93] p-px">
+                  <ChevronDown
+                    className={`w-4  h-4 transition-all duration-300 ${
+                      openIndex === index ? "rotate-180" : ""
+                    }`}
+                  />
+                </span>
               </div>
               <AnimatePresence initial={false}>
                 {openIndex === index && (

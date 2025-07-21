@@ -69,7 +69,7 @@ const ServicesSection = () => {
             <div
               key={index}
               id={plan.id}
-              className={`border-glow-wrapper  bg-[#F8F9FB]/10 backdrop-blur-lg border flex flex-col justify-between border-[#00FF93]/50 rounded-3xl p-4 md:p-6 shadow-2xl transition-transform duration-500 
+              className={`border-glow-wrapper  bg-[#F8F9FB]/10 backdrop-blur-lg  flex flex-col justify-between border-[#00FF93]/50 rounded-3xl p-4 md:p-6 shadow-2xl transition-transform duration-500 
                   content-box `}
             >
               <div className="border-glow"></div>

@@ -1,8 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
+import LogoGrid from "./TimelineAnim/LogoGrid";
+import BuildAnim from "./TimelineAnim/BuildAnim";
+import OptimizeAnim from "./TimelineAnim/OptimizeAnim";
 
 const eventsData = [
   {
-    phase: "Phase 1: Discovery & AI Audit (Exploration & Planning)",
+    phase: "Discovery & AI Audit (Exploration & Planning)",
     pricing:
       "Start with a Refundable AI Audit Fee, Credited toward your AI Solutions if you Proceed.",
     duration: "1 week",
@@ -29,7 +32,7 @@ const eventsData = [
     },
   },
   {
-    phase: "Phase 2: Building, Testing & Launching",
+    phase: "Building, Testing & Launching",
     duration: "More than a week (scope-dependent)",
     process: [
       "<b>Audit fee refunded</b> once you commit to the transformation journey",
@@ -48,7 +51,7 @@ const eventsData = [
     },
   },
   {
-    phase: "Phase 3: Optimizing & Scaling (AI Partner Program)",
+    phase: "Optimizing & Scaling (AI Partner Program)",
     duration: "Ongoing",
     process: [
       "<b>Performance checks:</b> Continuous Monitoring and Accuracy Tweaks",
@@ -112,7 +115,7 @@ const Timeline = () => {
       id="pricing"
       className="relative z-10 max-w-6xl mx-auto px-4 text-white mt-10"
     >
-      <div className="flex flex-col items-center justify-center max-w-5xl mx-auto w-full md:p-4 md:py-8 relative md:pb-0">
+      <div className="flex flex-col items-center justify-center max-w-6xl mx-auto w-full md:p-4 md:py-8 relative md:pb-0">
         <h2 className="gradient-title font-bold text-center !my-4">
           Your AI Timeline and Pricing{" "}
         </h2>
@@ -123,11 +126,11 @@ const Timeline = () => {
 
         <div
           ref={timelineRef}
-          className="relative w-full max-w-4xl pt-4 rounded-3xl "
+          className="relative w-full max-w-6xl pt-4 rounded-3xl "
         >
           <div className="relative w-full h-fit flex">
             {/* Timeline Line Section */}
-            <div className="hidden md:block absolute left-5 overflow-y-hidden top-12 w-px h-[80%]">
+            <div className="hidden md:block absolute left-5 overflow-y-hidden top-12 w-px h-[76%]">
               <div
                 className="absolute left-0 w-full bg-gray-600/30"
                 style={{
@@ -148,7 +151,7 @@ const Timeline = () => {
             </div>
 
             {/* Content Section */}
-            <div className="flex-1 md:pl-16 max-w-4xl">
+            <div className="flex-1 md:pl-16 max-w-6xl">
               <div className="h-5" />
 
               {eventsData.map((section, sectionIndex) => {
@@ -179,49 +182,44 @@ const Timeline = () => {
                     <div
                       className={`content-box  rounded-2xl p-4 md:p-8 ${
                         sectionIndex === 2 ? "mb-0" : "mb-10"
-                      } max-w-3xl transition-all duration-700 ease-out `}
+                      } max-w-6xl transition-all duration-700 ease-out `}
                     >
                       {/* Section Title */}
                       <h2
-                        className={`text-xl font-bold tracking-wide mb-3 pb-3 transition-all duration-500 
+                        className={`text-2xl font-bold tracking-wide mb-3 pb-3 transition-all duration-500 
                        
                             text-seasalt border-b-2 border-white
                     `}
                       >
+                        <span className="gradient-title !text-2xl !font-bold">
+                          Phase {sectionIndex + 1}:
+                        </span>{" "}
                         {section.phase}
                       </h2>
+                      <div className="flex flex-col lg:flex-row mt-4 gap-10">
+                        {sectionIndex === 0 ? (
+                          <LogoGrid />
+                        ) : sectionIndex === 1 ? (
+                          <BuildAnim />
+                        ) : (
+                          <OptimizeAnim />
+                        )}
 
-                      {/* Events */}
+                        <div className="lg:w-[60%]">
+                          {section.pricing && (
+                            <h4 className="text-lg  tracking-wide mb-3 leading-tight  text-[#00FF93]">
+                              <span className="font-semibold">Pricing: </span>
+                              {section.pricing}
+                            </h4>
+                          )}
 
-                      {section.pricing && (
-                        <h4 className="text-lg  tracking-wide mb-3 leading-tight  text-[#00FF93]">
-                          <span className="font-semibold">Pricing: </span>
-                          {section.pricing}
-                        </h4>
-                      )}
+                          <h4 className="text-lg  tracking-wide mb-3 leading-tight  text-[#00FF93]">
+                            <span className="font-semibold">Duration: </span>{" "}
+                            {section.duration}
+                          </h4>
 
-                      <h4 className="text-lg  tracking-wide mb-3 leading-tight  text-[#00FF93]">
-                        <span className="font-semibold">Duration: </span>{" "}
-                        {section.duration}
-                      </h4>
-
-                      <ul className="list-inside list-disc space-y-1">
-                        {section.process.map((step, idx) => (
-                          <li
-                            className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 text-[#F8F9FB]/70`}
-                            key={idx}
-                            dangerouslySetInnerHTML={{ __html: step }}
-                          ></li>
-                        ))}
-                      </ul>
-
-                      {section.whatYouGet && (
-                        <div className="mt-4">
-                          <h6 className=" font-semibold mb-2">
-                            {section.whatYouGet.heading}
-                          </h6>
                           <ul className="list-inside list-disc space-y-1">
-                            {section.whatYouGet.content.map((step, idx) => (
+                            {section.process.map((step, idx) => (
                               <li
                                 className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 text-[#F8F9FB]/70`}
                                 key={idx}
@@ -229,8 +227,25 @@ const Timeline = () => {
                               ></li>
                             ))}
                           </ul>
+
+                          {section.whatYouGet && (
+                            <div className="mt-4">
+                              <h6 className=" font-semibold mb-2">
+                                {section.whatYouGet.heading}
+                              </h6>
+                              <ul className="list-inside list-disc space-y-1">
+                                {section.whatYouGet.content.map((step, idx) => (
+                                  <li
+                                    className={`leading-relaxed whitespace-pre-line text-sm transition-colors duration-500 text-[#F8F9FB]/70`}
+                                    key={idx}
+                                    dangerouslySetInnerHTML={{ __html: step }}
+                                  ></li>
+                                ))}
+                              </ul>
+                            </div>
+                          )}
                         </div>
-                      )}
+                      </div>
                     </div>
                   </div>
                 );

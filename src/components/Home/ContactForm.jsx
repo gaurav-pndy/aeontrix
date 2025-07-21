@@ -24,7 +24,7 @@ const ContactForm = () => {
       id="Contact"
       className="w-full max-w-6xl mx-auto px-4 py-12 mt-10 z-10 relative"
     >
-      <div className="  overflow-visible flex flex-col md:flex-row content-box border-glow-wrapper highlighted-box-timeline  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:py-8 shadow-2xl relative text-seasalt">
+      <div className="  overflow-visible flex flex-col md:flex-row content-box border-glow-wrapper highlighted-box-timeline  bg-[#F8F9FB]/10 backdrop-blur-lg  rounded-3xl p-4 md:py-8 shadow-2xl relative text-seasalt">
         <div className="border-glow"></div>
         {/* Left Section */}
         <div className="md:w-1/2 md:p-8  space-y-10">

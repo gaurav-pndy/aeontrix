@@ -11,6 +11,7 @@ import Footer from "../components/Footer";
 import { useLocation } from "react-router";
 import BlogSection from "../components/Home/BlogSection";
 import FaqSection from "../components/Home/FaqSection";
+import Carousel from "../components/Home/Carousel";
 
 function HomePage() {
   const location = useLocation();
@@ -59,6 +60,7 @@ function HomePage() {
           }}
         />
         <HeroSection />
+        <Carousel />
         <ServicesSection />
         <Benefits />
         <HumanAIComparison />

@@ -1,14 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Manrope:wght@200..800&display=swap');
 @import "tailwindcss";
 
 html, body {
   background-color: #060606;
 }
 
+*{
+  font-family: "Manrope", sans-serif;
+
+}
 
 body {
   margin: 0;
- font-family: 'Inter', system-ui, sans-serif;
+ /* font-family: 'Inter', system-ui, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -21,10 +25,10 @@ body {
 } */
 
 
-code {
+/* code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
-}
+} */
 
 * {
   box-sizing: border-box;
@@ -34,6 +38,10 @@ html {
   scroll-behavior: smooth;
 }
 
+.font-jetbrains{
+    font-family: "JetBrains Mono", monospace;
+
+}
 .gradient-title{
     position: relative;
   background: linear-gradient(
@@ -104,9 +112,9 @@ html {
 /* Content boxes that block the cursor light */
 .content-box {
   position: relative;
-border: 3px solid #021818;
+/* border: 3px solid #021818; */
   /* overflow: hidden; */
-  background-color: #000;
+  background-color: #0d0d0d;
 
 }
 

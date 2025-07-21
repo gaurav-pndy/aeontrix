@@ -162,7 +162,7 @@ const HumanAIComparison = () => {
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {/* Left Column */}
-          <div className="content-box border-glow-wrapper highlighted-box-small  bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-4 md:p-8 shadow-2xl relative ">
+          <div className="content-box border-glow-wrapper highlighted-box-small  bg-[#F8F9FB]/10 backdrop-blur-lg  rounded-3xl p-4 md:p-8 shadow-2xl relative ">
             <div className="border-glow"></div>
             <h3 className="text-xl font-semibold text-white mb-6">
               Select Department
@@ -195,7 +195,7 @@ const HumanAIComparison = () => {
           </div>
 
           {/* Right Column */}
-          <div className="content-box border-glow-wrapper highlighted-box-small md:col-span-2 bg-[#F8F9FB]/10 backdrop-blur-lg border border-[#F8F9FB]/20 rounded-3xl p-0 md:p-8 shadow-2xl relative ">
+          <div className="content-box border-glow-wrapper highlighted-box-small md:col-span-2 bg-[#F8F9FB]/10 backdrop-blur-lg  rounded-3xl p-0 md:p-8 shadow-2xl relative ">
             <div className="border-glow"></div>
             <h3 className="text-xl p-4 pb-0 md:p-0 font-semibold mb-4 text-white">
               {selectedOption} Comparison
