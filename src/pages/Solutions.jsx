@@ -70,10 +70,10 @@ const Solutions = () => {
               solution.whoItsFor.map((item, index) => (
                 <div
                   key={index}
-                  className="bg-purple-50  transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
+                  className="bg-purple-50 flex items-center transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
                 >
                   <div className="border-glow"></div>
-                  <div className="flex gap-4 items-center mb-4">
+                  <div className="flex gap-4 items-center ">
                     <div className="w-12 h-12 p-1 shrink-0 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
                       <item.icon className="w-6 h-6 shrink-0 text-[#00FF93]" />
                     </div>
@@ -100,10 +100,20 @@ const Solutions = () => {
             {solution.coreFeatures.map((feature, index) => (
               <div
                 key={index}
-                className="bg-purple-50   transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
+                className={`bg-purple-50 flex ${
+                  solutionId === "ai-business-partner"
+                    ? "items-center"
+                    : "items-start"
+                }  transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative `}
               >
                 <div className="border-glow"></div>
-                <div className="flex gap-4 items-start mb-4">
+                <div
+                  className={`flex gap-4 ${
+                    solutionId === "ai-business-partner"
+                      ? "items-center"
+                      : "items-start"
+                  } `}
+                >
                   <div className="w-10 h-10 p-1 shrink-0 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
                     <feature.icon className="w-6 h-6 shrink-0 text-[#00FF93]" />
                   </div>

@@ -27,6 +27,15 @@ const logos = [
   <SiNotion />,
   <FaSlack />,
   <SiAirtable />,
+  <FaGithub />,
+  <FaDiscord />,
+  <SiClaude />,
+  <SiGmail />,
+  <FaDropbox />,
+  <FaFigma />,
+  <SiNotion />,
+  <FaSlack />,
+  <SiAirtable />,
 ];
 
 const Carousel = () => {
@@ -37,7 +46,7 @@ const Carousel = () => {
 
   return (
     <section className="w-full mb-20 ">
-      <div className="container mx-auto max-w-7xl md:px-12">
+      <div className=" mx-auto  ">
         {/* Top Row */}
         <div className="mt-10">
           <Marquee speed={30} gradient={false}>
