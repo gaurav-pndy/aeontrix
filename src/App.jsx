@@ -5,6 +5,7 @@ import AppLayout from "./layout/AppLayout";
 import HomePage from "./pages/HomePage";
 import UnsubscribePage from "./pages/UnsubscribePage";
 import ConfirmToken from "./pages/ConfirmToken";
+import NewsletterConfirm from "./pages/NewsletterConfirm";
 import PrivacyPolicy from "./pages/PriPolicy";
 import RefundPolicy from "./pages/RefundPolicy";
 import TermsOfService from "./pages/TermsOfService";
@@ -40,6 +41,10 @@ function App() {
         {
           path: "/newsletter/confirm",
           element: <ConfirmToken />,
+        },
+        {
+          path: "/newsletter/confirm-newsletter",
+          element: <NewsletterConfirm />,
         },
         {
           path: "/solutions/:solutionId",

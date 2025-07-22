@@ -22,30 +22,40 @@ const Footer = () => {
       return;
     }
 
+    setIsLoading(true);
     try {
-      // Check subscription status first
-      const isUnsubscribedUser = await checkSubscriptionStatus();
-      if (isUnsubscribedUser) {
-        return; // Block submission if unsubscribed and show popup
-      }
-
-      // Proceed with subscription for new or subscribed users
-      const response = await fetch("https://api.aeontrix.com/api/subscribe", {
+      // Check if user is already subscribed
+      const checkResponse = await fetch("https://api.aeontrix.com/api/check-subscription-newsletter", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, company }),
+        body: JSON.stringify({ email }),
+      });
+      const checkData = await checkResponse.json();
+      if (!checkResponse.ok) {
+        setErrorMessage(checkData.error || "Failed to check subscription status.");
+        setIsLoading(false);
+        return;
+      }
+      if (checkData.isSubscribed) {
+        setErrorMessage(
+          "You're already subscribed! If you're interested in more automations, " +
+          "<a href='https://cal.com/aeontrix-ai/aeontrix-discovery' class='underline' target='_blank'>Book a Call</a> " +
+          "or contact us at: <a href='mailto:contact@aeontrix.com' class='underline' target='_blank'>contact@aeontrix.com</a>."
+        );
+        setIsLoading(false);
+        return;
+      }
+
+      // Proceed with subscription
+      const response = await fetch("https://hook.eu2.make.com/p3avlh88vxrm456iqxdqr907rs3ei3kf", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email }),
       });
       const data = await response.json();
       if (!response.ok) {
-        if (response.status === 409) {
-          setErrorMessage(
-            "You have already filled this form. If you believe this is an error, please contact: contact@aeontrix.com."
-          );
-        } else {
-          setErrorMessage(
-            data.error || "Failed to subscribe. Please try again."
-          );
-        }
+        setErrorMessage(data.error || "Failed to subscribe. Please try again.");
+        setIsLoading(false);
         return;
       }
       setIsSubmitted(true);
@@ -64,7 +74,7 @@ const Footer = () => {
   const handleClick = (targetId) => {
     if (location.pathname === "/") {
       const el = document.getElementById(targetId);
-      if (el) scrollWithOffset(el, 100); // 100px from top
+      if (el) scrollWithOffset(el, 100);
     } else {
       navigate("/", { state: { scrollTo: targetId } });
     }
@@ -73,7 +83,6 @@ const Footer = () => {
   return (
     <footer className="bg-black relative text-[#F8F9FB]/70 text-sm pt-10 pb-6 px-6 md:px-12">
       <div className="max-w-[85rem] mx-auto grid grid-cols-1 md:grid-cols-[1.2fr_1fr_1fr_0.8fr] gap-8 border-b border-[#F8F9FB]/20 pb-6">
-        {/* Logo + CTA */}
         <div>
           <img src="/logo-light.png" alt="logo" className="w-52" />
           <div className="w-84">
@@ -88,11 +97,11 @@ const Footer = () => {
                 >
                   <div className="my-2.5">
                     <h2 className="text-base font-semibold text-seasalt mb-1">
-                      Sign up to our Weekly Newsletter{" "}
+                      Sign up to our Weekly Newsletter
                     </h2>
                     <p className="text-[#F8F9FB]/70 text-xs">
                       Get Weekly Latest AI Tools, News, High Value Automation
-                      Ideas, delivered to your inbox
+                      Ideas, delivered to your inbox
                     </p>
                   </div>
                   <div className="space-y-2">
@@ -125,36 +134,7 @@ const Footer = () => {
                             Please enter a valid email address.
                           </p>
                         )}
-                      {errorMessage && (
-                        <p className="text-[#00FF93] mt-2 text-[0.7rem]">
-                          {errorMessage.includes("contact@aeontrix.com") ? (
-                            <>
-                              You're already subscribed! If you're interested in
-                              more automations,{" "}
-                              <a
-                                href="https://cal.com/aeontrix-ai/aeontrix-discovery"
-                                className="underline"
-                                target="_blank"
-                              >
-                                Book a Call
-                              </a>{" "}
-                              or contact us at:{" "}
-                              <a
-                                href="mailto:contact@aeontrix.com"
-                                className="underline"
-                                target="_blank"
-                              >
-                                contact@aeontrix.com
-                              </a>
-                              .
-                            </>
-                          ) : (
-                            errorMessage
-                          )}
-                        </p>
-                      )}
                     </div>
-
                     <div className="flex items-start gap-2 mt-2">
                       <input
                         value={isChecked}
@@ -194,21 +174,25 @@ const Footer = () => {
                         . <span className="text-[#00FF93]">*</span>
                       </label>
                     </div>
-
                     <div className="flex justify-center pt-2">
                       <button
-                        disabled={name === "" || email === "" || !isChecked}
+                        disabled={name === "" || email === "" || !isChecked || isLoading}
                         onClick={handleSubmit}
                         className={`glow-button text-xs bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-5 py-1 rounded-full font-bold transition-all duration-300 hover:scale-105 relative overflow-hidden ${
-                          name === "" || email === "" || !isChecked
+                          name === "" || email === "" || !isChecked || isLoading
                             ? "opacity-60 cursor-not-allowed"
                             : ""
                         }`}
                       >
-                        <span className="relative z-10">Submit</span>
+                        <span className="relative z-10">
+                          {isLoading ? "Submitting..." : "Submit"}
+                        </span>
                         <span className="cursor-glow"></span>
                       </button>
                     </div>
+                    {errorMessage && (
+                      <p className="text-[#00FF93] mt-2 text-[0.7rem]" dangerouslySetInnerHTML={{ __html: errorMessage }} />
+                    )}
                   </div>
                 </motion.div>
               ) : (
@@ -234,8 +218,6 @@ const Footer = () => {
             </AnimatePresence>
           </div>
         </div>
-
-        {/* Products */}
         <div>
           <h3 className="font-semibold text-base text-white mb-5">
             Solutions with Use Cases
@@ -249,13 +231,11 @@ const Footer = () => {
               { label: "AI Customer Support", id: "ai-customer-support" },
               { label: "AI Business Partner", id: "ai-business-partner" },
             ].map((item) => (
-              <li>
-                {" "}
+              <li key={item.id}>
                 <Link
                   to={`/solutions/${item.id}`}
                   className="hover:text-[#00FF93] transition-colors duration-200 cursor-pointer"
                   onClick={() => handleClick(item.id)}
-                  key={item.id}
                 >
                   {item.label}
                 </Link>
@@ -263,8 +243,6 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-
-        {/* Resources */}
         <div>
           <h3 className="font-semibold text-white text-base mb-5">Resources</h3>
           <ul className="space-y-3">
@@ -272,7 +250,7 @@ const Footer = () => {
               onClick={() => handleClick("generate-plan")}
               className="hover:text-[#00FF93] transition-colors duration-200 cursor-pointer"
             >
-              Free AI Plan Generator{" "}
+              Free AI Plan Generator
             </li>
             {["Blogs"].map((item) => (
               <li key={item}>
@@ -286,8 +264,6 @@ const Footer = () => {
             ))}
           </ul>
         </div>
-
-        {/* Connect */}
         <div>
           <h3 className="font-semibold text-white text-base mb-5">Connect</h3>
           <ul className="space-y-3 mb-4">
@@ -296,7 +272,7 @@ const Footer = () => {
                 onClick={() => handleClick("Contact")}
                 className="hover:text-[#00FF93] transition-colors duration-200 cursor-pointer"
               >
-                Contact Us{" "}
+                Contact Us
               </p>
             </li>
             <li>
@@ -305,7 +281,7 @@ const Footer = () => {
                 target="_blank"
                 className="hover:text-[#00FF93] transition-colors duration-200"
               >
-                Book a Call{" "}
+                Book a Call
               </a>
             </li>
           </ul>
@@ -317,7 +293,6 @@ const Footer = () => {
             >
               <FaTwitter />
             </a>
-
             <a
               href="https://www.linkedin.com/company/aeontrix"
               target="_blank"
@@ -335,8 +310,6 @@ const Footer = () => {
           </div>
         </div>
       </div>
-
-      {/* Bottom Row */}
       <div className="flex flex-col max-w-7xl mx-auto md:flex-row justify-between items-center text-[#F8F9FB]/40 pt-6 text-xs gap-2">
         <span>© 2025 Aeontrix AI. All rights reserved.</span>
         <div className="flex gap-4">

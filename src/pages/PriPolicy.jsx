@@ -1,8 +1,35 @@
 import React from "react";
+import SEO from "../components/SEO";
 
 const PrivacyPolicy = () => {
   return (
     <div className="max-w-6xl relative text-lg mx-auto px-4 py-8 pb-20 text-seasalt space-y-10">
+      <SEO
+        title="Privacy Policy | Aeontrix"
+        description="Learn how Aeontrix handles your data securely."
+        keywords="privacy policy, Aeontrix, data protection, AI automation"
+        url="https://aeontrix.com/privacy-policy"
+        canonical="https://aeontrix.com/privacy-policy"
+        ogTitle="Privacy Policy | Aeontrix"
+        ogDescription="Understand Aeontrix's data protection practices."
+        image="https://aeontrix.com/aeontrix-emblem.png"
+        twitterSite="@aeontrix"
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Privacy Policy | Aeontrix",
+          url: "https://aeontrix.com/privacy-policy",
+          description: "Aeontrix's Privacy Policy outlines how we collect, use, and protect your data.",
+          publisher: {
+            "@type": "Organization",
+            name: "Aeontrix",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://aeontrix.com/aeontrix-emblem.png",
+            },
+          },
+        }}
+      />
       <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
         Privacy Policy - Aeontrix
       </h1>

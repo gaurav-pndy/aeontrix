@@ -1,4 +1,3 @@
-// components/SEO.jsx
 import { Helmet } from "react-helmet";
 
 const SEO = ({
@@ -10,7 +9,9 @@ const SEO = ({
   canonical,
   ogTitle,
   ogDescription,
-  author = "Saffron | Top-Rated Indian Restaurant in Moscow",
+  author = "Aeontrix | AI Transformation Partner",
+  twitterSite,
+  schemaMarkup,
 }) => (
   <Helmet>
     {/* Basic */}
@@ -32,6 +33,12 @@ const SEO = ({
     <meta name="twitter:title" content={ogTitle || title} />
     <meta name="twitter:description" content={ogDescription || description} />
     <meta name="twitter:image" content={image} />
+    {twitterSite && <meta name="twitter:site" content={twitterSite} />}
+
+    {/* Schema Markup */}
+    {schemaMarkup && (
+      <script type="application/ld+json">{JSON.stringify(schemaMarkup)}</script>
+    )}
   </Helmet>
 );
 

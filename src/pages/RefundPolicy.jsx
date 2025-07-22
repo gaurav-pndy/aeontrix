@@ -1,8 +1,35 @@
 import React from "react";
+import SEO from "../components/SEO";
 
 const RefundPolicy = () => {
   return (
     <div className="max-w-6xl relative mx-auto px-4 py-8 pb-20 text-lg text-seasalt space-y-10">
+      <SEO
+        title="Refund Policy | Aeontrix"
+        description="Understand Aeontrix's refund and cancellation terms."
+        keywords="refund policy, Aeontrix, AI services, cancellation"
+        url="https://aeontrix.com/refund-policy"
+        canonical="https://aeontrix.com/refund-policy"
+        ogTitle="Refund Policy | Aeontrix"
+        ogDescription="Learn about Aeontrix's refund and cancellation policy for AI services."
+        image="https://aeontrix.com/aeontrix-emblem.png"
+        twitterSite="@aeontrix"
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Refund Policy | Aeontrix",
+          url: "https://aeontrix.com/refund-policy",
+          description: "Aeontrix's Refund and Cancellation Policy outlines terms for AI service refunds.",
+          publisher: {
+            "@type": "Organization",
+            name: "Aeontrix",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://aeontrix.com/aeontrix-emblem.png",
+            },
+          },
+        }}
+      />
       <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center">
         Refund & Cancellation Policy – Aeontrix{" "}
       </h1>

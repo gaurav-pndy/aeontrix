@@ -1,3 +1,4 @@
+
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -9,6 +10,7 @@ import {
   FaCogs,
 } from "react-icons/fa";
 import { TbAutomation } from "react-icons/tb";
+import SEO from "../components/SEO";
 
 const categoryIcons = {
   Marketing: <FaBullhorn size={20} />,
@@ -83,13 +85,38 @@ const BlogsPage = () => {
 
   return (
     <div className="px-4 relative z-10 pb-12 max-w-7xl mx-auto text-white">
+      <SEO
+        title="Blogs | Aeontrix"
+        description="Explore AI automation, sales, and marketing insights."
+        keywords="AI blog, AI automation, business automation, AI tools, Aeontrix blog"
+        url="https://aeontrix.com/blogs"
+        canonical="https://aeontrix.com/blogs"
+        ogTitle="AI Blog | Aeontrix"
+        ogDescription="Discover AI automation insights on Aeontrix's blog."
+        image="https://aeontrix.com/aeontrix-emblem.png"
+        twitterSite="@aeontrix"
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "AI Blog | Aeontrix",
+          url: "https://aeontrix.com/blogs",
+          description: "Explore Aeontrix's blog for insights on AI automation, sales, marketing, and customer support.",
+          publisher: {
+            "@type": "Organization",
+            name: "Aeontrix",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://aeontrix.com/aeontrix-emblem.png",
+            },
+          },
+        }}
+      />
       <div className="text-center">
         <h2 className="gradient-title font-bold !mb-4">Blogs</h2>
       </div>
 
       <h2 className="text-2xl font-bold text-seasalt mb-2">Browse by Category</h2>
 
-      {/* Category Filters */}
       <div className="grid grid-cols-3 md:grid-cols-7 gap-2 md:gap-4 mb-10">
         {categories.map((cat) => (
           <button
@@ -112,7 +139,6 @@ const BlogsPage = () => {
         ))}
       </div>
 
-      {/* Sort Dropdown */}
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-xl font-bold text-seasalt">Latest Articles</h3>
         <div>
@@ -128,7 +154,6 @@ const BlogsPage = () => {
         </div>
       </div>
 
-      {/* Blog List */}
       {paginatedBlogs.length === 0 ? (
         <div className="text-center text-white/60 py-20 text-lg">
           No blogs available in this category.
@@ -183,7 +208,6 @@ const BlogsPage = () => {
         </div>
       )}
 
-      {/* Pagination */}
       {paginatedBlogs.length > 0 && (
         <div className="mt-10 flex justify-center space-x-2">
           {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (

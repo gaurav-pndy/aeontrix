@@ -1,11 +1,12 @@
-import React, { useState } from "react";
 
+import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { solutionsData } from "../data/solutionsData";
 import BookAuditButton from "../components/BookAuditButton";
 import { FaCalendarAlt } from "react-icons/fa";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import Timeline from "../components/Home/Timeline";
+import SEO from "../components/SEO";
 
 const Solutions = () => {
   const { solutionId } = useParams();
@@ -15,6 +16,32 @@ const Solutions = () => {
 
   return (
     <div className="min-h-screen relative pt-6 z-10 text-seasalt">
+      <SEO
+        title={`${solution.title} | Aeontrix`}
+        description={solution.desc ? `${solution.desc.substring(0, 150)}...` : "Explore AI automation solutions with Aeontrix."}
+        keywords={`${solution.title.toLowerCase()}, AI automation, business automation, Aeontrix, ${solutionId}`}
+        url={`https://aeontrix.com/solutions/${solutionId}`}
+        canonical={`https://aeontrix.com/solutions/${solutionId}`}
+        ogTitle={`${solution.title} | Aeontrix`}
+        ogDescription={solution.desc ? `${solution.desc.substring(0, 150)}...` : "Discover AI-powered solutions for your business with Aeontrix."}
+        image="https://aeontrix.com/aeontrix-emblem.png"
+        twitterSite="@aeontrix"
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: `${solution.title} | Aeontrix`,
+          url: `https://aeontrix.com/solutions/${solutionId}`,
+          description: solution.desc || "Explore AI automation solutions for business growth with Aeontrix.",
+          publisher: {
+            "@type": "Organization",
+            name: "Aeontrix",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://aeontrix.com/aeontrix-emblem.png",
+            },
+          },
+        }}
+      />
       {/* Hero Section */}
       <section className=" pb-20 mb-6">
         <div className="flex justify-center mb-6">

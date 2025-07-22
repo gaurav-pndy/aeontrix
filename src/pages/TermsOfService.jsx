@@ -1,8 +1,35 @@
 import React from "react";
+import SEO from "../components/SEO";
 
 const TermsOfService = () => {
   return (
     <div className="max-w-6xl relative text-lg mx-auto px-4 py-8 pb-20 text-seasalt space-y-10">
+      <SEO
+        title="Terms of Service | Aeontrix"
+        description="Review Aeontrix's terms for AI automation services."
+        keywords="terms of service, Aeontrix, AI services, business automation"
+        url="https://aeontrix.com/terms-of-service"
+        canonical="https://aeontrix.com/terms-of-service"
+        ogTitle="Terms of Service | Aeontrix"
+        ogDescription="Understand the terms governing Aeontrix's AI services."
+        image="https://aeontrix.com/aeontrix-emblem.png"
+        twitterSite="@aeontrix"
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "Terms of Service | Aeontrix",
+          url: "https://aeontrix.com/terms-of-service",
+          description: "Aeontrix's Terms of Service outline the conditions for using our AI automation services.",
+          publisher: {
+            "@type": "Organization",
+            name: "Aeontrix",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://aeontrix.com/aeontrix-emblem.png",
+            },
+          },
+        }}
+      />
       <h1 className="text-4xl md:text-5xl font-bold text-center mb-6">
         Terms of Service - Aeontrix
       </h1>

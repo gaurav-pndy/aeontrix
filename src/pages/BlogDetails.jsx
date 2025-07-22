@@ -1,7 +1,9 @@
+
 import { useParams, useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { motion, AnimatePresence } from "framer-motion";
+import SEO from "../components/SEO";
 
 const BlogDetails = () => {
   const { slug } = useParams();
@@ -52,12 +54,10 @@ const BlogDetails = () => {
         throw new Error(data.message || "Subscription failed");
       }
 
-      // Store token in localStorage
       if (data.token) {
         localStorage.setItem("blog_subscription_token", data.token);
       }
 
-      // Check if token is valid and update UI
       const isValid = isTokenValid(data.token);
       if (isValid) {
         setBlog((prev) => ({
@@ -126,10 +126,50 @@ const BlogDetails = () => {
     );
   }
 
-  const isSubscribed = blog.subscribed; // Flag from backend
+  const isSubscribed = blog.subscribed;
 
   return (
     <div className="max-w-5xl relative z-10 mx-auto px-4 pt-4 pb-12 text-[#F8F9FB]">
+      <SEO
+        title={`${blog.title} | Aeontrix Blog`}
+        description={
+          blog.content
+            ? `${blog.content.split(" ").slice(0, 30).join(" ").substring(0, 150)}...`
+            : "Read the latest AI insights from Aeontrix."
+        }
+        keywords={`${blog.category}, AI blog, AI automation, Aeontrix, ${blog.title
+          .toLowerCase()
+          .replace(/\s/g, ",")}`}
+        url={`https://aeontrix.com/blogs/${slug}`}
+        canonical={`https://aeontrix.com/blogs/${slug}`}
+        ogTitle={`${blog.title} | Aeontrix Blog`}
+        ogDescription={
+          blog.content
+            ? `${blog.content.split(" ").slice(0, 30).join(" ").substring(0, 150)}...`
+            : "Read the latest AI insights from Aeontrix."
+        }
+        image={blog.image_url || "https://aeontrix.com/aeontrix-emblem.png"}
+        twitterSite="@aeontrix"
+        schemaMarkup={{
+          "@context": "https://schema.org",
+          "@type": "BlogPosting",
+          headline: blog.title,
+          image: blog.image_url || "https://aeontrix.com/aeontrix-emblem.png",
+          datePublished: blog.date,
+          author: {
+            "@type": "Organization",
+            name: "Aeontrix",
+          },
+          publisher: {
+            "@type": "Organization",
+            name: "Aeontrix",
+            logo: {
+              "@type": "ImageObject",
+              url: "https://aeontrix.com/aeontrix-emblem.png",
+            },
+          },
+        }}
+      />
       <Link
         to="/blogs"
         className="text-[#00FF93] hover:underline mb-4 inline-block"
