@@ -316,7 +316,7 @@ export const solutionsData = [
     id: "ai-marketing-suite",
     title: "AI Marketing Suite",
     icon: FaBullhorn,
-    heading: "Boost Your Marketing ROI with Our All-in-One AI Suite",
+    heading: "10x Your Content Production with AI",
     desc: "Generate SEO blogs, image/video ads, and social content in minutes – all tailored to your audience.",
     heroBtn: "Try the AI Marketing Suite",
     overviewDesc:
@@ -674,7 +674,7 @@ export const solutionsData = [
     title: "AI Business Partner",
     icon: MdBusinessCenter,
     heading: "Your Own Dedicated <br/>AI Team",
-    desc: "One flat fee. Unlimited automations. All your AI needs handled for you.",
+    desc: "Monthly flat fee. Unlimited automations. All your AI needs handled for you.",
     heroBtn: "Book a Call",
     overviewDesc:
       "An elite-level service for serious businesses. Get a dedicated AI specialist who automates your operations, trains your team, and maintains everything.",
