@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 
 export default function NewsletterConfirm() {
@@ -20,7 +20,9 @@ export default function NewsletterConfirm() {
     })
       .then((res) => res.json())
       .then((data) => {
-        if (data.success) {
+        if (data.success && data.token) {
+          // Store the JWT token in localStorage
+          localStorage.setItem("blog_subscription_token", data.token);
           setStatus(
             "Your newsletter subscription has been confirmed!\nYou'll receive weekly AI tools, news, and automation ideas in your inbox."
           );
@@ -54,3 +56,4 @@ export default function NewsletterConfirm() {
     </div>
   );
 }
+

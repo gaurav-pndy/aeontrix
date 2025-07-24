@@ -62,16 +62,7 @@ const Navbar = () => {
       <div className="mx-auto w-full flex items-center justify-between px-3 md:px-8">
         <Link to="/">
           <div className="flex z-20 items-center md:space-x-2">
-            <div className="w-8 md:w-10 h-8 md:h-10 flex items-center justify-center">
-              <img
-                src="/Transparent Logo copy.png"
-                alt="Aeontrix Logo"
-                className="w-8 md:w-10 h-8 md:h-10 object-contain"
-              />
-            </div>
-            <span className="text-[#F8F9FB] font-semibold text-lg md:text-xl">
-              AEONTRIX <span className="text-[#00FF93]">AI</span>
-            </span>
+            <img src="/logo-light.png" alt="logo" className="w-40 md:w-44" />
           </div>
         </Link>
 

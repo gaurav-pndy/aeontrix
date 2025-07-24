@@ -1,9 +1,10 @@
-
 import { useParams, useLocation, Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { jwtDecode } from "jwt-decode";
 import { motion, AnimatePresence } from "framer-motion";
 import SEO from "../components/SEO";
+import { FiDownload, FiExternalLink } from "react-icons/fi";
+
 
 const BlogDetails = () => {
   const { slug } = useParams();
@@ -13,11 +14,10 @@ const BlogDetails = () => {
   const [error, setError] = useState("");
   const [isChecked, setIsChecked] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
+  const [subscriptionMsg, setSubscriptionMsg] = useState("");
+  const [subscriber, setSubscriber] = useState({ name: "", email: "" });
 
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
-
-  const [subscriber, setSubscriber] = useState({ name: "", email: "" });
-  const [subscriptionMsg, setSubscriptionMsg] = useState("");
 
   const isTokenValid = (token) => {
     try {
@@ -38,9 +38,49 @@ const BlogDetails = () => {
     e.preventDefault();
     setSubscriptionMsg("");
 
+    if (!isChecked) {
+      setSubscriptionMsg("Please agree to the terms and policies.");
+      return;
+    }
+
     try {
+      // First, check if the email is already subscribed
+      const checkResponse = await fetch(
+        "https://api.aeontrix.com/api/check-subscription-newsletter",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: subscriber.email }),
+        }
+      );
+      const checkData = await checkResponse.json();
+
+      if (checkResponse.ok && checkData.isSubscribed) {
+        // Email is already subscribed, generate a new token
+        const subscribeResponse = await fetch(
+          "https://api.aeontrix.com/api/blogs-subscription/subscribe-newsletter",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(subscriber),
+          }
+        );
+        const subscribeData = await subscribeResponse.json();
+
+        if (!subscribeResponse.ok) {
+          throw new Error(subscribeData.error || "Failed to generate token");
+        }
+
+        if (subscribeData.token) {
+          localStorage.setItem("blog_subscription_token", subscribeData.token);
+          setBlog((prev) => ({ ...prev, subscribed: true }));
+        }
+        return; // Exit early, no popup needed
+      }
+
+      // Email not subscribed, proceed with subscription
       const response = await fetch(
-        "http://localhost:3000/api/blogs-subscription/subscribe",
+        "https://api.aeontrix.com/api/blogs-subscription/subscribe-newsletter",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
@@ -51,36 +91,51 @@ const BlogDetails = () => {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.message || "Subscription failed");
+        throw new Error(data.error || "Subscription failed");
       }
 
-      if (data.token) {
-        localStorage.setItem("blog_subscription_token", data.token);
-      }
-
-      const isValid = isTokenValid(data.token);
-      if (isValid) {
-        setBlog((prev) => ({
-          ...prev,
-          subscribed: true,
-        }));
-      }
-
-      setSubscriptionMsg("Subscription successful! Content unlocked.");
+      setSubscriptionMsg(
+        "A newsletter confirmation email has been sent. Please confirm and refresh the page."
+      );
+      setIsSubmitted(true);
       setSubscriber({ name: "", email: "" });
+      setIsChecked(false); // Reset checkbox
     } catch (err) {
-      setSubscriptionMsg(err.message);
+      setSubscriptionMsg(err.message || "Subscription failed");
     }
   };
 
   useEffect(() => {
-    const token = localStorage.getItem("blog_subscription_token");
-    const valid = token && isTokenValid(token);
-
-    const fetchBlog = async () => {
+    const fetchBlogAndCheckSubscription = async () => {
       try {
         setLoading(true);
 
+        // Check subscription status
+        let isSubscribed = false;
+        const token = localStorage.getItem("blog_subscription_token");
+        if (token && isTokenValid(token)) {
+          const decoded = jwtDecode(token);
+          const storedEmail = decoded.email;
+          if (storedEmail) {
+            const checkResponse = await fetch(
+              "https://api.aeontrix.com/api/check-subscription-newsletter",
+              {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email: storedEmail }),
+              }
+            );
+            const checkData = await checkResponse.json();
+            if (checkResponse.ok && checkData.isSubscribed) {
+              isSubscribed = true;
+            }
+          }
+        }
+
+        // Reset isSubmitted on page load/refresh to show initial form
+        setIsSubmitted(false);
+
+        // Fetch blog
         const blogId = location.state?.id;
         const url = blogId
           ? `${baseUrl}/api/blogs/${blogId}`
@@ -98,7 +153,7 @@ const BlogDetails = () => {
         const data = await response.json();
         setBlog({
           ...data.blog,
-          subscribed: valid,
+          subscribed: isSubscribed,
         });
       } catch (err) {
         setError(err.message);
@@ -107,7 +162,7 @@ const BlogDetails = () => {
       }
     };
 
-    fetchBlog();
+    fetchBlogAndCheckSubscription();
   }, [location.state, slug]);
 
   if (loading) {
@@ -207,6 +262,31 @@ const BlogDetails = () => {
               blog.content?.replace(/\n/g, "<br/>") || "<p>No content</p>",
           }}
         ></div>
+        {blog.resources?.length > 0 && (
+  <div className="mt-8">
+    <h3 className="text-xl font-semibold mb-4 text-white">Resources</h3>
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {blog.resources.map((resource, index) => (
+        <a
+          key={index}
+          href={resource.url}
+          target={resource.type === "file" ? "_self" : "_blank"}
+          rel="noopener noreferrer"
+          download={resource.type === "file"}
+          className="flex items-center gap-3 px-4 py-3 border border-[#00FF93] text-[#00FF93] rounded-lg hover:bg-[#00FF93]/10 transition-colors duration-200 group"
+        >
+          {resource.type === "file" ? (
+            <FiDownload className="text-xl group-hover:scale-110 transition-transform" />
+          ) : (
+            <FiExternalLink className="text-xl group-hover:scale-110 transition-transform" />
+          )}
+          <span className="truncate">{resource.name || "Download"}</span>
+        </a>
+      ))}
+    </div>
+  </div>
+)}
+
       </div>
 
       {!isSubscribed && (
@@ -246,40 +326,17 @@ const BlogDetails = () => {
                       required
                       className="w-full px-4 py-2 rounded bg-transparent border border-gray-600 text-white focus:outline-none focus:ring-1 focus:ring-[#00FF93]"
                     />
-
-                    <p className="text-[#00FF93]  text-sm">
-                      <>
-                        You're already subscribed! If you're interested in more
-                        automations,{" "}
-                        <a
-                          href="https://cal.com/aeontrix-ai/aeontrix-discovery"
-                          className="underline"
-                          target="_blank"
-                        >
-                          Book a Call
-                        </a>{" "}
-                        or contact us at:{" "}
-                        <a
-                          href="mailto:contact@aeontrix.com"
-                          className="underline"
-                          target="_blank"
-                        >
-                          contact@aeontrix.com
-                        </a>
-                        .
-                      </>
-                    </p>
                     <div className="flex items-start text-left text-sm gap-2 mt-2">
                       <input
-                        value={isChecked}
-                        onChange={() => setIsChecked((prev) => !prev)}
                         type="checkbox"
                         id="terms"
-                        className="accent-[#00FF93]  w-5 h-5"
+                        checked={isChecked}
+                        onChange={() => setIsChecked((prev) => !prev)}
+                        className="accent-[#00FF93] w-5 h-5"
                       />
                       <label
                         htmlFor="terms"
-                        className="text-seasalt  leading-snug cursor-pointer"
+                        className="text-seasalt leading-snug cursor-pointer"
                       >
                         I have read, understood, and agree to the{" "}
                         <a
@@ -328,16 +385,14 @@ const BlogDetails = () => {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -10 }}
                   transition={{ duration: 0.3 }}
-                  className="text-center  mt-5 text-[#F8F9FB]"
+                  className="text-center mt-5 text-[#F8F9FB]"
                 >
                   <h3 className="text-[#00FF93] font-bold text-2xl">
                     Thank You
                   </h3>
                   <p className="mt-2">
-                    We have sent you a{" "}
-                    <span className="font-medium">Confirmation Email</span>.
-                    <br />
-                    Check your spam folder if you can’t find it.
+                    A newsletter confirmation email has been sent. <br />
+                    Please confirm and refresh the page.
                   </p>
                 </motion.div>
               )}

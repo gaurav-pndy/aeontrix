@@ -52,14 +52,20 @@ const Footer = () => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name, email }),
       });
-      const data = await response.json();
-      if (!response.ok) {
-        setErrorMessage(data.error || "Failed to subscribe. Please try again.");
-        setIsLoading(false);
-        return;
+
+      const text = await response.text();
+      if (response.ok && text === "Accepted") {
+        setIsSubmitted(true); // Show "Thank You" message
+      } else {
+        try {
+          const data = JSON.parse(text); // Try parsing as JSON for error details
+          setErrorMessage(data.error || "Failed to subscribe. Please try again.");
+        } catch {
+          setErrorMessage("Unexpected response from server. Please try again.");
+        }
       }
-      setIsSubmitted(true);
     } catch (error) {
+      console.error("Subscription error:", error);
       setErrorMessage("An unexpected error occurred. Please try again.");
     } finally {
       setIsLoading(false);

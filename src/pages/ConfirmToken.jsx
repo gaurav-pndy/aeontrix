@@ -25,12 +25,12 @@ export default function ConfirmToken() {
             "Your email has been verified!\nCheck your inbox for list of automation opportunities for your business"
           );
         } else {
-          setStatus(`❌ ${data.error || "Something failed"}`);
+          setStatus(`${data.error || "Something failed"}`);
         }
       })
       .catch(() =>
         setStatus(
-          '⚠️ Something went wrong. Please contact: <a href="mailto:contact@aeontrix.com" className="underline text-[#00FF93]">contact@aeontrix.com</a>.'
+          'Something went wrong. Please contact: <a href="mailto:contact@aeontrix.com" className="underline text-[#00FF93]">contact@aeontrix.com</a>.'
         )
       );
   }, [token]);
