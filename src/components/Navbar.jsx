@@ -175,7 +175,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Icon */}
-        <div className="flex gap-6 items-center">
+        <div className="hidden md:flex gap-6 items-center">
           <BookAuditButton className="!px-3 md:!px-6 !py-1.5 md:!py-2.5 text-[0.8rem] md:text-sm" />
 
           <div className="lg:hidden flex items-center">
