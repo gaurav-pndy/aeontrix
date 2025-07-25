@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { getCalApi } from "@calcom/embed-react";
 
 const BookAuditButton = ({
-  label = "Book an AI Audit",
+  label = "Book a Free Discovery Call",
   showIcon = false,
   className = "",
 }) => {

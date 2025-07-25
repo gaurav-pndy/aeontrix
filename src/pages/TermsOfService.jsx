@@ -19,7 +19,8 @@ const TermsOfService = () => {
           "@type": "WebPage",
           name: "Terms of Service | Aeontrix",
           url: "https://aeontrix.com/terms-of-service",
-          description: "Aeontrix's Terms of Service outline the conditions for using our AI automation services.",
+          description:
+            "Aeontrix's Terms of Service outline the conditions for using our AI automation services.",
           publisher: {
             "@type": "Organization",
             name: "Aeontrix",
@@ -62,8 +63,8 @@ const TermsOfService = () => {
 
         <ul className="list-disc md:ml-8 list-inside text-[#F8F9FB]/80 space-y-1">
           <li>
-            <strong>AI Sales Suite: </strong> Multi Channel Outreach with
-            follow-ups, Database Reactivation, CRM integration
+            <strong>AI SDR: </strong> Multi Channel Outreach with follow-ups,
+            Database Reactivation, CRM integration
           </li>
           <li>
             <strong>AI Influencer Studio: </strong> Your own Customizable AI
@@ -82,7 +83,7 @@ const TermsOfService = () => {
             support automation, CRM integration
           </li>
           <li>
-            <strong>AI Clone: </strong> Personalized, Branded Replicas with
+            <strong>AI Secretary: </strong> Personalized, Branded Replicas with
             Knowledge
           </li>
         </ul>

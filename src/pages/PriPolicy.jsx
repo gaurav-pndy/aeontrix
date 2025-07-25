@@ -19,7 +19,8 @@ const PrivacyPolicy = () => {
           "@type": "WebPage",
           name: "Privacy Policy | Aeontrix",
           url: "https://aeontrix.com/privacy-policy",
-          description: "Aeontrix's Privacy Policy outlines how we collect, use, and protect your data.",
+          description:
+            "Aeontrix's Privacy Policy outlines how we collect, use, and protect your data.",
           publisher: {
             "@type": "Organization",
             name: "Aeontrix",
@@ -106,7 +107,7 @@ const PrivacyPolicy = () => {
           </h3>
           <ul className="list-disc md:ml-4 list-inside text-[#F8F9FB]/80 space-y-1">
             <li>Chatbot and workflow logs</li>
-            <li>Lead funnel data (AI Sales Suite)</li>
+            <li>Lead funnel data (AI SDR)</li>
             <li>Engagement metrics (AI Marketing/Influencer Studio)</li>
             <li>AI agent feedback loops and analytics</li>
           </ul>

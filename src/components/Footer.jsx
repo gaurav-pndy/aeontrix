@@ -25,33 +25,41 @@ const Footer = () => {
     setIsLoading(true);
     try {
       // Check if user is already subscribed
-      const checkResponse = await fetch("https://api.aeontrix.com/api/check-subscription-newsletter", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
+      const checkResponse = await fetch(
+        "https://api.aeontrix.com/api/check-subscription-newsletter",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email }),
+        }
+      );
       const checkData = await checkResponse.json();
       if (!checkResponse.ok) {
-        setErrorMessage(checkData.error || "Failed to check subscription status.");
+        setErrorMessage(
+          checkData.error || "Failed to check subscription status."
+        );
         setIsLoading(false);
         return;
       }
       if (checkData.isSubscribed) {
         setErrorMessage(
           "You're already subscribed! If you're interested in more automations, " +
-          "<a href='https://cal.com/aeontrix-ai/aeontrix-discovery' class='underline' target='_blank'>Book a Call</a> " +
-          "or contact us at: <a href='mailto:contact@aeontrix.com' class='underline' target='_blank'>contact@aeontrix.com</a>."
+            "<a href='https://cal.com/aeontrix-ai/aeontrix-discovery' class='underline' target='_blank'>Book a Call</a> " +
+            "or contact us at: <a href='mailto:contact@aeontrix.com' class='underline' target='_blank'>contact@aeontrix.com</a>."
         );
         setIsLoading(false);
         return;
       }
 
       // Proceed with subscription
-      const response = await fetch("https://hook.eu2.make.com/p3avlh88vxrm456iqxdqr907rs3ei3kf", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email }),
-      });
+      const response = await fetch(
+        "https://hook.eu2.make.com/p3avlh88vxrm456iqxdqr907rs3ei3kf",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name, email }),
+        }
+      );
 
       const text = await response.text();
       if (response.ok && text === "Accepted") {
@@ -59,7 +67,9 @@ const Footer = () => {
       } else {
         try {
           const data = JSON.parse(text); // Try parsing as JSON for error details
-          setErrorMessage(data.error || "Failed to subscribe. Please try again.");
+          setErrorMessage(
+            data.error || "Failed to subscribe. Please try again."
+          );
         } catch {
           setErrorMessage("Unexpected response from server. Please try again.");
         }
@@ -182,7 +192,9 @@ const Footer = () => {
                     </div>
                     <div className="flex justify-center pt-2">
                       <button
-                        disabled={name === "" || email === "" || !isChecked || isLoading}
+                        disabled={
+                          name === "" || email === "" || !isChecked || isLoading
+                        }
                         onClick={handleSubmit}
                         className={`glow-button text-xs bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-5 py-1 rounded-full font-bold transition-all duration-300 hover:scale-105 relative overflow-hidden ${
                           name === "" || email === "" || !isChecked || isLoading
@@ -197,7 +209,10 @@ const Footer = () => {
                       </button>
                     </div>
                     {errorMessage && (
-                      <p className="text-[#00FF93] mt-2 text-[0.7rem]" dangerouslySetInnerHTML={{ __html: errorMessage }} />
+                      <p
+                        className="text-[#00FF93] mt-2 text-[0.7rem]"
+                        dangerouslySetInnerHTML={{ __html: errorMessage }}
+                      />
                     )}
                   </div>
                 </motion.div>
@@ -230,10 +245,10 @@ const Footer = () => {
           </h3>
           <ul className="space-y-3">
             {[
-              { label: "AI Sales Suite", id: "ai-sales-suite" },
+              { label: "AI SDR", id: "ai-sales-suite" },
               { label: "AI Influencer Studio", id: "ai-influencer-studio" },
               { label: "AI Marketing Suite", id: "ai-marketing-suite" },
-              { label: "AI Clone", id: "ai-clone" },
+              { label: "AI Secretary", id: "ai-clone" },
               { label: "AI Customer Support", id: "ai-customer-support" },
               { label: "AI Business Partner", id: "ai-business-partner" },
             ].map((item) => (

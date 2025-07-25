@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { solutionsData } from "../data/solutionsData";
@@ -18,12 +17,20 @@ const Solutions = () => {
     <div className="min-h-screen relative pt-6 z-10 text-seasalt">
       <SEO
         title={`${solution.title} | Aeontrix`}
-        description={solution.desc ? `${solution.desc.substring(0, 150)}...` : "Explore AI automation solutions with Aeontrix."}
+        description={
+          solution.desc
+            ? `${solution.desc.substring(0, 150)}...`
+            : "Explore AI automation solutions with Aeontrix."
+        }
         keywords={`${solution.title.toLowerCase()}, AI automation, business automation, Aeontrix, ${solutionId}`}
         url={`https://aeontrix.com/solutions/${solutionId}`}
         canonical={`https://aeontrix.com/solutions/${solutionId}`}
         ogTitle={`${solution.title} | Aeontrix`}
-        ogDescription={solution.desc ? `${solution.desc.substring(0, 150)}...` : "Discover AI-powered solutions for your business with Aeontrix."}
+        ogDescription={
+          solution.desc
+            ? `${solution.desc.substring(0, 150)}...`
+            : "Discover AI-powered solutions for your business with Aeontrix."
+        }
         image="https://aeontrix.com/aeontrix-emblem.png"
         twitterSite="@aeontrix"
         schemaMarkup={{
@@ -31,7 +38,9 @@ const Solutions = () => {
           "@type": "WebPage",
           name: `${solution.title} | Aeontrix`,
           url: `https://aeontrix.com/solutions/${solutionId}`,
-          description: solution.desc || "Explore AI automation solutions for business growth with Aeontrix.",
+          description:
+            solution.desc ||
+            "Explore AI automation solutions for business growth with Aeontrix.",
           publisher: {
             "@type": "Organization",
             name: "Aeontrix",
@@ -60,10 +69,7 @@ const Solutions = () => {
             {solution.desc}
           </p>
           <div className="flex w-full justify-center">
-            <BookAuditButton
-              label={solution.heroBtn}
-              className="!text-lg !py-2.5"
-            />
+            <BookAuditButton className="!text-lg !py-2.5" />
           </div>
         </div>
       </section>
@@ -224,7 +230,7 @@ const Solutions = () => {
             growth.
           </p>
           <div className="flex w-full justify-center">
-            <BookAuditButton label="Book a Call" className="!text-lg !py-2.5" />
+            <BookAuditButton className="!text-lg !py-2.5" />
           </div>
         </div>
       </section>

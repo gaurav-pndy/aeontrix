@@ -166,11 +166,7 @@ const HeroSection = () => {
         </p>
       </div>
       <div className="flex justify-center mb-16">
-        <BookAuditButton
-          label="Start Your AI Journey"
-          showIcon={true}
-          className="text-lg space-x-2"
-        />
+        <BookAuditButton showIcon={true} className="text-lg space-x-2" />
       </div>
       <div id="generate-plan" className="max-w-4xl mx-auto">
         {!isSubmitted ? (
@@ -383,7 +379,7 @@ const HeroSection = () => {
               quick-win automation opportunities tailored to your business.
             </p>
             <div className="flex justify-center mt-8">
-              <BookAuditButton label="Book a Call Now" className="px-8 !py-3" />
+              <BookAuditButton className="px-8 !py-3" />
             </div>
           </motion.div>
         )}

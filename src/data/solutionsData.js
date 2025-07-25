@@ -74,7 +74,7 @@ import { TiSocialAtCircular } from "react-icons/ti";
 export const solutionsData = [
   {
     id: "ai-sales-suite",
-    title: "AI Sales Suite",
+    title: "AI SDR",
     icon: FaShoppingCart,
     heading: "Turn Conversations into Customers — on Autopilot",
     desc: "Supercharge your outreach with AI voice callers, SMS, cold emails, and WhatsApp campaigns.",
@@ -445,13 +445,13 @@ export const solutionsData = [
   },
   {
     id: "ai-clone",
-    title: "Your AI Clone",
+    title: "Your AI Secretary",
     icon: FaRobot,
     heading: "Let People Talk to You — Even When You’re Asleep",
     desc: "Clone your Voice, Face, and Brain to Automate Calls, Support, and Content.",
-    heroBtn: "Create Your AI Clone Now",
+    heroBtn: "Create Your AI Secretarytary Now",
     overviewDesc:
-      "Imagine a digital version of yourself that can speak, advise, sell, and support. From voice calls to video, your AI Clone handles it all.",
+      "Imagine a digital version of yourself that can speak, advise, sell, and support. From voice calls to video, your AI Secretarytary handles it all.",
     useCases: [
       {
         icon: MdSportsSoccer,
@@ -461,7 +461,7 @@ export const solutionsData = [
       {
         icon: GoLaw,
         title: "Law Firms",
-        desc: "AI clone of an attorney to handle client FAQs.",
+        desc: "AI Secretarytary of an attorney to handle client FAQs.",
       },
       {
         icon: LuBuilding2,
@@ -555,7 +555,7 @@ export const solutionsData = [
       },
       {
         step: "3",
-        title: "We’ll create your AI clone",
+        title: "We’ll create your AI Secretarytary",
       },
     ],
   },

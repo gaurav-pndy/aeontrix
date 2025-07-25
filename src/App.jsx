@@ -12,6 +12,7 @@ import TermsOfService from "./pages/TermsOfService";
 import BlogsPage from "./pages/BlogsPage";
 import BlogDetails from "./pages/BlogDetails";
 import Solutions from "./pages/Solutions";
+import Industries from "./pages/Industries";
 
 function App() {
   useEffect(() => {
@@ -49,6 +50,10 @@ function App() {
         {
           path: "/solutions/:solutionId",
           element: <Solutions />,
+        },
+        {
+          path: "/industries/:industryId",
+          element: <Industries />,
         },
         {
           path: "/privacy-policy",

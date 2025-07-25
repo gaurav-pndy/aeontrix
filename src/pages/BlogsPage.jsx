@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import {
@@ -17,7 +16,7 @@ const categoryIcons = {
   Sales: <FaChartLine size={20} />,
   "Customer Support": <FaHeadset size={20} />,
   "AI Influencer": <FaRobot size={20} />,
-  "AI Clone": <FaUsersCog size={20} />,
+  "AI Secretary": <FaUsersCog size={20} />,
   "Automation Templates": <TbAutomation size={20} />,
   "AI Tools": <FaCogs size={20} />,
 };
@@ -100,7 +99,8 @@ const BlogsPage = () => {
           "@type": "WebPage",
           name: "AI Blog | Aeontrix",
           url: "https://aeontrix.com/blogs",
-          description: "Explore Aeontrix's blog for insights on AI automation, sales, marketing, and customer support.",
+          description:
+            "Explore Aeontrix's blog for insights on AI automation, sales, marketing, and customer support.",
           publisher: {
             "@type": "Organization",
             name: "Aeontrix",
@@ -115,7 +115,9 @@ const BlogsPage = () => {
         <h2 className="gradient-title font-bold !mb-4">Blogs</h2>
       </div>
 
-      <h2 className="text-2xl font-bold text-seasalt mb-2">Browse by Category</h2>
+      <h2 className="text-2xl font-bold text-seasalt mb-2">
+        Browse by Category
+      </h2>
 
       <div className="grid grid-cols-3 md:grid-cols-7 gap-2 md:gap-4 mb-10">
         {categories.map((cat) => (

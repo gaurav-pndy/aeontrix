@@ -62,7 +62,7 @@ function HomePage() {
         <HeroSection />
         <Carousel />
         <ServicesSection />
-        <Benefits />
+        {/* <Benefits /> */}
         <HumanAIComparison />
         <Timeline />
         <BlogSection />

@@ -20,7 +20,7 @@ const Navbar = () => {
   const solutions = [
     {
       id: "ai-sales-suite",
-      title: "AI Sales Suite",
+      title: "AI SDR",
     },
     {
       id: "ai-influencer-studio",
@@ -32,7 +32,7 @@ const Navbar = () => {
     },
     {
       id: "ai-clone",
-      title: "AI Clone",
+      title: "AI Secretary",
     },
     {
       id: "ai-customer-support",
@@ -41,6 +41,37 @@ const Navbar = () => {
     {
       id: "ai-business-partner",
       title: "AI Business Partner",
+    },
+  ];
+
+  const industries = [
+    {
+      id: "e-commerce",
+      title: "E-Commerce",
+    },
+    {
+      id: "agencies",
+      title: "Agencies",
+    },
+    {
+      id: "real-estate",
+      title: "Real Estate",
+    },
+    {
+      id: "insurance",
+      title: "Insurance",
+    },
+    {
+      id: "law-firms",
+      title: "Law Firms",
+    },
+    {
+      id: "coaches-and-consultants",
+      title: "Coaches & Consultants",
+    },
+    {
+      id: "small-medium-enterprises",
+      title: "Small & Medium Sized Enterprises",
     },
   ];
 
@@ -78,7 +109,7 @@ const Navbar = () => {
               onClick={() => handleClick("services")}
               className="flex hover:text-[#00FF93] transition-all duration-200 items-center gap-1 cursor-pointer"
             >
-              Solutions with Use Cases <ChevronDown size={16} />
+              Solutions <ChevronDown size={16} />
             </div>
             <AnimatePresence>
               {dropdownOpen && (
@@ -107,12 +138,34 @@ const Navbar = () => {
           >
             Blogs
           </Link>
-          <button
-            className="hover:text-[#00FF93] transition-all duration-200 cursor-pointer"
-            onClick={() => handleClick("pricing")}
+          <div
+            onMouseEnter={() => setDropdownOpen2(true)}
+            onMouseLeave={() => setDropdownOpen2(false)}
+            className="relative flex items-center h-full"
           >
-            Pricing
-          </button>
+            <div className="flex hover:text-[#00FF93] transition-all duration-200 items-center gap-1 cursor-pointer">
+              Industries & Use Cases <ChevronDown size={16} />
+            </div>
+            <AnimatePresence>
+              {dropdownOpen2 && (
+                <motion.div
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ type: "tween", duration: 0.12 }}
+                  className="absolute overflow-hidden top-full mt-1 left-[50%] translate-x-[-50%] bg-[#0F1114] border border-white/10 rounded-lg shadow-[#00FF93]/10 shadow  w-56 z-50"
+                >
+                  {industries.map((item) => (
+                    <Link to={`/industries/${item.id}`} key={item.id}>
+                      <button className="w-full text-left px-4 py-3 hover:text-[#00FF93] transition-all duration-200 hover:bg-[#1A1D21] text-white">
+                        {item.title}
+                      </button>
+                    </Link>
+                  ))}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
           <button
             className="hover:text-[#00FF93] transition-all duration-200 cursor-pointer"
             onClick={() => handleClick("Contact")}
@@ -157,7 +210,7 @@ const Navbar = () => {
                 onClick={() => handleClick("services")}
                 className="flex  items-center gap-1 cursor-pointer"
               >
-                Solutions with Use Cases <ChevronDown size={16} />
+                Solutions <ChevronDown size={16} />
               </div>
               <AnimatePresence>
                 {dropdownOpen && (
@@ -184,14 +237,37 @@ const Navbar = () => {
             <Link to="/blogs" onClick={() => setMobileMenuOpen(false)}>
               Blogs
             </Link>
-            <button
+            <div
               onClick={() => {
-                handleClick("pricing");
-                setMobileMenuOpen(false);
+                setDropdownOpen2(!dropdownOpen);
+                setDropdownOpen(false);
               }}
+              className="relative flex gap-2 flex-col items-center h-full"
             >
-              Pricing
-            </button>
+              <div className="flex  items-center gap-1 cursor-pointer">
+                Industries & Use Cases <ChevronDown size={16} />
+              </div>
+              <AnimatePresence>
+                {dropdownOpen2 && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.2 }}
+                    className="w-full bg-[#111111] py-1 text-sm overflow-hidden"
+                  >
+                    {industries.map((item) => (
+                      <button
+                        onClick={() => goToPage(`/industries/${item.id}`)}
+                        className="w-full  px-4 py-3 hover:bg-[#1A1D21] text-white"
+                      >
+                        {item.title}
+                      </button>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
             <button
               onClick={() => {
                 handleClick("Contact");

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 
 const HumanAIComparison = () => {
-  const [selectedOption, setSelectedOption] = useState("AI Sales Suite");
+  const [selectedOption, setSelectedOption] = useState("AI SDR");
 
   const options = [
-    "AI Sales Suite",
+    "AI SDR",
     "AI Marketing Suite",
     "AI Influencer Studio",
-    "Your AI Clone",
+    "Your AI Secretary",
     "AI Customer Support",
     "AI Business Partner (Full-Stack Engagement)",
   ];
 
   const aiComparisonData = {
-    "AI Sales Suite": [
+    "AI SDR": [
       ["Lead Response Time", "4-24 hours", "0.5 seconds", "100x faster"],
       [
         "Simultaneous Conversations",
@@ -73,7 +73,7 @@ const HumanAIComparison = () => {
         "Infinite reach",
       ],
     ],
-    "Your AI Clone": [
+    "Your AI Secretary": [
       ["Availability", "Limited hours", "24/7", "+128 hrs/week"],
       ["Concurrent users served", "1 at a time", "Unlimited", "Infinite scale"],
       ["Response accuracy", "Varies", ">95% trained answers", "Consistent"],
@@ -135,7 +135,7 @@ const HumanAIComparison = () => {
   };
 
   const headerData = {
-    "AI Sales Suite": [["Human Sales Team", "Aeontrix Sales Suite"]],
+    "AI SDR": [["Human Sales Team", "Aeontrix Sales Suite"]],
     "AI Marketing Suite": [
       ["Human Content Team", "Aeontrix AI Marketing Suite"],
     ],
@@ -143,7 +143,7 @@ const HumanAIComparison = () => {
     "AI Influencer Studio": [
       ["Human Models & Crew", "Aeontrix Influencer Studio"],
     ],
-    "Your AI Clone": [["Single Human Expert", "Aeontrix AI Clone"]],
+    "Your AI Secretary": [["Single Human Expert", "Aeontrix AI Secretary"]],
     "AI Customer Support": [["Human Agents", "Aeontrix AI Support"]],
     "AI Business Partner (Full-Stack Engagement)": [
       ["Traditional Outsourcing / New Hires", "Aeontrix AI Business Partner"],
@@ -206,13 +206,13 @@ const HumanAIComparison = () => {
                   {/* Border box for last two columns */}
                   <div
                     className={`absolute top-0 bottom-0 right-0 ${
-                      selectedOption === "AI Sales Suite" ||
+                      selectedOption === "AI SDR" ||
                       selectedOption ===
                         "AI Business Partner (Full-Stack Engagement)"
                         ? "w-[46%] md:w-[45%]"
                         : selectedOption === "AI Marketing Suite"
                         ? "w-[50%] lg:w-[46%]"
-                        : selectedOption === "Your AI Clone"
+                        : selectedOption === "Your AI Secretary"
                         ? "w-[50%] md:w-[48%]"
                         : "w-[49%] md:w-[50%]"
                     }  border border-[#00FF93]/30 rounded-xl pointer-events-none z-0`}

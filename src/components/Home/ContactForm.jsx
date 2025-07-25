@@ -137,7 +137,7 @@ const ContactForm = () => {
             type="submit"
             className="glow-button group bg-[#00FF93] hover:bg-[#00FF93]/90 text-black border border-[#00FF93]/30 hover:border-[#00FF93] px-4 mx-auto mt-4 md:px-6 py-1.5 md:py-3 rounded-full font-bold transition-all duration-300 hover:scale-105 relative overflow-hidden flex items-center justify-center"
           >
-            Schedule Your Demo
+            Submit
             <span className="cursor-glow"></span>
           </button>
         </form>
