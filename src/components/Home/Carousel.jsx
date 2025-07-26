@@ -72,7 +72,7 @@ const Carousel = () => {
             {topRow.map((logo, index) => (
               <div
                 key={`top-${index}`}
-                className="flex items-center justify-center md:mx-6  px-4 py-2 border border-[#083d3d] !bg-[#0d0d0d]/20 hover:border-[#00FF93] text-4xl  rounded-xl !p-4 md:!p-6 text-neutral-400 hover:text-neutral-200 shadow-2xl transition-all  
+                className="flex items-center justify-center mx-2 md:mx-6  px-4 py-2 border border-[#083d3d] !bg-[#0d0d0d]/20 hover:border-[#00FF93] text-4xl  rounded-xl !p-4 md:!p-6 text-neutral-400 hover:text-neutral-200 shadow-2xl transition-all  
                  "
               >
                 {logo}
@@ -87,7 +87,7 @@ const Carousel = () => {
             {bottomRow.map((logo, index) => (
               <div
                 key={`bottom-${index}`}
-                className="flex items-center justify-center md:mx-6  px-4 py-2 border border-[#083d3d] !bg-[#0d0d0d]/20 hover:border-[#00FF93] text-4xl  rounded-xl !p-4 md:!p-6 text-neutral-400 hover:text-neutral-200 shadow-2xl transition-all  
+                className="flex items-center justify-center mx-2 md:mx-6  px-4 py-2 border border-[#083d3d] !bg-[#0d0d0d]/20 hover:border-[#00FF93] text-4xl  rounded-xl !p-4 md:!p-6 text-neutral-400 hover:text-neutral-200 shadow-2xl transition-all  
                  "
               >
                 {logo}
