@@ -56,7 +56,7 @@ const Industries = () => {
       {/* Hero Section */}
       <section className=" pb-20 mb-6">
         <div className="flex justify-center mb-6">
-          <div className="green-glass-badge backdrop-blur-md rounded-full px-6 py-2 shadow-lg">
+          <div className="green-glass-badge backdrop-blur-md rounded-full px-4 py-2 shadow-lg">
             <span className="text-[#00FF93] font-medium">
               {industry.title}{" "}
             </span>
@@ -78,7 +78,7 @@ const Industries = () => {
 
       {industry.smbs && (
         <section className="pb-20 text-seasalt">
-          <div className="max-w-7xl mx-auto px-6">
+          <div className="max-w-7xl mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold gradient-title !mb-4">
                 SMBs We Serve
@@ -106,7 +106,7 @@ const Industries = () => {
       )}
 
       <section className="pb-20 text-seasalt">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold gradient-title !mb-4">
               AI Use Cases
@@ -141,7 +141,7 @@ const Industries = () => {
       </p>
 
       <section className="pb-20 ">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold gradient-title !mb-4">
               Benefits{" "}
@@ -171,7 +171,7 @@ const Industries = () => {
       </section>
 
       <section className="pb-20 ">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold gradient-title !mb-4">
               Featured Solutions{" "}
@@ -204,7 +204,7 @@ const Industries = () => {
 
       {/* CTA Section */}
       <section className="py-20 ">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold gradient-title !mb-6">
             Ready to Upgrade Your Business with AI?{" "}
           </h2>

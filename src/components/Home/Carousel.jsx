@@ -6,7 +6,16 @@ import {
   FaGithub,
   FaSlack,
 } from "react-icons/fa6";
-import { SiAirtable, SiClaude, SiGmail, SiNotion } from "react-icons/si";
+import { RiGeminiLine } from "react-icons/ri";
+import {
+  SiAirtable,
+  SiClaude,
+  SiGmail,
+  SiMake,
+  SiN8N,
+  SiNotion,
+  SiPerplexity,
+} from "react-icons/si";
 
 const logos = [
   <FaGithub />,
@@ -18,6 +27,11 @@ const logos = [
   <SiNotion />,
   <FaSlack />,
   <SiAirtable />,
+  <SiPerplexity />,
+  <RiGeminiLine />,
+  <SiN8N />,
+  <SiMake />,
+
   <FaGithub />,
   <FaDiscord />,
   <SiClaude />,
@@ -27,6 +41,10 @@ const logos = [
   <SiNotion />,
   <FaSlack />,
   <SiAirtable />,
+  <SiPerplexity />,
+  <SiN8N />,
+  <SiMake />,
+  <RiGeminiLine />,
   <FaGithub />,
   <FaDiscord />,
   <SiClaude />,

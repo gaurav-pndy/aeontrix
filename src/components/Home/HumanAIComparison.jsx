@@ -76,7 +76,7 @@ const HumanAIComparison = () => {
                         : selectedOption === "AI Marketing Suite"
                         ? "w-[50%] lg:w-[46%]"
                         : selectedOption === "Your 24/7 AI Secretary"
-                        ? "w-[50%] md:w-[48%]"
+                        ? "w-[50%] md:w-[54%]"
                         : "w-[49%] md:w-[50%]"
                     }  border border-[#00FF93]/30 rounded-xl pointer-events-none z-0`}
                   />

@@ -98,7 +98,7 @@ const Navbar = () => {
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden lg:flex h-16 items-center space-x-6 xl:space-x-10 text-[#F8F9FB] font-medium">
+        <div className="hidden xl:flex h-16 items-center space-x-6 xl:space-x-10 text-[#F8F9FB] font-medium">
           {/* Solutions */}
           <div
             onMouseEnter={() => setDropdownOpen(true)}
@@ -175,10 +175,10 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu Icon */}
-        <div className="hidden md:flex gap-6 items-center">
-          <BookAuditButton className="!px-3 md:!px-6 !py-1.5 md:!py-2.5 text-[0.8rem] md:text-sm" />
+        <div className="flex gap-6 items-center">
+          <BookAuditButton className="!px-3 md:!px-6 !hidden md:!flex !py-1.5 md:!py-2.5 text-[0.8rem] md:text-sm" />
 
-          <div className="lg:hidden flex items-center">
+          <div className="xl:hidden flex items-center">
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-white"
@@ -197,7 +197,7 @@ const Navbar = () => {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.2, ease: "easeInOut" }}
-            className="absolute rounded-3xl top-17 left-[50%] translate-x-[-50%] w-[98vw] md:max-w-[90vw] mx-auto  bg-[#042222] text-[#F8F9FB] shadow-md py-4 flex flex-col items-center space-y-6 text-lg lg:hidden z-50"
+            className="absolute rounded-3xl top-17 left-[50%] translate-x-[-50%] w-[98vw] md:max-w-[90vw] mx-auto  bg-[#042222] text-[#F8F9FB] shadow-md py-4 flex flex-col items-center space-y-6 text-lg xl:hidden z-50"
           >
             <div
               onClick={() => {

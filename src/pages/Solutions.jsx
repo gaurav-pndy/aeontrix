@@ -67,7 +67,7 @@ const Solutions = () => {
       {/* Hero Section */}
       <section className=" pb-20 mb-6">
         <div className="flex justify-center mb-6">
-          <div className="green-glass-badge backdrop-blur-md rounded-full px-6 py-2 shadow-lg">
+          <div className="green-glass-badge backdrop-blur-md rounded-full px-4 py-2 shadow-lg">
             <span className="text-[#00FF93] font-medium">
               {solution.title}{" "}
             </span>
@@ -88,7 +88,7 @@ const Solutions = () => {
       </section>
 
       <section className="pb-20 ">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold gradient-title !mb-4">
               Core Features
@@ -128,7 +128,7 @@ const Solutions = () => {
       </section>
 
       <section className="pb-20 z-10 relative text-seasalt">
-        <div className="lg:max-w-7xl mx-auto px-6">
+        <div className="lg:max-w-7xl mx-auto px-4">
           <h2 className="gradient-title font-bold text-center ">Benefits</h2>
 
           {/* Right Column */}
@@ -149,7 +149,7 @@ const Solutions = () => {
                         : selectedOption === "AI Marketing Suite"
                         ? "w-[50%] lg:w-[46%]"
                         : selectedOption === "Your 24/7 AI Secretary"
-                        ? "w-[50%] md:w-[48%]"
+                        ? "w-[50%] md:w-[54%] lg:w-[58%]"
                         : "w-[49%] md:w-[50%]"
                     }  border border-[#00FF93]/30 rounded-xl pointer-events-none z-0`}
                   />
@@ -202,7 +202,7 @@ const Solutions = () => {
       </section>
 
       <section className="pb-20 text-seasalt">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold gradient-title !mb-4">
               {solution.useCases ? "Industries" : "Who It's For"}
@@ -308,7 +308,7 @@ const Solutions = () => {
 
       {/* CTA Section */}
       <section className="py-20 ">
-        <div className="max-w-4xl mx-auto px-6 text-center">
+        <div className="max-w-4xl mx-auto px-4 text-center">
           <h2 className="text-4xl font-bold gradient-title !mb-6">
             Ready to Upgrade Your Business with AI?{" "}
           </h2>

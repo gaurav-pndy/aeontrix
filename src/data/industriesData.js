@@ -392,15 +392,6 @@ export const industriesData = [
         icon: FaHandshake,
         title: "AI Business Partner",
       },
-
-      {
-        icon: FaCameraRetro,
-        title: "",
-      },
-      {
-        icon: FaHandshake,
-        title: "",
-      },
     ],
   },
   {
