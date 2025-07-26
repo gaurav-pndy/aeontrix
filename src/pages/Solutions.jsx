@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { solutionsData } from "../data/solutionsData";
 import BookAuditButton from "../components/BookAuditButton";
@@ -6,12 +6,25 @@ import { FaCalendarAlt } from "react-icons/fa";
 import { MdOutlineAttachMoney } from "react-icons/md";
 import Timeline from "../components/Home/Timeline";
 import SEO from "../components/SEO";
+import { aiComparisonData, headerData } from "../data/comparisonData";
 
 const Solutions = () => {
   const { solutionId } = useParams();
   const solution = solutionsData.find((s) => s.id === solutionId);
 
   const [hoveredFeature, setHoveredFeature] = useState(null);
+
+  const [selectedOption, setSelectedOption] = useState("AI SDR");
+
+  useEffect(() => {
+    if (solutionId) {
+      setSelectedOption(solution.title);
+    }
+  }, [solutionId]);
+
+  const selectedData = aiComparisonData[selectedOption];
+
+  const selectedHeader = headerData[selectedOption];
 
   return (
     <div className="min-h-screen relative pt-6 z-10 text-seasalt">
@@ -74,50 +87,6 @@ const Solutions = () => {
         </div>
       </section>
 
-      <section className="pb-20 text-seasalt">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold gradient-title !mb-4">
-              {solution.useCases ? "Use Cases" : "Who It's For"}
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {solution.useCases &&
-              solution.useCases.map((use, index) => (
-                <div
-                  key={index}
-                  className="bg-purple-50   transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
-                >
-                  <div className="border-glow"></div>
-                  <div className="flex gap-4 items-center mb-4">
-                    <div className="w-12 shrink-0 h-12 p-1  flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
-                      <use.icon className="w-6 shrink-0 h-6 text-[#00FF93]" />
-                    </div>
-                    <h3 className="text-xl font-semibold ">{use.title}</h3>
-                  </div>
-                  <p className="text-[#F8F9FB]/80">{use.desc}</p>
-                </div>
-              ))}
-            {solution.whoItsFor &&
-              solution.whoItsFor.map((item, index) => (
-                <div
-                  key={index}
-                  className="bg-purple-50 flex items-center transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
-                >
-                  <div className="border-glow"></div>
-                  <div className="flex gap-4 items-center ">
-                    <div className="w-12 h-12 p-1 shrink-0 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
-                      <item.icon className="w-6 h-6 shrink-0 text-[#00FF93]" />
-                    </div>
-                    <h3 className="text-xl  ">{item.title}</h3>
-                  </div>
-                </div>
-              ))}
-          </div>
-        </div>
-      </section>
-
       <section className="pb-20 ">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -154,6 +123,124 @@ const Solutions = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-20 z-10 relative text-seasalt">
+        <div className="lg:max-w-7xl mx-auto px-6">
+          <h2 className="gradient-title font-bold text-center ">Benefits</h2>
+
+          {/* Right Column */}
+          <div className="content-box  border-glow-wrapper highlighted-box-small  bg-[#F8F9FB]/10 backdrop-blur-lg  rounded-3xl p-2 md:p-8 shadow-2xl relative ">
+            <div className="border-glow"></div>
+            <h3 className="text-xl p-4 pb-0 md:p-0 font-semibold mb-4 text-white">
+              {selectedOption} Comparison
+            </h3>
+            <div className="overflow-x-auto">
+              {selectedData ? (
+                <div className="relative overflow-x-auto">
+                  {/* Border box for last two columns */}
+                  <div
+                    className={`absolute top-0 bottom-0 right-0 ${
+                      selectedOption === "AI SDR" ||
+                      selectedOption === "AI Business Partner"
+                        ? "w-[46%] md:w-[45%]"
+                        : selectedOption === "AI Marketing Suite"
+                        ? "w-[50%] lg:w-[46%]"
+                        : selectedOption === "Your 24/7 AI Secretary"
+                        ? "w-[50%] md:w-[48%]"
+                        : "w-[49%] md:w-[50%]"
+                    }  border border-[#00FF93]/30 rounded-xl pointer-events-none z-0`}
+                  />
+
+                  <table className="w-full text-center text-xs md:text-base text-white relative z-10">
+                    <thead className="text-[#00FF93] border-b border-[#00FF93]/30">
+                      {selectedHeader.map(([human, ai], i) => (
+                        <tr key={i}>
+                          <th className="py-4 text-left px-2 md:px-4">
+                            Feature
+                          </th>
+                          <th className="py-4 px-2 md:px-4">{human}</th>
+                          <th className="py-4 px-2 md:px-4">{ai}</th>
+                          <th className="py-4 px-2 md:px-4">Improvement</th>
+                        </tr>
+                      ))}
+                    </thead>
+                    <tbody className="divide-y divide-[#2a2a2a]">
+                      {selectedData.map(
+                        ([metric, human, ai, improvement], i) => (
+                          <tr key={i} className="hover:bg-[#00FF93]/5">
+                            <td className="py-4 px-2 md:px-4 text-left font-semibold text-white">
+                              {metric}
+                            </td>
+                            <td className="py-4 px-2 md:px-4">{human}</td>
+                            <td className="py-4 font-semibold px-2 md:px-4">
+                              {ai}
+                            </td>
+                            <td className="py-4 px-2 md:px-4">{improvement}</td>
+                          </tr>
+                        )
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              ) : (
+                <div className="text-gray-400 text-center py-16">
+                  Comparison data for{" "}
+                  <span className="text-white font-semibold">
+                    {selectedOption}
+                  </span>{" "}
+                  is not yet available.
+                  <br />
+                  Please check back soon.
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="pb-20 text-seasalt">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold gradient-title !mb-4">
+              {solution.useCases ? "Industries" : "Who It's For"}
+            </h2>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {solution.useCases &&
+              solution.useCases.map((use, index) => (
+                <div
+                  key={index}
+                  className="bg-purple-50   transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
+                >
+                  <div className="border-glow"></div>
+                  <div className="flex gap-4 items-center ">
+                    <div className="w-12 shrink-0 h-12 p-1  flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
+                      <use.icon className="w-6 shrink-0 h-6 text-[#00FF93]" />
+                    </div>
+                    <h3 className="text-xl font-semibold ">{use.title}</h3>
+                  </div>
+                  {/* <p className="text-[#F8F9FB]/80">{use.desc}</p> */}
+                </div>
+              ))}
+            {solution.whoItsFor &&
+              solution.whoItsFor.map((item, index) => (
+                <div
+                  key={index}
+                  className="bg-purple-50 flex items-center transition-all duration-300 hover:shadow-lg cursor-pointer content-box border-glow-wrapper highlighted-box-small   rounded-2xl p-4 md:p-5 shadow-2xl relative "
+                >
+                  <div className="border-glow"></div>
+                  <div className="flex gap-4 items-center ">
+                    <div className="w-12 h-12 p-1 shrink-0 flex items-center justify-center bg-[#F8F9FB]/10 rounded-lg">
+                      <item.icon className="w-6 h-6 shrink-0 text-[#00FF93]" />
+                    </div>
+                    <h3 className="text-xl  ">{item.title}</h3>
+                  </div>
+                </div>
+              ))}
           </div>
         </div>
       </section>

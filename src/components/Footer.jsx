@@ -248,7 +248,7 @@ const Footer = () => {
               { label: "AI SDR", id: "ai-sales-suite" },
               { label: "AI Influencer Studio", id: "ai-influencer-studio" },
               { label: "AI Marketing Suite", id: "ai-marketing-suite" },
-              { label: "AI Secretary", id: "ai-clone" },
+              { label: "AI Secretary", id: "ai-secretary" },
               { label: "AI Customer Support", id: "ai-customer-support" },
               { label: "AI Business Partner", id: "ai-business-partner" },
             ].map((item) => (

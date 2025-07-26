@@ -24,6 +24,7 @@ import {
   FaSlack,
   FaStore,
   FaTools,
+  FaUserCheck,
   FaUserShield,
 } from "react-icons/fa";
 import {
@@ -60,6 +61,7 @@ import {
   MdDashboardCustomize,
   MdOutlineAttachMoney,
   MdOutlineCampaign,
+  MdOutlineMarkEmailRead,
   MdRecordVoiceOver,
   MdSportsSoccer,
 } from "react-icons/md";
@@ -68,12 +70,20 @@ import { PiPhonePlusFill } from "react-icons/pi";
 import { IoBookmarks, IoLanguage } from "react-icons/io5";
 import { GrCloudSoftware } from "react-icons/gr";
 import { GoLaw } from "react-icons/go";
-import { BsBuildings } from "react-icons/bs";
+import {
+  BsBuildings,
+  BsCalendarPlus,
+  BsClipboardCheck,
+  BsServer,
+} from "react-icons/bs";
 import { TiSocialAtCircular } from "react-icons/ti";
+import { WiDaySunny } from "react-icons/wi";
+import { BiNews } from "react-icons/bi";
+import { FiCalendar } from "react-icons/fi";
 
 export const solutionsData = [
   {
-    id: "ai-sales-suite",
+    id: "ai-sdr",
     title: "AI SDR",
     icon: FaShoppingCart,
     heading: "Turn Conversations into Customers — on Autopilot",
@@ -444,15 +454,20 @@ export const solutionsData = [
     ],
   },
   {
-    id: "ai-clone",
-    title: "Your AI Secretary",
+    id: "ai-secretary",
+    title: "Your 24/7 AI Secretary",
     icon: FaRobot,
     heading: "Let People Talk to You — Even When You’re Asleep",
-    desc: "Clone your Voice, Face, and Brain to Automate Calls, Support, and Content.",
-    heroBtn: "Create Your AI Secretarytary Now",
+    desc: "Book Meetings, Manage Inbox, and get Live Business Data, Around the Clock and in any Language, So you Reclaim hours Every Week to focus on High-Impact decisions.",
+    heroBtn: "Create Your AI Secretary Now",
     overviewDesc:
       "Imagine a digital version of yourself that can speak, advise, sell, and support. From voice calls to video, your AI Secretarytary handles it all.",
     useCases: [
+      {
+        icon: FaUserTie,
+        title: "C-Suite Executives",
+        desc: "Let your AI version answer questions, sell programs, or guide users 24/7.",
+      },
       {
         icon: MdSportsSoccer,
         title: "Coaches and Consultants",
@@ -470,7 +485,7 @@ export const solutionsData = [
       },
       {
         icon: FaRobot,
-        title: "Marketing and Creative Agencies ",
+        title: "Agencies ",
         desc: "Founder clones to scale personal brand presence.",
       },
       {
@@ -478,48 +493,55 @@ export const solutionsData = [
         title: "Insurance",
         desc: "Educate clients and onboard them with a digital version of your top rep.",
       },
-      {
-        icon: BsBuildings,
-        title: "SMBs (e.g., Medspas, Dental Clinics) ",
-        desc: "AI receptionist with your personality.",
-      },
     ],
     featuresGrid: "lg:grid-cols-4",
     coreFeatures: [
       {
-        icon: FaRobot,
-        title: "AI Chatbot with Your Knowledge",
-      },
-      {
-        icon: RiCustomerServiceFill,
-        title: "Can be integrated into Website for Customer Support",
-      },
-      {
-        icon: FaUser,
-        title: "AI Internal Knowledge Base Chatbot",
-      },
-      {
-        icon: FaSlack,
+        icon: FaRegMessage,
         title:
-          "Can be integrated into Slack, or any other Internal System you Use",
+          "Can be connected to any Chat Interface Platform (that has an API)",
       },
       {
-        icon: FaRegClone,
-        title: "Video Clone for Social Media Content",
+        icon: TfiVideoClapper,
+        title: "Can interact with it in both Text and Voice",
       },
-      {
-        icon: FaPhone,
-        title: "Voice Clone for Phone Support",
-      },
-
-      {
-        icon: FaUsers,
-        title: "Train with Your Courses, FAQs, or Content",
-      },
-
       {
         icon: FaClock,
-        title: "Always Available, Always On-Brand",
+        title: "Multilingual & Active 24/7/365",
+      },
+      {
+        icon: BsClipboardCheck,
+        title: "Pull to-dos from emails, chats and meetings",
+      },
+      {
+        icon: BsCalendarPlus,
+        title: "Book Meetings & Share Meeting Links with just a voice note",
+      },
+      {
+        icon: FiCalendar,
+        title: "Manage Calendar – Share free slots with others",
+      },
+
+      {
+        icon: MdOutlineMarkEmailRead,
+        title: "Summarise E-mails & Mailboxes",
+      },
+
+      {
+        icon: BsServer,
+        title: "Pull Data from Internal System like ERP, CRM",
+      },
+      {
+        icon: FaUserCheck,
+        title: "Draft Emails & Send with Human in the Loop",
+      },
+      {
+        icon: BiNews,
+        title: "Get latest news about any topic from any website",
+      },
+      {
+        icon: WiDaySunny,
+        title: "Tell the weather forecast",
       },
     ],
     // whoItsFor: [

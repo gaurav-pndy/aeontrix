@@ -19,7 +19,7 @@ const Navbar = () => {
 
   const solutions = [
     {
-      id: "ai-sales-suite",
+      id: "ai-sdr",
       title: "AI SDR",
     },
     {
@@ -31,7 +31,7 @@ const Navbar = () => {
       title: "AI Marketing Suite",
     },
     {
-      id: "ai-clone",
+      id: "ai-secretary",
       title: "AI Secretary",
     },
     {
